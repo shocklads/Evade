@@ -1,0 +1,10 @@
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\MoonWalkEvade.exe.config
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\MoonWalkEvade.exe
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\MoonWalkEvade.pdb
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\EloBuddy.dll
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\EloBuddy.SDK.dll
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\SharpDX.Direct3D9.dll
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\SharpDX.dll
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\Newtonsoft.Json.dll
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.exe
+c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.pdb
