@@ -640,7 +640,7 @@ namespace MoonWalkEvade.Evading
                     return EvadeSpellManager.TryEvadeSpell(evade, this);
                 }
 
-                if (LastEvadeResult != null) //&& LastEvadeResult.EvadePoint.Distance(hero) > hero.HitBoxRadius()
+                if (LastEvadeResult != null)
                 {
                     var isPathSafe = IsHeroPathSafe(evade, desiredPath);
 
@@ -665,8 +665,7 @@ namespace MoonWalkEvade.Evading
 
                 if (path.Length > 0 && AutoPathing.Destination.Distance(path.Last(), true) > 50.Pow())
                 {
-                    //AutoPathing.DoPath(path);
-                    Player.IssueOrder(GameObjectOrder.MoveTo, evade.WalkPoint);
+                    AutoPathing.DoPath(path);
                 }
 
                 LastEvadeResult = null;
@@ -694,10 +693,7 @@ namespace MoonWalkEvade.Evading
             public int TotalTimeAvailable { get; set; }
             public bool EnoughTime { get; set; }
 
-            public bool OutsideEvade
-            {
-                get { return Environment.TickCount - OutsideEvadeTime <= 500; }
-            }
+            public bool OutsideEvade => Environment.TickCount - OutsideEvadeTime <= 500;
 
             public int OutsideEvadeTime { get; set; }
 

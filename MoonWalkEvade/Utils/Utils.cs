@@ -13,18 +13,7 @@ namespace MoonWalkEvade.Utils
     {
         private static Random _random;
 
-        public static Random Random
-        {
-            get
-            {
-                if (_random == null)
-                {
-                    _random = new Random();
-                }
-
-                return _random;
-            }
-        }
+        public static Random Random => _random ?? (_random = new Random());
 
         #region "Extensions"
 
@@ -41,11 +30,6 @@ namespace MoonWalkEvade.Utils
         public static bool IsWalking(this Obj_AI_Base unit)
         {
             return unit.IsMoving;
-        }
-
-        public static Vector3 Destination(this Obj_AI_Base unit)
-        {
-            return unit.Path.Last();
         }
 
         public static int WalkingTime(this Obj_AI_Base unit, Vector2 point)
@@ -95,19 +79,6 @@ namespace MoonWalkEvade.Utils
         public static Vector2[] ToVector2(this IEnumerable<Vector3> source)
         {
             return source.Select(v => v.To2D()).ToArray();
-        }
-
-        public static Vector3[] ToVector3(this IEnumerable<Vector2> source)
-        {
-            return source.Select(v => v.To3DWorld()).ToArray();
-        }
-
-        public static float Distance(this Vector2 point, Vector2 segmentStart, Vector2 segmentEnd, bool squared = false)
-        {
-            var a =
-                Math.Abs((segmentEnd.Y - segmentStart.Y) * point.X - (segmentEnd.X - segmentStart.X) * point.Y +
-                         segmentEnd.X * segmentStart.Y - segmentEnd.Y * segmentStart.X);
-            return (squared ? a * a : a) / segmentStart.Distance(segmentEnd, squared);
         }
 
         public static bool IsInLineSegment(this Vector2 point, Vector2 segmentStart, Vector2 segmentEnd,
@@ -230,11 +201,6 @@ namespace MoonWalkEvade.Utils
 
         #endregion
 
-        public static GameObjectTeam PlayerTeam()
-        {
-            return Player.Instance.Team;
-        }
-
         public static string GetGameObjectName(GameObject obj)
         {
             switch (obj.Type)
@@ -278,17 +244,6 @@ namespace MoonWalkEvade.Utils
             }
         }
 
-        public static void DrawPath(Vector2[] path, Color color, int lineWidth = 1)
-        {
-            for (var i = 0; i < path.Length - 1; i++)
-            {
-                var lineStart = path[i];
-                var lineEnd = path[i + 1];
-
-                Line.DrawLine(color, lineWidth, lineStart.To3DPlayer(), lineEnd.To3DPlayer());
-            }
-        }
-
         public static Vector2[] GetLineCircleIntersectionPoints(Vector2 center, float radius, Vector2 segmentStart, Vector2 segmentEnd)
         {
             float t;
@@ -320,27 +275,6 @@ namespace MoonWalkEvade.Utils
                 new Vector2(segmentStart.X + t * dx, segmentStart.Y + t * dy),
                 new Vector2(segmentStart.X + t2 * dx, segmentStart.Y + t2 * dy)
             };
-        }
-
-        public static Vector2[] GetPointsWithDistance(Vector2 segmentStart, Vector2 segmentEnd, Vector2 point, float distance)
-        {
-            var d = distance.Pow();
-            var a = (segmentEnd.Y - segmentStart.Y) / (segmentEnd.X - segmentStart.X);
-            var b = segmentStart.Y - a * segmentStart.X;
-
-            var x =
-                (float)
-                    (-Math.Sqrt(a.Pow() * d - a.Pow() * point.X - 2 * a * b * point.X + 2 * a * point.X * point.Y -
-                                b.Pow() +
-                                2 * b * point.Y + d - point.Y.Pow()) - a * b + a * point.Y + point.X) / (a.Pow() + 1);
-            var y = (float) (-a *
-                             Math.Sqrt(a.Pow() * d - a.Pow() * point.X.Pow() - 2 * a * b * point.X +
-                                       2 * a * point.X * point.Y - b.Pow() +
-                                       2 * b * point.Y + d - point.Y.Pow()) + a.Pow() * point.Y + a * point.X + b) /
-                    (a.Pow() + 1);
-
-            return new[] {new Vector2(x, y), new Vector2(-x, -y)};
-            //.Where(p => p.IsInLineSegment(segmentStart, segmentEnd)).ToArray()
         }
 
         public static Vector2 GetLinesIntersectionPoint(Vector2 start1, Vector2 end1, Vector2 start2, Vector2 end2, out bool intersection)

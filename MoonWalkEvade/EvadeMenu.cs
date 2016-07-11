@@ -33,32 +33,22 @@ namespace MoonWalkEvade
             MainMenu.AddGroupLabel("General Settings");
             MainMenu.Add("evadeMode", new ComboBox("Evade Mode", 0, "Smooth - EzEvade Style", "Fast - EvadePlus Style"));
             MainMenu.AddSeparator();
+
             MainMenu.Add("fowDetection", new CheckBox("Enable FOW Detection"));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("processSpellDetection", new CheckBox("Enable Fast Spell Detection"));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("limitDetectionRange", new CheckBox("Limit Spell Detection Range"));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade Position", false));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired Position After Evade", false));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 0, 0, 200));
             MainMenu.AddSeparator();
 
             MainMenu.AddGroupLabel("Humanizer");
             MainMenu.Add("skillshotActivationDelay", new Slider("Reaction Delay", 0, 0, 400));
-            MainMenu.AddSeparator(10);
+            MainMenu.AddSeparator();
 
             MainMenu.Add("extraEvadeRange", new Slider("Extra Evade Range", 0, 0, 300));
             MainMenu.Add("randomizeExtraEvadeRange", new CheckBox("Randomize Extra Range", false));
 
-            // Set up skillshot menu
             var heroes = Program.DeveloperMode ? EntityManager.Heroes.AllHeroes : EntityManager.Heroes.Enemies;
             var heroNames = heroes.Select(obj => obj.ChampionName).ToArray();
             var skillshots =
@@ -74,8 +64,6 @@ namespace MoonWalkEvade
 
 
             SkillshotMenu = MainMenu.AddSubMenu("Skillshots");
-            SkillshotMenu.AddLabel($"Skillshots Loaded {skillshots.Count}");
-            SkillshotMenu.AddSeparator();
 
             foreach (var c in skillshots)
             {
@@ -141,12 +129,9 @@ namespace MoonWalkEvade
             DrawMenu.Add("drawEvadePoint", new CheckBox("Draw Evade Point"));
             DrawMenu.Add("drawEvadeStatus", new CheckBox("Draw Evade Status"));
             DrawMenu.Add("drawDangerPolygon", new CheckBox("Draw Danger Polygon"));
-            DrawMenu.AddSeparator();
-            DrawMenu.Add("drawPath", new CheckBox("Draw Autpathing Path"));
 
 
-            HotkeysMenu = MainMenu.AddSubMenu("Hotkeys");
-            HotkeysMenu.AddGroupLabel("Hotkeys");
+            HotkeysMenu = MainMenu.AddSubMenu("KeyBinds");
             HotkeysMenu.Add("enableEvade", new KeyBind("Enable Evade", true, KeyBind.BindTypes.PressToggle, 'M'));
             HotkeysMenu.Add("dodgeOnlyDangerous", new KeyBind("Dodge Only Dangerous", false, KeyBind.BindTypes.HoldActive));
             HotkeysMenu.Add("debugMode", new KeyBind("Debug Mode", false, KeyBind.BindTypes.PressToggle));
