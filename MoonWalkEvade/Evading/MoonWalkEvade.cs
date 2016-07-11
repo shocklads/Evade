@@ -243,9 +243,6 @@ namespace MoonWalkEvade.Evading
                     pol.DrawPolygon(Color.White, 3);
                 }
             }
-
-            //Utils.DrawPath(PathFinding.GetPath(Player.Instance.Position.To2D(), Game.CursorPos.To2D()), Color.Blue);
-            //Utils.DrawPath(Player.Instance.GetPath(Game.CursorPos, true).ToVector2(), Color.Blue);
         }
 
         public void CacheSkillshots()
@@ -271,29 +268,6 @@ namespace MoonWalkEvade.Evading
         public bool IsPointSafe(Vector2 point)
         {
             return !ClippedPolygons.Any(p => p.IsInside(point));
-        }
-
-        public bool IsPathSafe(Vector2[] path)
-        {
-            return IsPathSafeEx(path);
-
-            //for (var i = 0; i < path.Length - 1; i++)
-            //{
-            //    var start = path[i];
-            //    var end = path[i + 1];
-
-            //    if (ClippedPolygons.Any(p => p.IsInside(end) || p.IsInside(start) || p.IsIntersectingWithLineSegment(start, end)))
-            //    {
-            //        return false;
-            //    }
-            //}
-
-            //return true;
-        }
-
-        public bool IsPathSafe(Vector3[] path)
-        {
-            return IsPathSafe(path.ToVector2());
         }
 
         public bool IsHeroInDanger(AIHeroClient hero = null)
@@ -332,7 +306,7 @@ namespace MoonWalkEvade.Evading
             return values.Any() ? values.First() : 0;
         }
 
-        public bool IsPathSafeEx(Vector2[] path, AIHeroClient hero = null)
+        public bool IsPathSafe(Vector2[] path, AIHeroClient hero = null)
         {
             hero = hero ?? Player.Instance;
 
@@ -386,11 +360,11 @@ namespace MoonWalkEvade.Evading
             return true;
         }
 
-        public bool IsPathSafeEx(Vector2 end, AIHeroClient hero = null)
+        public bool IsPathSafe(Vector2 end, AIHeroClient hero = null)
         {
              hero = hero ?? Player.Instance;
 
-            return IsPathSafeEx(hero.GetPath(end.To3DWorld(), true).ToVector2(), hero);
+            return IsPathSafe(hero.GetPath(end.To3DWorld(), true).ToVector2(), hero);
         }
 
         public bool CheckPathCollision(Obj_AI_Base unit, Vector2 movePos)
@@ -509,7 +483,7 @@ namespace MoonWalkEvade.Evading
                     {
                         var point = segment[0].Extend(segment[1], i*step);
 
-                        if (!Utils.Utils.IsWall(point) && IsPathSafeEx(point) &&
+                        if (!Utils.Utils.IsWall(point) && IsPathSafe(point) &&
                             Player.Instance.GetPath(point.To3DWorld(), true).Length <= 2)
                         {
                             points.Add(point);
@@ -523,7 +497,7 @@ namespace MoonWalkEvade.Evading
             var playerPos = Player.Instance.Position.To2D();
 
             return GetBestPositionMovementBlock(playerPos).Where(x => IsPointSafe(x) &&
-                IsPathSafeEx(x) && !Utils.Utils.IsWall(x)).OrderBy(x =>
+                IsPathSafe(x) && !Utils.Utils.IsWall(x)).OrderBy(x =>
                     (Game.CursorPos.To2D() - playerPos).AngleBetween(Game.CursorPos.To2D() - x) <= 10)
                         .ThenByDescending(x => x.Distance(playerPos)).ToArray();
         }
@@ -576,7 +550,7 @@ namespace MoonWalkEvade.Evading
             hero = hero ?? Player.Instance;
 
             var path = (desiredPath ?? hero.RealPath()).ToVector2();
-            return IsPathSafeEx(path, hero);
+            return IsPathSafe(path, hero);
 
             var polygons = ClippedPolygons;
             var points = new List<Vector2>();
@@ -679,7 +653,7 @@ namespace MoonWalkEvade.Evading
                     return true;
                 }
             }
-            else if (!IsPathSafe(hero.RealPath()) || (desiredPath != null && !IsPathSafe(desiredPath)))
+            else if (!IsPathSafe(hero.RealPath().ToVector2()) || (desiredPath != null && !IsPathSafe(desiredPath.ToVector2())))
             {
                 var path = PathFinding.GetPath(hero.Position.To2D(), LastIssueOrderPos);
                 var evade = CalculateEvade(LastIssueOrderPos);
