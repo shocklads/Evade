@@ -9,7 +9,7 @@ namespace MoonWalkEvade.Skillshots
         public SpellDetector SpellDetector { get; set; }
         public GameObject SpawnObject { get; set; }
         public Obj_AI_Base Caster { get; set; }
-        public Vector2 EndPos { get; set; }
+        public GameObjectProcessSpellCastEventArgs CastArgs { get; set; }
         public EloBuddy.SpellData SData { get; set; }
         public SpellData SpellData { get; set; }
         public GameObjectTeam Team { get; set; }

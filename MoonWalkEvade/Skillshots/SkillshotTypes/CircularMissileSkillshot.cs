@@ -44,7 +44,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                Position = EndPos.To3D();
+                Position = CastArgs.End;
             }
             else
             {

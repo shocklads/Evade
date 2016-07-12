@@ -4,6 +4,7 @@ using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
+using MoonWalkEvade.Skillshots.SkillshotTypes;
 using MoonWalkEvade.Utils;
 
 namespace MoonWalkEvade.Skillshots
@@ -69,6 +70,18 @@ namespace MoonWalkEvade.Skillshots
 
             if (SkillshotActivationDelay <= 10)
                 skillshot.IsActive = true;
+
+            if (skillshot.SpellData.IsPerpendicular && isProcessSpell)
+            {
+                skillshot.SpellData.Direction = (skillshot.CastArgs.End - skillshot.CastArgs.Start).To2D().Normalized();
+
+                var direction = skillshot.SpellData.Direction;
+                ((LinearMissileSkillshot)skillshot)._startPos = 
+                    (skillshot.CastArgs.End.To2D() - direction.Perpendicular() * skillshot.SpellData.SecondaryRadius).To3D();
+
+                ((LinearMissileSkillshot)skillshot)._endPos =
+                    (skillshot.CastArgs.End.To2D() + direction.Perpendicular() * skillshot.SpellData.SecondaryRadius).To3D();
+            }
 
             DetectedSkillshots.Add(skillshot);
 
@@ -156,7 +169,7 @@ namespace MoonWalkEvade.Skillshots
                 var nSkillshot = skillshot.NewInstance();
                 nSkillshot.SpellDetector = this;
                 nSkillshot.Caster = sender;
-                nSkillshot.EndPos = args.End.To2D();
+                nSkillshot.CastArgs = args;
                 nSkillshot.SData = args.SData;
                 nSkillshot.Team = sender.Team;
 
@@ -168,9 +181,6 @@ namespace MoonWalkEvade.Skillshots
 
         private void GameObjectOnCreate(GameObject sender, EventArgs args)
         {
-            //if (Utils.GetTeam(sender) == Utils.PlayerTeam())
-            //    Chat.Print("create {0} {1} {2} {3}", sender.Team, sender.GetType().ToString(), Utils.GetGameObjectName(sender), sender.Index);
-
             if (!(sender is Obj_GeneralParticleEmitter))
             {
                 var skillshot =

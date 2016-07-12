@@ -20,10 +20,10 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             TimeDetected = Environment.TickCount;
         }
 
-        internal Vector3 _startPos;
-        internal Vector3 _endPos;
+        public Vector3 _startPos;
+        public Vector3 _endPos;
 
-        public MissileClient Missile => SpawnObject as MissileClient;
+        public MissileClient Missile => SpellData.IsPerpendicular ? null : SpawnObject as MissileClient;
 
         public Vector3 StartPosition
         {
@@ -75,8 +75,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            _startPos = Caster.ServerPosition;
-            _endPos = _startPos.ExtendVector3(EndPos.To3D(), SpellData.Range);
+            if (!SpellData.IsPerpendicular)
+            {
+                _startPos = Caster.ServerPosition;
+                _endPos = _startPos.ExtendVector3(CastArgs.End, SpellData.Range);
+            }
         }
 
         public override void OnTick()

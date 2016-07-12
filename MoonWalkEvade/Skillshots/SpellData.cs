@@ -1,4 +1,5 @@
 ﻿using EloBuddy;
+using SharpDX;
 
 namespace MoonWalkEvade.Skillshots
 {
@@ -16,13 +17,18 @@ namespace MoonWalkEvade.Skillshots
         public bool IsDangerous { get; set; }
         public string ChampionName { get; set; }
         public string ToggleParticleName { get; set; }
-        public bool AllowCrossing { get; set; }
         public bool AddHitbox { get; set; }
         public int ExtraMissiles { get; set; }
 
         public bool EnabledByDefault { get; set; } = true;
 
         public bool IsGlobal => Range > 10000;
+
+
+
+        public bool IsPerpendicular { get; set; }
+        public int SecondaryRadius { get; set; }
+        public Vector2 Direction { get; set; }
 
         public SpellData()
         {
