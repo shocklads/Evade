@@ -61,6 +61,7 @@
     <Compile Include="EvadeSpells\EvadeSpellDatabase.cs" />
     <Compile Include="EvadeSpells\EvadeSpellManager.cs" />
     <Compile Include="Evading\AutoPathing.cs" />
+    <Compile Include="Evading\Collision.cs" />
     <Compile Include="Evading\MoonWalkEvade.cs" />
     <Compile Include="Evading\PathFinding.cs" />
     <Compile Include="Program.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Skillshots\SkillshotTypes\SpecialSkillsots\YasuoQ.cs" />
     <Compile Include="Skillshots\SpellData.cs" />
     <Compile Include="Skillshots\SpellDetector.cs" />
+    <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>

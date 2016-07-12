@@ -17,6 +17,8 @@ namespace MoonWalkEvade
         public static Menu DrawMenu { get; private set; }
         public static Menu HotkeysMenu { get; private set; }
 
+        public static Menu CollisionMenu { get; private set; }
+
         public static readonly Dictionary<string, EvadeSkillshot> MenuSkillshots = new Dictionary<string, EvadeSkillshot>();
         public static readonly List<EvadeSpellData> MenuEvadeSpells = new List<EvadeSpellData>(); 
 
@@ -135,6 +137,8 @@ namespace MoonWalkEvade
             HotkeysMenu.Add("enableEvade", new KeyBind("Enable Evade", true, KeyBind.BindTypes.PressToggle, 'M'));
             HotkeysMenu.Add("dodgeOnlyDangerous", new KeyBind("Dodge Only Dangerous", false, KeyBind.BindTypes.HoldActive));
             HotkeysMenu.Add("debugMode", new KeyBind("Debug Mode", false, KeyBind.BindTypes.PressToggle));
+
+
         }
 
         private static EvadeSkillshot GetSkillshot(string s)

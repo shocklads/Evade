@@ -8,4 +8,3 @@ c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvad
 c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\Newtonsoft.Json.dll
 c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.exe
 c:\users\daniel\documents\visual studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.pdb
-C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.csprojResolveAssemblyReference.cache

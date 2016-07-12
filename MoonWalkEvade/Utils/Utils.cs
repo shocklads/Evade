@@ -17,6 +17,34 @@ namespace MoonWalkEvade.Utils
 
         #region "Extensions"
 
+        public static List<Vector2> CutPath(this Vector3[] _path, float distance)
+        {
+            var path = _path.Select(x => x.To2D()).ToList();
+            List<Vector2> list = new List<Vector2>();
+            float num1 = distance;
+            if (distance < 0.0)
+            {
+                path[0] = path[0] + distance * (path[1] - path[0]).Normalized();
+                return path;
+            }
+            for (int index1 = 0; index1 < path.Count - 1; ++index1)
+            {
+                float num2 = path[index1].Distance(path[index1 + 1]);
+                if (num2 > (double)num1)
+                {
+                    list.Add(path[index1] + num1 * (path[index1 + 1] - path[index1]).Normalized());
+                    for (int index2 = index1 + 1; index2 < path.Count; ++index2)
+                        list.Add(path[index2]);
+                    break;
+                }
+                num1 -= num2;
+            }
+            if (list.Count > 0)
+                return list;
+
+            return new List<Vector2> { path.Last()};
+        }
+
         public static float HitBoxRadius(this Obj_AI_Base unit)
         {
             return unit.BoundingRadius;

@@ -49,6 +49,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                     : CastArgs.End;
                 distance = CastArgs.End.Distance(Caster.Position);
                 Direction = (CastArgs.End.To2D() - Caster.Position.To2D()).Normalized();
+
+
             }
         }
 
@@ -69,9 +71,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override bool OnDelete(GameObject obj)
         {
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                return true;
-
             return true;
         }
 

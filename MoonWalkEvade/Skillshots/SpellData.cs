@@ -22,6 +22,8 @@ namespace MoonWalkEvade.Skillshots
 
         public bool EnabledByDefault { get; set; } = true;
 
+        public bool MinionCollision { get; set; } = false;
+
         public bool IsGlobal => Range > 10000;
 
 

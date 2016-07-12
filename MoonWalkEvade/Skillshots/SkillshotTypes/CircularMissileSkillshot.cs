@@ -55,6 +55,14 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 EndPosition = Missile.EndPosition;
                 StartPosition = Missile.Position;
+
+                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+                {
+                    var playerPos = Player.Instance.Position.To2D();
+                    var pos = playerPos + (OwnSpellData.Range / 2f) * ObjectManager.Player.Direction.To2D().Perpendicular();
+                    StartPosition = pos.Extend(playerPos, pos.Distance(playerPos) + OwnSpellData.Range/2f).To3D();
+                    EndPosition = pos.To3D();
+                }
             }
         }
 
@@ -66,17 +74,15 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    // Force skillshot to be removed
-                    IsValid = false;
+                    if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+                        // Force skillshot to be removed
+                        IsValid = false;
                 }
             }
         }
 
         public override bool OnDelete(GameObject obj)
         {
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                return true;
-
             if (Missile != null && obj.Index == Missile.Index && !string.IsNullOrEmpty(OwnSpellData.ToggleParticleName))
             {
                 _missileDeleted = true;
@@ -88,9 +94,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnDeleteObject(GameObject obj)
         {
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                return;
-
             if (Missile != null && _missileDeleted && !string.IsNullOrEmpty(OwnSpellData.ToggleParticleName))
             {
                 var r = new Regex(OwnSpellData.ToggleParticleName);
@@ -106,9 +109,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         /// </summary>
         public override void OnTick()
         {
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                return;
-
             if (Missile == null)
             {
                 if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)

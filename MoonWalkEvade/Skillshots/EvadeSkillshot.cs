@@ -18,6 +18,7 @@ namespace MoonWalkEvade.Skillshots
         public bool CastComplete { get; set; }
         public int TimeDetected { get; set; }
 
+
         public bool IsProcessSpellCast => Caster != null;
 
         public string DisplayText => $"{OwnSpellData.ChampionName} {OwnSpellData.Slot} - {OwnSpellData.DisplayName}";

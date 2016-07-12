@@ -1,6 +1,8 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Menu.Values;
+using MoonWalkEvade.Evading;
 using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
@@ -22,6 +24,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public Vector3 _startPos;
         public Vector3 _endPos;
+        private bool DoesCollide, CollisionChecked;
+        private Vector2 LastCollisionPos;
 
         public MissileClient Missile => OwnSpellData.IsPerpendicular ? null : SpawnObject as MissileClient;
 
@@ -33,6 +37,16 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 {
                     return _startPos;
                 }
+
+                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero &&
+                   !Debug.GlobalStartPos.IsZero)
+                {
+                    var endPos = Debug.GlobalEndPos.To3D();
+                    float realDist = Missile.Position.Distance(Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range));
+
+                    return endPos.Extend(Debug.GlobalStartPos, realDist).To3D();
+                }
+
                 return Missile.Position;
             }
         }
@@ -45,6 +59,15 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 {
                     return _endPos;
                 }
+
+                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero)
+                {
+                    return Debug.GlobalEndPos.To3D();
+                }
+
+                if (DoesCollide)
+                    return LastCollisionPos.To3D();
+
                 return Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range);
             }
         }
@@ -68,7 +91,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    IsValid = false;
+                    if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+                        IsValid = false;
                 }
             }
         }
@@ -80,6 +104,17 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 _startPos = Caster.ServerPosition;
                 _endPos = _startPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
+            else
+            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero &&
+                   !Debug.GlobalStartPos.IsZero)
+            {
+                var endPos = Debug.GlobalEndPos.To3D();
+                float realDist = Missile.Position.Distance(Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range));
+
+                _startPos = endPos.Extend(Debug.GlobalStartPos, realDist).To3D();
+                _endPos = Debug.GlobalEndPos.To3D();
+
+            }
         }
 
         public override void OnTick()
@@ -87,13 +122,28 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (Missile == null)
             {
                 if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
+                {
                     IsValid = false;
+                    return;
+                }
             }
             else
             {
                 if (Environment.TickCount > TimeDetected + 6000)
+                {
                     IsValid = false;
+                    return;
+                }
             }
+
+            //if (!CollisionChecked)
+            //{
+            //    Vector2 collision = this.GetCollisionPoint();
+            //    DoesCollide = !collision.IsZero;
+            //    Chat.Print(DoesCollide);
+            //    LastCollisionPos = collision;
+            //    CollisionChecked = true;
+            //}
         }
 
         public override void OnDraw()

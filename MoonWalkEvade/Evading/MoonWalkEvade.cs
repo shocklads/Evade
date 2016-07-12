@@ -524,7 +524,7 @@ namespace MoonWalkEvade.Evading
 
             if (!points.Any())
             {
-                return new EvadeResult(this, GetClosestEvadePoint(playerPos), anchor, maxTime, time, true);
+                return new EvadeResult(this, Game.CursorPos.To2D(), anchor, maxTime, time, true);
             }
 
             var evadePoint = points.OrderBy(x => !x.IsUnderTurret()).ThenBy(x => x.Distance(Game.CursorPos)).FirstOrDefault();

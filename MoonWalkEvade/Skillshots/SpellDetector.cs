@@ -115,7 +115,6 @@ namespace MoonWalkEvade.Skillshots
 
         private void OnTick(EventArgs args)
         {
-            if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
             foreach (var skillshot in DetectedSkillshots.Where(v => !v.IsValid))
             {
                 if (!skillshot.CastComplete)
