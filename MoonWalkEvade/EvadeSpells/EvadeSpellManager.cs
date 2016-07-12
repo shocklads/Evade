@@ -22,7 +22,7 @@ namespace MoonWalkEvade.EvadeSpells
 
                 if (!castPos.IsZero && slot != SpellSlot.Unknown && Player.CanUseSpell(slot) == SpellState.Ready)
                 {
-                    //Player.IssueOrder(GameObjectOrder.Stop, Player.Instance.Position, true);
+                    //Player.IssueOrder(GameObjectOrder.Stop, Player.Instance.EndPosition, true);
                     Player.CastSpell(slot, castPos.To3DWorld());
                     return true;
                 }
@@ -41,7 +41,7 @@ namespace MoonWalkEvade.EvadeSpells
         }
 
 
-        public static Vector2 GetBlinkCastPos(MoonWalkEvade.Evading.MoonWalkEvade moonWalkEvade, Vector2 center, float maxRange)
+        public static Vector2 GetBlinkCastPos(Evading.MoonWalkEvade moonWalkEvade, Vector2 center, float maxRange)
         {
             var polygons = moonWalkEvade.ClippedPolygons.Where(p => p.IsInside(center)).ToArray();
             var segments = new List<Vector2[]>();
@@ -95,8 +95,8 @@ namespace MoonWalkEvade.EvadeSpells
                 var dist = segment[0].Distance(segment[1]);
                 if (dist > maxdist)
                 {
-                    segment[0] = segment[0].Extend(segment[1], dist / 2 - maxdist / 2);
-                    segment[1] = segment[1].Extend(segment[1], dist / 2 - maxdist / 2);
+                    segment[0] = segment[0].Extend(segment[1], dist / 2 - maxdist / 2f);
+                    segment[1] = segment[1].Extend(segment[1], dist / 2 - maxdist / 2f);
                     dist = maxdist;
                 }
 

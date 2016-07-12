@@ -14,7 +14,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             Caster = null;
             SpawnObject = null;
             SData = null;
-            SpellData = null;
+            OwnSpellData = null;
             Team = GameObjectTeam.Unknown;
             IsValid = true;
             TimeDetected = Environment.TickCount;
@@ -55,7 +55,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 
         public override EvadeSkillshot NewInstance()
         {
-            var newInstance = new SummonerMark {SpellData = SpellData};
+            var newInstance = new SummonerMark {OwnSpellData = OwnSpellData};
             return newInstance;
         }
 
@@ -64,7 +64,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             if (obj == null)
             {
                 _castStartPos = Caster.Position;
-                _castEndPos = _castStartPos.ExtendVector3(CastArgs.End, SpellData.Range);
+                _castEndPos = _castStartPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
         }
 
@@ -74,7 +74,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 
             if (SpawnObject == null && minion != null)
             {
-                if (minion.BaseSkinName == SpellData.MissileSpellName)
+                if (minion.BaseSkinName == OwnSpellData.MissileSpellName)
                 {
                     // Force skillshot to be removed
                     IsValid = false;
@@ -83,7 +83,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 
             if (SpawnObject != null)
             {
-                if (Utils.Utils.GetGameObjectName(obj) == SpellData.ToggleParticleName &&
+                if (Utils.Utils.GetGameObjectName(obj) == OwnSpellData.ToggleParticleName &&
                     obj.Distance(SpawnObject, true) <= 300.Pow())
                 {
                     IsValid = false;
@@ -95,7 +95,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
         {
             if (SpawnObject == null)
             {
-                if (Environment.TickCount > TimeDetected + SpellData.Delay + 50)
+                if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 50)
                     IsValid = false;
             }
             else
@@ -114,16 +114,16 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
                 return;
             }
 
-            Utils.Utils.Draw3DRect(StartPosition, EndPosition, SpellData.Radius*2, Color.White);
+            Utils.Utils.Draw3DRect(StartPosition, EndPosition, OwnSpellData.Radius*2, Color.White);
         }
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
-            if (SpellData.AddHitbox)
+            if (OwnSpellData.AddHitbox)
                 extrawidth += Player.Instance.BoundingRadius;
 
             return new Geometry.Polygon.Rectangle(StartPosition, EndPosition.ExtendVector3(StartPosition, -extrawidth),
-                SpellData.Radius*2 + extrawidth);
+                OwnSpellData.Radius*2 + extrawidth);
         }
 
         public override int GetAvailableTime(Vector2 pos)
@@ -134,11 +134,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 
             var actualDist = Math.Sqrt(StartPosition.Distance(pos).Pow() - dist1.Pow());
 
-            var time = SpellData.MissileSpeed > 0 ? (int)((actualDist / SpellData.MissileSpeed) * 1000) : 0;
+            var time = OwnSpellData.MissileSpeed > 0 ? (int)((actualDist / OwnSpellData.MissileSpeed) * 1000) : 0;
 
             if (SpawnObject == null)
             {
-                time += Math.Max(0, SpellData.Delay - (Environment.TickCount - TimeDetected));
+                time += Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
             }
 
             return time;

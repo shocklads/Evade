@@ -11,7 +11,7 @@ namespace MoonWalkEvade.Skillshots
         public Obj_AI_Base Caster { get; set; }
         public GameObjectProcessSpellCastEventArgs CastArgs { get; set; }
         public EloBuddy.SpellData SData { get; set; }
-        public SpellData SpellData { get; set; }
+        public SpellData OwnSpellData { get; set; }
         public GameObjectTeam Team { get; set; }
         public bool IsActive { get; set; }
         public bool IsValid { get; set; }
@@ -20,7 +20,7 @@ namespace MoonWalkEvade.Skillshots
 
         public bool IsProcessSpellCast => Caster != null;
 
-        public string DisplayText => $"{SpellData.ChampionName} {SpellData.Slot} - {SpellData.DisplayName}";
+        public string DisplayText => $"{OwnSpellData.ChampionName} {OwnSpellData.Slot} - {OwnSpellData.DisplayName}";
 
         public virtual Vector3 GetPosition()
         {
@@ -82,7 +82,7 @@ namespace MoonWalkEvade.Skillshots
 
         public override string ToString()
         {
-            return string.Format("{0}_{1}_{2}", SpellData.ChampionName, SpellData.Slot, SpellData.DisplayName);
+            return string.Format("{0}_{1}_{2}", OwnSpellData.ChampionName, OwnSpellData.Slot, OwnSpellData.DisplayName);
         }
     }
 }

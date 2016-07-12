@@ -16,27 +16,32 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             Caster = null;
             SpawnObject = null;
             SData = null;
-            SpellData = null;
+            OwnSpellData = null;
             Team = GameObjectTeam.Unknown;
             IsValid = true;
             TimeDetected = Environment.TickCount;
         }
 
-        public Vector3 Position { get; private set; }
+        private Vector3 StartPosition { get; set; }
+        public Vector3 EndPosition { get; private set; }
 
         public MissileClient Missile => SpawnObject as MissileClient;
 
         private bool _missileDeleted;
-        private Vector3 _startMissilePos;
+        
 
         public override Vector3 GetPosition()
         {
-            return Position;
+            return EndPosition;
         }
 
+        /// <summary>
+        /// Creates an existing Class Object unlike the DataBase contains
+        /// </summary>
+        /// <returns></returns>
         public override EvadeSkillshot NewInstance()
         {
-            var newInstance = new CircularMissileSkillshot { SpellData = SpellData };
+            var newInstance = new CircularMissileSkillshot { OwnSpellData = OwnSpellData };
             return newInstance;
         }
 
@@ -44,12 +49,12 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                Position = CastArgs.End;
+                EndPosition = CastArgs.End;
             }
             else
             {
-                Position = Missile.EndPosition;
-                _startMissilePos = Missile.Position;
+                EndPosition = Missile.EndPosition;
+                StartPosition = Missile.Position;
             }
         }
 
@@ -59,7 +64,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (SpawnObject == null && missile != null)
             {
-                if (missile.SData.Name == SpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
+                if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
                 {
                     // Force skillshot to be removed
                     IsValid = false;
@@ -72,7 +77,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
                 return true;
 
-            if (Missile != null && obj.Index == Missile.Index && !string.IsNullOrEmpty(SpellData.ToggleParticleName))
+            if (Missile != null && obj.Index == Missile.Index && !string.IsNullOrEmpty(OwnSpellData.ToggleParticleName))
             {
                 _missileDeleted = true;
                 return false;
@@ -86,16 +91,19 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
                 return;
 
-            if (Missile != null && _missileDeleted && !string.IsNullOrEmpty(SpellData.ToggleParticleName))
+            if (Missile != null && _missileDeleted && !string.IsNullOrEmpty(OwnSpellData.ToggleParticleName))
             {
-                var r = new Regex(SpellData.ToggleParticleName);
-                if (r.Match(obj.Name).Success && obj.Distance(Position, true) <= 100 * 100)
+                var r = new Regex(OwnSpellData.ToggleParticleName);
+                if (r.Match(obj.Name).Success && obj.Distance(EndPosition, true) <= 100 * 100)
                 {
                     IsValid = false;
                 }
             }
         }
 
+        /// <summary>
+        /// check if still valid
+        /// </summary>
         public override void OnTick()
         {
             if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
@@ -103,7 +111,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (Missile == null)
             {
-                if (Environment.TickCount > TimeDetected + SpellData.Delay + 250)
+                if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
                     IsValid = false;
             }
             else
@@ -122,8 +130,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (Missile != null && !_missileDeleted)
             {
-                new Geometry.Polygon.Circle(Position,
-                    _startMissilePos.To2D().Distance(Missile.Position.To2D()) / (_startMissilePos.To2D().Distance(Position.To2D())) * SpellData.Radius).DrawPolygon(
+                new Geometry.Polygon.Circle(EndPosition,
+                    StartPosition.To2D().Distance(Missile.Position.To2D()) / (StartPosition.To2D().Distance(EndPosition.To2D())) * OwnSpellData.Radius).DrawPolygon(
                         Color.DodgerBlue);
             }
 
@@ -132,26 +140,24 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
-            if (SpellData.AddHitbox)
+            if (OwnSpellData.AddHitbox)
             {
                 extrawidth += Player.Instance.HitBoxRadius();
             }
 
-            return new Geometry.Polygon.Circle(Position, SpellData.Radius + extrawidth);
+            return new Geometry.Polygon.Circle(EndPosition, OwnSpellData.Radius + extrawidth);
         }
 
         public override int GetAvailableTime(Vector2 pos)
         {
             if (Missile == null)
             {
-                return
-                    (int)(SpellData.Delay - (Environment.TickCount - TimeDetected) +
-                         Caster.Position.To2D().Distance(Position.To2D()) / SpellData.MissileSpeed * 1000);
+                return (OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
             }
 
             if (!_missileDeleted)
             {
-                return (int) ((Missile.Position.To2D().Distance(Position.To2D())) / SpellData.MissileSpeed * 1000);
+                return (int) (Missile.Position.To2D().Distance(EndPosition.To2D()) / OwnSpellData.MissileSpeed * 1000);
             }
 
             return -1;

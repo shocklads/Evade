@@ -62,8 +62,8 @@ namespace MoonWalkEvade.Skillshots
 
         public void AddSkillshot(EvadeSkillshot skillshot, bool isProcessSpell = false, bool triggerEvent = true)
         {
-            if (LimitDetectionRange && !skillshot.SpellData.IsGlobal &&
-                skillshot.GetPosition().Distance(Player.Instance, true) > (2*skillshot.SpellData.Range).Pow())
+            if (LimitDetectionRange && !skillshot.OwnSpellData.IsGlobal &&
+                skillshot.GetPosition().Distance(Player.Instance, true) > (2*skillshot.OwnSpellData.Range).Pow())
             {
                 return;
             }
@@ -71,16 +71,16 @@ namespace MoonWalkEvade.Skillshots
             if (SkillshotActivationDelay <= 10)
                 skillshot.IsActive = true;
 
-            if (skillshot.SpellData.IsPerpendicular && isProcessSpell)
+            if (skillshot.OwnSpellData.IsPerpendicular && isProcessSpell)
             {
-                skillshot.SpellData.Direction = (skillshot.CastArgs.End - skillshot.CastArgs.Start).To2D().Normalized();
+                skillshot.OwnSpellData.Direction = (skillshot.CastArgs.End - skillshot.CastArgs.Start).To2D().Normalized();
 
-                var direction = skillshot.SpellData.Direction;
+                var direction = skillshot.OwnSpellData.Direction;
                 ((LinearMissileSkillshot)skillshot)._startPos = 
-                    (skillshot.CastArgs.End.To2D() - direction.Perpendicular() * skillshot.SpellData.SecondaryRadius).To3D();
+                    (skillshot.CastArgs.End.To2D() - direction.Perpendicular() * skillshot.OwnSpellData.SecondaryRadius).To3D();
 
                 ((LinearMissileSkillshot)skillshot)._endPos =
-                    (skillshot.CastArgs.End.To2D() + direction.Perpendicular() * skillshot.SpellData.SecondaryRadius).To3D();
+                    (skillshot.CastArgs.End.To2D() + direction.Perpendicular() * skillshot.OwnSpellData.SecondaryRadius).To3D();
             }
 
             DetectedSkillshots.Add(skillshot);
@@ -148,7 +148,8 @@ namespace MoonWalkEvade.Skillshots
 
         private void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            //Chat.Print(args.SData.Name);
+            //if (sender is AIHeroClient)
+            //    Chat.Print(args.SData.Name);
 
             if (!EnableSpellDetection)
             {
@@ -162,7 +163,7 @@ namespace MoonWalkEvade.Skillshots
 
             var skillshot =
                 SkillshotDatabase.Database.FirstOrDefault(
-                    evadeSkillshot => evadeSkillshot.SpellData.SpellName == args.SData.Name);
+                    evadeSkillshot => evadeSkillshot.OwnSpellData.SpellName == args.SData.Name);
 
             if (skillshot != null && IsValidTeam(sender.Team))
             {
@@ -185,7 +186,7 @@ namespace MoonWalkEvade.Skillshots
             {
                 var skillshot =
                     EvadeMenu.MenuSkillshots.Values.FirstOrDefault(
-                        evadeSkillshot => evadeSkillshot.SpellData.MissileSpellName == Utils.Utils.GetGameObjectName(sender));
+                        evadeSkillshot => evadeSkillshot.OwnSpellData.MissileSpellName == Utils.Utils.GetGameObjectName(sender));
 
                 if (skillshot != null)
                 {

@@ -8,14 +8,14 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
     {
         public override EvadeSkillshot NewInstance()
         {
-            var newInstance = new YasuoQ { SpellData = SpellData };
+            var newInstance = new YasuoQ { OwnSpellData = OwnSpellData };
             return newInstance;
         }
 
         public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             _startPos = Caster.ServerPosition;
-            _endPos = _startPos.ExtendVector3(CastArgs.End, -SpellData.Range);
+            _endPos = _startPos.ExtendVector3(CastArgs.End, -OwnSpellData.Range);
         }
     }
 }

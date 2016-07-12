@@ -14,7 +14,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             Caster = null;
             SpawnObject = null;
             SData = null;
-            SpellData = null;
+            OwnSpellData = null;
             Team = GameObjectTeam.Unknown;
             IsValid = true;
             TimeDetected = Environment.TickCount;
@@ -23,7 +23,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         public Vector3 _startPos;
         public Vector3 _endPos;
 
-        public MissileClient Missile => SpellData.IsPerpendicular ? null : SpawnObject as MissileClient;
+        public MissileClient Missile => OwnSpellData.IsPerpendicular ? null : SpawnObject as MissileClient;
 
         public Vector3 StartPosition
         {
@@ -45,7 +45,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 {
                     return _endPos;
                 }
-                return Missile.StartPosition.ExtendVector3(Missile.EndPosition, SpellData.Range);
+                return Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range);
             }
         }
 
@@ -56,7 +56,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override EvadeSkillshot NewInstance()
         {
-            var newInstance = new LinearMissileSkillshot { SpellData = SpellData };
+            var newInstance = new LinearMissileSkillshot { OwnSpellData = OwnSpellData };
             return newInstance;
         }
 
@@ -66,7 +66,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (SpawnObject == null && missile != null)
             {
-                if (missile.SData.Name == SpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
+                if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
                 {
                     IsValid = false;
                 }
@@ -75,10 +75,10 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            if (!SpellData.IsPerpendicular)
+            if (!OwnSpellData.IsPerpendicular)
             {
                 _startPos = Caster.ServerPosition;
-                _endPos = _startPos.ExtendVector3(CastArgs.End, SpellData.Range);
+                _endPos = _startPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
         }
 
@@ -86,7 +86,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                if (Environment.TickCount > TimeDetected + SpellData.Delay + 250)
+                if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
                     IsValid = false;
             }
             else
@@ -103,17 +103,17 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 return;
             }
 
-            Utils.Utils.Draw3DRect(StartPosition, EndPosition, SpellData.Radius * 2, Color.White);
+            Utils.Utils.Draw3DRect(StartPosition, EndPosition, OwnSpellData.Radius * 2, Color.White);
         }
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
-            if (SpellData.AddHitbox)
+            if (OwnSpellData.AddHitbox)
             {
                 extrawidth += Player.Instance.HitBoxRadius();
             }
 
-            return new Geometry.Polygon.Rectangle(StartPosition, EndPosition.ExtendVector3(StartPosition, -extrawidth), SpellData.Radius * 2 + extrawidth);
+            return new Geometry.Polygon.Rectangle(StartPosition, EndPosition.ExtendVector3(StartPosition, -extrawidth), OwnSpellData.Radius * 2 + extrawidth);
         }
 
         public override int GetAvailableTime(Vector2 pos)
@@ -124,11 +124,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             var actualDist = Math.Sqrt(StartPosition.Distance(pos).Pow() - dist1.Pow());
 
-            var time = SpellData.MissileSpeed > 0 ? (int) (actualDist / SpellData.MissileSpeed * 1000) : 0;
+            var time = OwnSpellData.MissileSpeed > 0 ? (int) (actualDist / OwnSpellData.MissileSpeed * 1000) : 0;
 
             if (Missile == null)
             {
-                time += Math.Max(0, SpellData.Delay - (Environment.TickCount - TimeDetected));
+                time += Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
             }
 
             return time;

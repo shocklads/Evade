@@ -37,8 +37,8 @@ namespace MoonWalkEvade
             MainMenu.Add("fowDetection", new CheckBox("Enable FOW Detection"));
             MainMenu.Add("processSpellDetection", new CheckBox("Enable Fast Spell Detection"));
             MainMenu.Add("limitDetectionRange", new CheckBox("Limit Spell Detection Range"));
-            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade Position", false));
-            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired Position After Evade", false));
+            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade EndPosition", false));
+            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired EndPosition After Evade", false));
             MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 0, 0, 200));
             MainMenu.AddSeparator();
 
@@ -52,12 +52,12 @@ namespace MoonWalkEvade
             var heroes = Program.DeveloperMode ? EntityManager.Heroes.AllHeroes : EntityManager.Heroes.Enemies;
             var heroNames = heroes.Select(obj => obj.ChampionName).ToArray();
             var skillshots =
-                SkillshotDatabase.Database.Where(s => heroNames.Contains(s.SpellData.ChampionName)).ToList();
+                SkillshotDatabase.Database.Where(s => heroNames.Contains(s.OwnSpellData.ChampionName)).ToList();
             skillshots.AddRange(
                 SkillshotDatabase.Database.Where(
                     s =>
-                        s.SpellData.ChampionName == "AllChampions" &&
-                        heroes.Any(obj => obj.Spellbook.Spells.Select(c => c.Name).Contains(s.SpellData.SpellName))));
+                        s.OwnSpellData.ChampionName == "AllChampions" &&
+                        heroes.Any(obj => obj.Spellbook.Spells.Select(c => c.Name).Contains(s.OwnSpellData.SpellName))));
             var evadeSpells =
                 EvadeSpellDatabase.Spells.Where(s => Player.Instance.ChampionName.Contains(s.charName)).ToList();
             evadeSpells.AddRange(EvadeSpellDatabase.Spells.Where(s => s.charName == "AllChampions"));
@@ -75,20 +75,20 @@ namespace MoonWalkEvade
                 MenuSkillshots.Add(skillshotString, c);
 
                 SkillshotMenu.AddGroupLabel(c.DisplayText);
-                SkillshotMenu.Add(skillshotString + "/enable", new CheckBox("Dodge", c.SpellData.EnabledByDefault));
+                SkillshotMenu.Add(skillshotString + "/enable", new CheckBox("Dodge", c.OwnSpellData.EnabledByDefault));
                 SkillshotMenu.Add(skillshotString + "/draw", new CheckBox("Draw"));
 
-                var dangerous = new CheckBox("Dangerous", c.SpellData.IsDangerous);
+                var dangerous = new CheckBox("Dangerous", c.OwnSpellData.IsDangerous);
                 dangerous.OnValueChange += delegate(ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
                 {
-                    GetSkillshot(sender.SerializationId).SpellData.IsDangerous = args.NewValue;
+                    GetSkillshot(sender.SerializationId).OwnSpellData.IsDangerous = args.NewValue;
                 };
                 SkillshotMenu.Add(skillshotString + "/dangerous", dangerous);
 
-                var dangerValue = new Slider("Danger Value", c.SpellData.DangerValue, 1, 5);
+                var dangerValue = new Slider("Danger Value", c.OwnSpellData.DangerValue, 1, 5);
                 dangerValue.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                 {
-                    GetSkillshot(sender.SerializationId).SpellData.DangerValue = args.NewValue;
+                    GetSkillshot(sender.SerializationId).OwnSpellData.DangerValue = args.NewValue;
                 };
                 SkillshotMenu.Add(skillshotString + "/dangervalue", dangerValue);
 

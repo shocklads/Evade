@@ -153,7 +153,7 @@ namespace MoonWalkEvade.Evading
             }
             else
             {
-                LastIssueOrderPos = (args.Target != null ? args.Target.Position : args.TargetPosition).To2D();
+                LastIssueOrderPos = (args.Target?.Position ?? args.TargetPosition).To2D();
             }
 
             CacheSkillshots();
@@ -251,7 +251,7 @@ namespace MoonWalkEvade.Evading
         {
             Skillshots =
                 (DodgeDangerousOnly
-                    ? SpellDetector.ActiveSkillshots.Where(c => c.SpellData.IsDangerous)
+                    ? SpellDetector.ActiveSkillshots.Where(c => c.OwnSpellData.IsDangerous)
                     : SpellDetector.ActiveSkillshots).ToArray();
 
             _skillshotPolygonCache.Clear();
@@ -304,7 +304,7 @@ namespace MoonWalkEvade.Evading
             if (!skillshots.Any())
                 return 0;
 
-            var values = skillshots.Select(c => c.SpellData.DangerValue).OrderByDescending(t => t);
+            var values = skillshots.Select(c => c.OwnSpellData.DangerValue).OrderByDescending(t => t);
             return values.Any() ? values.First() : 0;
         }
 
@@ -388,7 +388,7 @@ namespace MoonWalkEvade.Evading
         public Vector2[] GetBestPositionMovementBlock(Vector2 movePos)
         {
             int posChecked = 0;
-            int maxPosToCheck = 50;
+            int maxPosToCheck = 100;
             int posRadius = 50;
             int radiusIndex = 0;
 
@@ -498,10 +498,7 @@ namespace MoonWalkEvade.Evading
 
             var playerPos = Player.Instance.Position.To2D();
 
-            return GetBestPositionMovementBlock(playerPos).Where(x => IsPointSafe(x) &&
-                IsPathSafe(x) && !Utils.Utils.IsWall(x)).OrderBy(x =>
-                    (Game.CursorPos.To2D() - playerPos).AngleBetween(Game.CursorPos.To2D() - x) <= 10)
-                        .ThenByDescending(x => x.Distance(playerPos)).ToArray();
+            return GetBestPositionMovementBlock(playerPos).Where(x => IsPointSafe(x) && IsPathSafe(x)).ToArray();
         }
 
         public Vector2 GetClosestEvadePoint(Vector2 from)
@@ -530,18 +527,9 @@ namespace MoonWalkEvade.Evading
                 return new EvadeResult(this, GetClosestEvadePoint(playerPos), anchor, maxTime, time, true);
             }
 
-            //var evadePoint = points.OrderBy(x => 
-            //    (Game.CursorPos.To2D() - playerPos).AngleBetween(Game.CursorPos.To2D() - x) <= 10).
-            //    ThenByDescending(x => x.Distance(Player.Instance)).FirstOrDefault();
-            //if (evadePoint.Equals(default(Vector2)) && EvadeMenu.MainMenu["evadeMode"].Cast<ComboBox>().CurrentValue == 1)
-            //    evadePoint = points.OrderBy(p => p.Distance(playerPos)).FirstOrDefault();
-
-
-            //points.OrderByDescending(p => p.Distance(playerPos)).Last();
-            //points.OrderByDescending(p => p.Distance(anchor) + p.Distance(playerPos)).Last();
-            //points.OrderBy(p => p.Distance(playerPos)).ThenBy(p => 1 / p.Distance(anchor)).Last();
-
-            var evadePoint = points.OrderBy(x => !x.IsUnderTurret()).ThenBy(p => p.Distance(playerPos)).First();
+            var evadePoint = points.OrderBy(x => !x.IsUnderTurret()).ThenBy(x => x.Distance(Game.CursorPos)).FirstOrDefault();
+            if (evadePoint.Equals(default(Vector2)) && EvadeMenu.MainMenu["evadeMode"].Cast<ComboBox>().CurrentValue == 1)
+                evadePoint = points.OrderBy(p => p.Distance(playerPos)).FirstOrDefault();
 
             return new EvadeResult(this, evadePoint, anchor, maxTime, time,
                 !IsHeroInDanger() || Player.Instance.WalkingTime(Player.Instance.Position.To2D(), evadePoint) < time);

@@ -15,7 +15,7 @@ namespace MoonWalkEvade.Skillshots
             {
                 new SummonerMark
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Mark",
                         ChampionName = "AllChampions",
@@ -33,7 +33,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dark Flight",
                         ChampionName = "Aatrox",
@@ -50,7 +50,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Blades of Torment",
                         ChampionName = "Aatrox",
@@ -67,7 +67,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Orb of Deception",
                         ChampionName = "Ahri",
@@ -84,7 +84,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Charm",
                         ChampionName = "Ahri",
@@ -101,7 +101,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Orb of Deception - Back",
                         ChampionName = "Ahri",
@@ -118,7 +118,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Pulverize",
                         ChampionName = "Alistar",
@@ -135,7 +135,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Curse of the Sad Mummy",
                         ChampionName = "Amumu",
@@ -152,7 +152,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Bandage Toss",
                         ChampionName = "Amumu",
@@ -169,7 +169,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Flash Frost",
                         ChampionName = "Anivia",
@@ -186,7 +186,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Annie",
                 //        SpellName = "Incinerate",
@@ -202,7 +202,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Summon: Tibbers",
                         ChampionName = "Annie",
@@ -219,7 +219,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Enchanted Crystal Arrow",
                         ChampionName = "Ashe",
@@ -236,7 +236,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Ashe",
                 //        SpellName = "Volley",
@@ -252,7 +252,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Conquering Sands",
                         ChampionName = "Azir",
@@ -269,7 +269,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Cosmic Binding",
                         ChampionName = "Bard",
@@ -286,7 +286,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Rocket Grab",
                         ChampionName = "Blitzcrank",
@@ -303,7 +303,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Sear",
                         ChampionName = "Brand",
@@ -320,7 +320,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Pillar of Flame",
                         ChampionName = "Brand",
@@ -337,7 +337,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Glacial Fissure",
                         ChampionName = "Braum",
@@ -354,7 +354,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Winter's Bite",
                         ChampionName = "Braum",
@@ -371,7 +371,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Piltover Peacemaker",
                         ChampionName = "Caitlyn",
@@ -388,7 +388,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "90 Caliber Net",
                         ChampionName = "Caitlyn",
@@ -405,7 +405,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Cassiopeia",
                 //        SpellName = "CassiopeiaPetrifyingGaze",
@@ -420,39 +420,40 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Noxious Blast",
                         ChampionName = "Cassiopeia",
                         SpellName = "CassiopeiaQ",
                         Slot = SpellSlot.Q,
-                        Delay = 400,
+                        Delay = 300,
                         Range = 600,
-                        Radius = 200,
+                        Radius = 210,
                         MissileSpeed = 0,
                         DangerValue = 2,
                         IsDangerous = false,
                         MissileSpellName = "CassiopeiaQ"
                     }
                 },
+                new MultiCircleSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Miasma",
+                        ChampionName = "Cassiopeia",
+                        SpellName = "CassiopeiaW",
+                        Slot = SpellSlot.W,
+                        Delay = 350,
+                        Range = 800,
+                        Radius = 170,
+                        MissileSpeed = 0,
+                        DangerValue = 3,
+                        MissileSpellName = "CassiopeiaWMissile"
+                    }
+                },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
-                //    {
-                //        ChampionName = "Cassiopeia",
-                //        SpellName = "CassiopeiaMiasma",
-                //        Slot = SpellSlot.W,
-                //        Delay = 250,
-                //        Range = 850,
-                //        Radius = 220,
-                //        MissileSpeed = 2500,
-                //        DangerValue = 3,
-                //        MissileSpellName = "CassiopeiaMiasma"
-                //    }
-                //},
-                //new CircularMissileSkillshot
-                //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Chogath",
                 //        SpellName = "FeralScream",
@@ -467,7 +468,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Rupture",
                         ChampionName = "Chogath",
@@ -484,7 +485,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Missile Barrage Big",
                         ChampionName = "Corki",
@@ -501,7 +502,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Phosphorus Bomb",
                         ChampionName = "Corki",
@@ -518,7 +519,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         ChampionName = "Corki",
                         SpellName = "MissileBarrage",
@@ -534,7 +535,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Darius",
                 //        SpellName = "DariusAxeGrabCone",
@@ -549,7 +550,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new CircularMissileSkillshot //Unknown:SpellType.Arc
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Diana",
                 //        SpellName = "DianaArc",
@@ -564,7 +565,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Infected Cleaver",
                         ChampionName = "DrMundo",
@@ -581,7 +582,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Whirling Death",
                         ChampionName = "Draven",
@@ -598,7 +599,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Stand Aside",
                         ChampionName = "Draven",
@@ -615,7 +616,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Timewinder",
                         ChampionName = "Ekko",
@@ -632,7 +633,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Parallel Convergence",
                         ChampionName = "Ekko",
@@ -650,7 +651,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Chronobreak",
                         ChampionName = "Ekko",
@@ -667,7 +668,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Cocoon",
                         ChampionName = "Elise",
@@ -684,7 +685,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Agony's Embrace",
                         ChampionName = "Evelynn",
@@ -701,7 +702,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Mystic Shot",
                         ChampionName = "Ezreal",
@@ -718,7 +719,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Trueshot Barrage",
                         ChampionName = "Ezreal",
@@ -735,7 +736,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Essence Flux",
                         ChampionName = "Ezreal",
@@ -755,7 +756,7 @@ namespace MoonWalkEvade.Skillshots
                 */
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Chum the Waters",
                         ChampionName = "Fizz",
@@ -772,7 +773,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Righteous Gust",
                         ChampionName = "Galio",
@@ -789,7 +790,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Resolute Smite",
                         ChampionName = "Galio",
@@ -806,7 +807,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Idol of Durand",
                         ChampionName = "Galio",
@@ -823,7 +824,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Boulder Toss",
                         ChampionName = "Gnar",
@@ -840,7 +841,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "GNAR!",
                         ChampionName = "Gnar",
@@ -858,7 +859,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Wallop",
                         ChampionName = "Gnar",
@@ -875,7 +876,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Boomerang Throw",
                         ChampionName = "Gnar",
@@ -892,7 +893,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Boomerang Throw Return",
                         ChampionName = "Gnar",
@@ -909,7 +910,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hop",
                         ChampionName = "Gnar",
@@ -926,7 +927,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Crunch",
                         ChampionName = "Gnar",
@@ -943,7 +944,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Barrel Roll",
                         ChampionName = "Gragas",
@@ -961,7 +962,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Body Slam",
                         ChampionName = "Gragas",
@@ -978,7 +979,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Explosive Cask",
                         ChampionName = "Gragas",
@@ -995,7 +996,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Graves",
                 //        SpellName = "GravesClusterShot",
@@ -1011,7 +1012,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Collateral Damage",
                         ChampionName = "Graves",
@@ -1028,7 +1029,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Onslaught of Shadows",
                         ChampionName = "Hecarim",
@@ -1045,7 +1046,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hextech Micro-Rockets",
                         ChampionName = "Heimerdinger",
@@ -1062,7 +1063,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hextech Micro-Rockets Ult",
                         ChampionName = "Heimerdinger",
@@ -1079,7 +1080,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "CH-2 Electron Storm Grenade",
                         ChampionName = "Heimerdinger",
@@ -1096,7 +1097,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "CH-2 Electron Storm Grenade Ult",
                         ChampionName = "Heimerdinger",
@@ -1113,7 +1114,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "ranscendent Blades",
                         ChampionName = "Irelia",
@@ -1130,7 +1131,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Howling Gale",
                         ChampionName = "Janna",
@@ -1147,7 +1148,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dragon Strike",
                         ChampionName = "JarvanIV",
@@ -1164,7 +1165,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dragon Strike EQ",
                         ChampionName = "JarvanIVEQ",
@@ -1181,7 +1182,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "JarvanIV",
                 //        SpellName = "JarvanIVCataclysm",
@@ -1196,7 +1197,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Shock Blast Fast",
                         ChampionName = "Jayce",
@@ -1213,7 +1214,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Shock Blast",
                         ChampionName = "Jayce",
@@ -1230,7 +1231,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Super Mega Death Rocket!",
                         ChampionName = "Jinx",
@@ -1247,7 +1248,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Zap!",
                         ChampionName = "Jinx",
@@ -1264,7 +1265,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Pierce",
                         ChampionName = "Kalista",
@@ -1281,7 +1282,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Inner Flame",
                         ChampionName = "Karma",
@@ -1298,7 +1299,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Soulflare (Mantra)",
                         ChampionName = "Karma",
@@ -1315,7 +1316,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Lay Waste",
                         ChampionName = "Karthus",
@@ -1332,7 +1333,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Riftwalk",
                         ChampionName = "Kassadin",
@@ -1349,7 +1350,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Kassadin",
                 //        SpellName = "ForcePulse",
@@ -1364,7 +1365,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Thundering Shuriken",
                         ChampionName = "Kennen",
@@ -1381,7 +1382,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Void Spike",
                         ChampionName = "Khazix",
@@ -1398,7 +1399,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Void Spike Evolved",
                         ChampionName = "Khazix",
@@ -1416,7 +1417,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Caustic Spittle",
                         ChampionName = "KogMaw",
@@ -1433,7 +1434,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Void Ooze",
                         ChampionName = "KogMaw",
@@ -1450,7 +1451,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Living Artillery",
                         ChampionName = "KogMaw",
@@ -1467,7 +1468,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Ethereal Chains (Mimic)",
                         ChampionName = "Leblanc",
@@ -1484,7 +1485,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Ethereal Chains",
                         ChampionName = "Leblanc",
@@ -1501,7 +1502,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Distortion (Mimic)",
                         ChampionName = "Leblanc",
@@ -1518,7 +1519,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Distortion",
                         ChampionName = "Leblanc",
@@ -1535,7 +1536,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Sonic Wave",
                         ChampionName = "LeeSin",
@@ -1552,7 +1553,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Solar Flare",
                         ChampionName = "Leona",
@@ -1569,7 +1570,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Zenith Blade",
                         ChampionName = "Leona",
@@ -1586,7 +1587,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Lissandra",
                 //        SpellName = "LissandraW",
@@ -1601,7 +1602,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Ice Shard",
                         ChampionName = "Lissandra",
@@ -1618,7 +1619,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Ardent Blaze",
                         ChampionName = "Lucian",
@@ -1635,7 +1636,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Piercing Light",
                         ChampionName = "Lucian",
@@ -1653,7 +1654,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Glitterlance",
                         ChampionName = "Lulu",
@@ -1670,7 +1671,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Glitterlance Pix",
                         ChampionName = "Lulu",
@@ -1687,7 +1688,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Lucent Singularity",
                         ChampionName = "Lux",
@@ -1706,7 +1707,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Final Spark",
                         ChampionName = "Lux",
@@ -1723,7 +1724,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Light Binding",
                         ChampionName = "Lux",
@@ -1740,7 +1741,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Unstoppable Force",
                         ChampionName = "Malphite",
@@ -1757,7 +1758,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Malzahar",
                 //        SpellName = "AlZaharCalloftheVoid",
@@ -1772,7 +1773,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "MonkeyKing",
                 //        SpellName = "MonkeyKingSpinToWin",
@@ -1787,7 +1788,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dark Binding",
                         ChampionName = "Morgana",
@@ -1804,7 +1805,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Aqua Prison",
                         ChampionName = "Nami",
@@ -1821,7 +1822,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Tidal Wave",
                         ChampionName = "Nami",
@@ -1838,7 +1839,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dredge Line",
                         ChampionName = "Nautilus",
@@ -1855,7 +1856,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Javelin Toss",
                         ChampionName = "Nidalee",
@@ -1872,7 +1873,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Duskbringer",
                         ChampionName = "Nocturne",
@@ -1889,7 +1890,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Olaf",
                 //        SpellName = "OlafAxeThrowCast",
@@ -1904,7 +1905,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Commnad: Attack",
                         ChampionName = "Orianna",
@@ -1921,7 +1922,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Command: Shockwave",
                         ChampionName = "Orianna",
@@ -1938,7 +1939,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Command: Dissonance",
                         ChampionName = "Orianna",
@@ -1955,7 +1956,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Pantheon",
                 //        SpellName = "PantheonE",
@@ -1970,7 +1971,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Blinding Assault",
                         ChampionName = "Quinn",
@@ -1987,7 +1988,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "RekSai",
                 //        SpellName = "reksaiqburrowed",
@@ -2002,7 +2003,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Bola Strike",
                         ChampionName = "Rengar",
@@ -2019,7 +2020,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Riven",
                 //        SpellName = "rivenizunablade",
@@ -2034,7 +2035,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Ki Burst",
                         ChampionName = "Riven",
@@ -2051,7 +2052,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Electro-Harpoon",
                         ChampionName = "Rumble",
@@ -2068,7 +2069,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Overload",
                         ChampionName = "Ryze",
@@ -2085,7 +2086,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Arctic Assault",
                         ChampionName = "Sejuani",
@@ -2102,7 +2103,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Glacial Prison",
                         ChampionName = "Sejuani",
@@ -2119,7 +2120,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Shadow Dash",
                         ChampionName = "Shen",
@@ -2136,7 +2137,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Flame Breath",
                         ChampionName = "Shyvana",
@@ -2153,7 +2154,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dragon's Descent",
                         ChampionName = "Shyvana",
@@ -2170,7 +2171,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Roar of the Slayer",
                         ChampionName = "Sion",
@@ -2187,7 +2188,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Boomerang Blade",
                         ChampionName = "Sivir",
@@ -2204,7 +2205,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Boomerang Blade (return)",
                         ChampionName = "Sivir",
@@ -2221,7 +2222,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Fracture",
                         ChampionName = "Skarner",
@@ -2238,7 +2239,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Crescendo",
                         ChampionName = "Sona",
@@ -2255,7 +2256,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Starcall",
                         ChampionName = "Soraka",
@@ -2272,7 +2273,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Soraka",
                 //        SpellName = "SorakaE",
@@ -2287,7 +2288,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Nevermove",
                         ChampionName = "Swain",
@@ -2304,7 +2305,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Syndra",
                 //        SpellName = "SyndraE",
@@ -2319,7 +2320,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Force of Will",
                         ChampionName = "Syndra",
@@ -2336,7 +2337,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dark Sphere",
                         ChampionName = "Syndra",
@@ -2353,7 +2354,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Tongue Lash",
                         ChampionName = "TahmKench",
@@ -2370,7 +2371,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Talon",
                 //        SpellName = "TalonRake",
@@ -2385,7 +2386,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Death Sentence",
                         ChampionName = "Thresh",
@@ -2402,7 +2403,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Flay",
                         ChampionName = "Thresh",
@@ -2419,7 +2420,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Wild Cards",
                         ChampionName = "TwistedFate",
@@ -2436,7 +2437,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Acid Hunter",
                         ChampionName = "Urgot",
@@ -2453,7 +2454,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Noxian Corrosive Charge",
                         ChampionName = "Urgot",
@@ -2470,7 +2471,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hail of Arrows",
                         ChampionName = "Varus",
@@ -2487,7 +2488,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Piercing Arrow",
                         ChampionName = "Varus",
@@ -2504,7 +2505,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Chain of Corruption",
                         ChampionName = "Varus",
@@ -2521,7 +2522,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Baleful Strike",
                         ChampionName = "Veigar",
@@ -2538,7 +2539,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Dark Matter",
                         ChampionName = "Veigar",
@@ -2555,7 +2556,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Veigar",
                 //        SpellName = "VeigarEventHorizon",
@@ -2570,7 +2571,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Tectonic Disruption",
                         ChampionName = "Velkoz",
@@ -2587,7 +2588,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Void Rift",
                         ChampionName = "Velkoz",
@@ -2604,7 +2605,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Plasma Fission (split)",
                         ChampionName = "Velkoz",
@@ -2621,7 +2622,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Plasma Fission",
                         ChampionName = "Velkoz",
@@ -2638,7 +2639,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Vi",
                 //        SpellName = "ViQMissile",
@@ -2653,7 +2654,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new LinearMissileSkillshot //Unknown:
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Viktor",
                 //        SpellName = "ViktorDeathRay",
@@ -2668,7 +2669,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Viktor",
                 //        SpellName = "ViktorDeathRay3",
@@ -2683,7 +2684,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new LinearMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Viktor",
                 //        SpellName = "ViktorDeathRay2",
@@ -2698,7 +2699,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Viktor",
                 //        SpellName = "ViktorGravitonField",
@@ -2713,7 +2714,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hemoplague",
                         ChampionName = "Vladimir",
@@ -2730,7 +2731,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Eye of Destruction",
                         ChampionName = "Xerath",
@@ -2747,7 +2748,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Arcanopulse",
                         ChampionName = "Xerath",
@@ -2764,7 +2765,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Rite of the Arcane",
                         ChampionName = "Xerath",
@@ -2781,7 +2782,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Shocking Orb",
                         ChampionName = "Xerath",
@@ -2798,7 +2799,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Steel Tempest (tornado)",
                         ChampionName = "Yasuo",
@@ -2814,7 +2815,7 @@ namespace MoonWalkEvade.Skillshots
                 },             
                 new YasuoQ
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Steel Tempest (tornado)",
                         ChampionName = "Yasuo",
@@ -2830,7 +2831,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new YasuoQ
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Steel Tempest 1",
                         ChampionName = "Yasuo",
@@ -2847,7 +2848,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new YasuoQ
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Steel Tempest 2",
                         ChampionName = "Yasuo",
@@ -2864,7 +2865,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Razor Shuriken",
                         ChampionName = "Zed",
@@ -2881,7 +2882,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Zed",
                 //        SpellName = "ZedPBAOEDummy",
@@ -2896,7 +2897,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Ziggs",
                 //        SpellName = "ZiggsE",
@@ -2911,7 +2912,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 //new CircularMissileSkillshot
                 //{
-                //    SpellData = new SpellData
+                //    OwnSpellData = new OwnSpellData
                 //    {
                 //        ChampionName = "Ziggs",
                 //        SpellName = "ZiggsW",
@@ -2926,7 +2927,7 @@ namespace MoonWalkEvade.Skillshots
                 //},
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Bouncing Bomb",
                         ChampionName = "Ziggs",
@@ -2943,7 +2944,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Mega Inferno Bomb",
                         ChampionName = "Ziggs",
@@ -2959,7 +2960,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Time Bomb",
                         ChampionName = "Zilean",
@@ -2976,7 +2977,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Grasping Roots",
                         ChampionName = "Zyra",
@@ -2993,7 +2994,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                     {
-                        SpellData = new SpellData
+                        OwnSpellData = new SpellData
                         {
                             DisplayName = "Deadly Bloom",
                             ChampionName = "Zyra",
@@ -3011,7 +3012,7 @@ namespace MoonWalkEvade.Skillshots
                     },
                 new CircularMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Stranglethorns",
                         ChampionName = "Zyra",
@@ -3028,7 +3029,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Tentacle Smash",
                         ChampionName = "Illaoi",
@@ -3045,7 +3046,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Test of Spirit",
                         ChampionName = "Illaoi",
@@ -3062,7 +3063,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "End of the Line",
                         ChampionName = "Graves",
@@ -3079,7 +3080,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Hammer Shock",
                         ChampionName = "Poppy",
@@ -3096,7 +3097,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Deadly Flourish",
                         ChampionName = "Jhin",
@@ -3113,7 +3114,7 @@ namespace MoonWalkEvade.Skillshots
                 },
                 new LinearMissileSkillshot
                 {
-                    SpellData = new SpellData
+                    OwnSpellData = new SpellData
                     {
                         DisplayName = "Curtain Call",
                         ChampionName = "Jhin",
