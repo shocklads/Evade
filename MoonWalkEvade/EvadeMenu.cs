@@ -140,6 +140,7 @@ namespace MoonWalkEvade
 
             CollisionMenu = MainMenu.AddSubMenu("Collision");
             CollisionMenu.Add("minion", new CheckBox("Attend Minion Collision"));
+            CollisionMenu.Add("yasuoWall", new CheckBox("Attend Yasuo Wall"));
         }
 
         private static EvadeSkillshot GetSkillshot(string s)

@@ -177,7 +177,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (Missile == null)
             {
-                time += Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
+                return Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
             }
 
             return time;
