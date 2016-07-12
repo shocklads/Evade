@@ -33,18 +33,18 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             get
             {
+                bool debugMode = EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue;
+                if (debugMode)//Simulate Position
+                {
+                    float speed = OwnSpellData.MissileSpeed;
+                    float timeElapsed = Environment.TickCount - TimeDetected - OwnSpellData.Delay;
+                    float traveledDist = speed * timeElapsed / 1000;
+                    return Debug.GlobalStartPos.Extend(Debug.GlobalEndPos, traveledDist).To3D();
+                }
+
                 if (Missile == null)
                 {
                     return _startPos;
-                }
-
-                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero &&
-                   !Debug.GlobalStartPos.IsZero)
-                {
-                    var endPos = Debug.GlobalEndPos.To3D();
-                    float realDist = Missile.Position.Distance(Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range));
-
-                    return endPos.Extend(Debug.GlobalStartPos, realDist).To3D();
                 }
 
                 return Missile.Position;
@@ -55,18 +55,19 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             get
             {
+
+                bool debugMode = EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue;
+                if (debugMode)
+                    return Debug.GlobalEndPos;
+
                 if (Missile == null)
                 {
                     return _endPos;
                 }
 
-                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero)
-                {
-                    return Debug.GlobalEndPos.To3D();
-                }
-
                 if (DoesCollide)
                     return LastCollisionPos.To3D();
+
 
                 return Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range);
             }
@@ -77,9 +78,20 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             return StartPosition;
         }
 
-        public override EvadeSkillshot NewInstance()
+        public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new LinearMissileSkillshot { OwnSpellData = OwnSpellData };
+            if (debug)
+            {
+                //SpawnObject = null;//missile = null => using public setable _startPos
+                //SpawnObject = new MissileClient();//missile != null
+                var newDebugInst = new LinearMissileSkillshot
+                {
+                    OwnSpellData = OwnSpellData, _startPos = Debug.GlobalStartPos,
+                    _endPos = Debug.GlobalEndPos, IsValid = true, IsActive = true, TimeDetected = Environment.TickCount
+                };
+                return newDebugInst;
+            }
             return newInstance;
         }
 
@@ -89,10 +101,9 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (SpawnObject == null && missile != null)
             {
-                if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
+                if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                        IsValid = false;
+                    IsValid = false;
                 }
             }
         }
@@ -104,22 +115,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 _startPos = Caster.ServerPosition;
                 _endPos = _startPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
-            else
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue && !Debug.GlobalEndPos.IsZero &&
-                   !Debug.GlobalStartPos.IsZero)
-            {
-                var endPos = Debug.GlobalEndPos.To3D();
-                float realDist = Missile.Position.Distance(Missile.StartPosition.ExtendVector3(Missile.EndPosition, OwnSpellData.Range));
-
-                _startPos = endPos.Extend(Debug.GlobalStartPos, realDist).To3D();
-                _endPos = Debug.GlobalEndPos.To3D();
-
-            }
         }
 
         public override void OnTick()
         {
-            if (Missile == null)
+            if (Missile == null && !EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
             {
                 if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
                 {
@@ -127,9 +127,21 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                     return;
                 }
             }
-            else
+            else if (Missile != null)
             {
                 if (Environment.TickCount > TimeDetected + 6000)
+                {
+                    IsValid = false;
+                    return;
+                }
+            }
+            else if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+            {
+                float speed = OwnSpellData.MissileSpeed;
+                float timeElapsed = Environment.TickCount - TimeDetected - OwnSpellData.Delay;
+                float traveledDist = speed * timeElapsed / 1000;
+
+                if (traveledDist >= Debug.GlobalStartPos.Distance(Debug.GlobalEndPos))
                 {
                     IsValid = false;
                     return;

@@ -37,7 +37,9 @@ namespace MoonWalkEvade.Skillshots
 
         public List<EvadeSkillshot> ActiveSkillshots
         {
-            get { return DetectedSkillshots.Where(c => EvadeMenu.IsSkillshotEnabled(c) && c.IsValid && c.IsActive).ToList(); }
+            get { return DetectedSkillshots.Where(c =>
+             (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue ||
+                EvadeMenu.IsSkillshotEnabled(c)) && c.IsValid && c.IsActive).ToList(); }
         }
 
         public bool EnableFoWDetection => EvadeMenu.MainMenu["fowDetection"].Cast<CheckBox>().CurrentValue;
@@ -127,8 +129,7 @@ namespace MoonWalkEvade.Skillshots
                 skillshot.OnDispose();
             }
 
-            if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                DetectedSkillshots.RemoveAll(v => !v.IsValid);
+            DetectedSkillshots.RemoveAll(v => !v.IsValid);
 
             foreach (var c in DetectedSkillshots)
             {
@@ -167,7 +168,6 @@ namespace MoonWalkEvade.Skillshots
             if (skillshot != null && IsValidTeam(sender.Team))
             {
                 var nSkillshot = skillshot.NewInstance();
-                nSkillshot.SpellDetector = this;
                 nSkillshot.Caster = sender;
                 nSkillshot.CastArgs = args;
                 nSkillshot.SData = args.SData;
@@ -185,12 +185,11 @@ namespace MoonWalkEvade.Skillshots
             {
                 var skillshot =
                     EvadeMenu.MenuSkillshots.Values.FirstOrDefault(
-                        evadeSkillshot => evadeSkillshot.OwnSpellData.MissileSpellName == Utils.Utils.GetGameObjectName(sender));
+                        evadeSkillshot => evadeSkillshot.OwnSpellData.ObjectCreationName == Utils.Utils.GetGameObjectName(sender));
 
                 if (skillshot != null)
                 {
                     var nSkillshot = skillshot.NewInstance();
-                    nSkillshot.SpellDetector = this;
                     nSkillshot.SpawnObject = sender;
                     nSkillshot.Team = Utils.Utils.GetGameObjectTeam(sender);
                     nSkillshot.OnCreate(sender);

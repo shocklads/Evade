@@ -242,7 +242,7 @@ namespace MoonWalkEvade.Evading
             {
                 foreach (var pol in Geometry.ClipPolygons(SpellDetector.ActiveSkillshots.Select(c => c.ToPolygon())).ToPolygons())
                 {
-                    pol.DrawPolygon(Color.White, 3);
+                    pol.Draw(Color.White, 3);
                 }
             }
         }

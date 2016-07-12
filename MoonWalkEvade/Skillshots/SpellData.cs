@@ -7,7 +7,7 @@ namespace MoonWalkEvade.Skillshots
     {
         public string DisplayName { get; set; }
         public string SpellName { get; set; }
-        public string MissileSpellName { get; set; }
+        public string ObjectCreationName { get; set; }
         public SpellSlot Slot { get; set; }
         public int Delay { get; set; }
         public int Range { get; set; }

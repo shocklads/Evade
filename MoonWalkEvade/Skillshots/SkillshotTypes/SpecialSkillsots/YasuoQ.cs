@@ -1,12 +1,11 @@
 ﻿using EloBuddy;
-using EloBuddy.SDK;
 using MoonWalkEvade.Utils;
 
 namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 {
     public class YasuoQ : LinearMissileSkillshot
     {
-        public override EvadeSkillshot NewInstance()
+        public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new YasuoQ { OwnSpellData = OwnSpellData };
             return newInstance;

@@ -6,7 +6,6 @@ namespace MoonWalkEvade.Skillshots
 {
     public class EvadeSkillshot
     {
-        public SpellDetector SpellDetector { get; set; }
         public GameObject SpawnObject { get; set; }
         public Obj_AI_Base Caster { get; set; }
         public GameObjectProcessSpellCastEventArgs CastArgs { get; set; }
@@ -76,14 +75,14 @@ namespace MoonWalkEvade.Skillshots
             return false;
         }
 
-        public virtual EvadeSkillshot NewInstance()
+        public virtual EvadeSkillshot NewInstance(bool debug = false)
         {
             return new EvadeSkillshot();
         }
 
         public override string ToString()
         {
-            return string.Format("{0}_{1}_{2}", OwnSpellData.ChampionName, OwnSpellData.Slot, OwnSpellData.DisplayName);
+            return $"{OwnSpellData.ChampionName}_{OwnSpellData.Slot}_{OwnSpellData.DisplayName}";
         }
     }
 }

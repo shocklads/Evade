@@ -53,7 +53,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             return StartPosition;
         }
 
-        public override EvadeSkillshot NewInstance()
+        public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new SummonerMark {OwnSpellData = OwnSpellData};
             return newInstance;
@@ -74,7 +74,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
 
             if (SpawnObject == null && minion != null)
             {
-                if (minion.BaseSkinName == OwnSpellData.MissileSpellName)
+                if (minion.BaseSkinName == OwnSpellData.ObjectCreationName)
                 {
                     // Force skillshot to be removed
                     IsValid = false;

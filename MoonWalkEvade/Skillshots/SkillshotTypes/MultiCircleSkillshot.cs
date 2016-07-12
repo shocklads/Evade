@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
 
@@ -33,7 +31,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public MissileClient Missile => SpawnObject as MissileClient;
 
-        public override EvadeSkillshot NewInstance()
+        public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new MultiCircleSkillshot { OwnSpellData = OwnSpellData };
             return newInstance;
@@ -61,7 +59,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (SpawnObject == null && missile != null)
             {
-                if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
+                if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
                     // Force skillshot to be removed
                     //IsValid = false;
@@ -86,9 +84,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnTick()
         {
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                return;
-
             if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 5500)
                 IsValid = false;
         }

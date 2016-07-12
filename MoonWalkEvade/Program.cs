@@ -29,7 +29,7 @@ namespace MoonWalkEvade
                         3000);
 
                 Collision.Init();
-                Debug.Init();
+                Debug.Init(ref _spellDetector);
             };
         }
     }

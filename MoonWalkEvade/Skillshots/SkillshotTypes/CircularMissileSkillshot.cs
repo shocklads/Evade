@@ -2,7 +2,6 @@
 using System.Text.RegularExpressions;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
 using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
@@ -39,7 +38,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         /// Creates an existing Class Object unlike the DataBase contains
         /// </summary>
         /// <returns></returns>
-        public override EvadeSkillshot NewInstance()
+        public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new CircularMissileSkillshot { OwnSpellData = OwnSpellData };
             return newInstance;
@@ -55,14 +54,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 EndPosition = Missile.EndPosition;
                 StartPosition = Missile.Position;
-
-                if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                {
-                    var playerPos = Player.Instance.Position.To2D();
-                    var pos = playerPos + (OwnSpellData.Range / 2f) * ObjectManager.Player.Direction.To2D().Perpendicular();
-                    StartPosition = pos.Extend(playerPos, pos.Distance(playerPos) + OwnSpellData.Range/2f).To3D();
-                    EndPosition = pos.To3D();
-                }
             }
         }
 
@@ -72,11 +63,10 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (SpawnObject == null && missile != null)
             {
-                if (missile.SData.Name == OwnSpellData.MissileSpellName && missile.SpellCaster.Index == Caster.Index)
+                if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                        // Force skillshot to be removed
-                        IsValid = false;
+                    // Force skillshot to be removed
+                    IsValid = false;
                 }
             }
         }
