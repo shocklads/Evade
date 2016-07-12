@@ -39,7 +39,7 @@ namespace MoonWalkEvade
             MainMenu.Add("limitDetectionRange", new CheckBox("Limit Spell Detection Range"));
             MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade EndPosition", false));
             MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired EndPosition After Evade", false));
-            MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 0, 0, 200));
+            MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 80, 0, 200));
             MainMenu.AddSeparator();
 
             MainMenu.AddGroupLabel("Humanizer");
