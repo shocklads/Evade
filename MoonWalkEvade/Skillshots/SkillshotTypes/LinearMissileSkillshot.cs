@@ -136,14 +136,13 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 }
             }
 
-            //if (!CollisionChecked)
-            //{
-            //    Vector2 collision = this.GetCollisionPoint();
-            //    DoesCollide = !collision.IsZero;
-            //    Chat.Print(DoesCollide);
-            //    LastCollisionPos = collision;
-            //    CollisionChecked = true;
-            //}
+            if (!CollisionChecked)
+            {
+                Vector2 collision = this.GetCollisionPoint();
+                DoesCollide = !collision.IsZero;
+                LastCollisionPos = collision;
+                CollisionChecked = true;
+            }
         }
 
         public override void OnDraw()

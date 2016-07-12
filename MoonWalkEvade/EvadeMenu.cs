@@ -138,7 +138,8 @@ namespace MoonWalkEvade
             HotkeysMenu.Add("dodgeOnlyDangerous", new KeyBind("Dodge Only Dangerous", false, KeyBind.BindTypes.HoldActive));
             HotkeysMenu.Add("debugMode", new KeyBind("Debug Mode", false, KeyBind.BindTypes.PressToggle));
 
-
+            CollisionMenu = MainMenu.AddSubMenu("Collision");
+            CollisionMenu.Add("minion", new CheckBox("Attend Minion Collision"));
         }
 
         private static EvadeSkillshot GetSkillshot(string s)
