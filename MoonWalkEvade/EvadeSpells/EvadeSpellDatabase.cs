@@ -1058,19 +1058,19 @@ namespace MoonWalkEvade.EvadeSpells
                 spellTargets = new[] { SpellTargets.EnemyChampions, SpellTargets.EnemyMinions }
             });
 
-            Spells.Add(
-            new EvadeSpellData
-            {
-                charName = "Yasuo",
-                dangerlevel = 3,
-                name = "WindWall",
-                spellName = "YasuoWMovingWall",
-                range = 400,
-                spellDelay = 250,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.WindWall,
-                castType = CastType.Position
-            });
+            //Spells.Add(
+            //new EvadeSpellData
+            //{
+            //    charName = "Yasuo",
+            //    dangerlevel = 3,
+            //    name = "WindWall",
+            //    spellName = "YasuoWMovingWall",
+            //    range = 400,
+            //    spellDelay = 250,
+            //    spellKey = SpellSlot.W,
+            //    evadeType = EvadeType.WindWall,
+            //    castType = CastType.Position
+            //});
 
             #endregion
 
