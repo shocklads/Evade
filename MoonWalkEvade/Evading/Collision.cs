@@ -48,7 +48,7 @@ namespace MoonWalkEvade.Evading
                         collisions.Add(minion.Position.To2D());
                 }
             }
-            if (EvadeMenu.CollisionMenu["yasuoWall"].Cast<CheckBox>().CurrentValue)
+            if (EvadeMenu.CollisionMenu["yasuoWall"].Cast<CheckBox>().CurrentValue && skillshot.Missile != null)
             {
                 GameObject wall = null;
                 foreach (var gameObject in ObjectManager.Get<GameObject>().
