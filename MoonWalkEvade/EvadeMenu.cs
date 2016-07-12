@@ -112,7 +112,7 @@ namespace MoonWalkEvade
                 MenuEvadeSpells.Add(e);
 
                 SpellMenu.AddGroupLabel(evadeSpellString);
-                SpellMenu.Add(evadeSpellString + "/enable", new CheckBox("Use " + e.Slot));
+                SpellMenu.Add(evadeSpellString + "/enable", new CheckBox("Use " + (!e.isItem ? e.Slot.ToString() : "")));
 
                 var dangerValueSlider = new Slider("Danger Value", e.DangerValue, 1, 5);
                 dangerValueSlider.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
