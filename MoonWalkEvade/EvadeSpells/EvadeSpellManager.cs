@@ -127,20 +127,20 @@ namespace MoonWalkEvade.EvadeSpells
             Evading.MoonWalkEvade moonWalkEvadeInstance)
         {
             IEnumerable<EvadeSpellData> evadeSpells = EvadeMenu.MenuEvadeSpells.Where(evadeSpell => 
-                EvadeMenu.SpellMenu[evadeSpell.spellName + "/enable"].Cast<CheckBox>().CurrentValue);
+                EvadeMenu.SpellMenu[evadeSpell.SpellName + "/enable"].Cast<CheckBox>().CurrentValue);
 
             foreach (EvadeSpellData evadeSpell in evadeSpells)
             {
                 int dangerValue =
-                        EvadeMenu.MenuEvadeSpells.First(x => x.spellName == evadeSpell.spellName).dangerlevel;
+                        EvadeMenu.MenuEvadeSpells.First(x => x.SpellName == evadeSpell.SpellName).DangerValue;
                 if (moonWalkEvadeInstance.GetDangerValue() < dangerValue)
                     continue;
 
                 //dash
-                if (evadeSpell.range != 0)
+                if (evadeSpell.Range != 0)
                 {
-                    var evadePos = GetBlinkCastPos(moonWalkEvadeInstance, Player.Instance.Position.To2D(), evadeSpell.range);
-                    float castTime = evadeSpell.spellDelay;
+                    var evadePos = GetBlinkCastPos(moonWalkEvadeInstance, Player.Instance.Position.To2D(), evadeSpell.Range);
+                    float castTime = evadeSpell.Delay;
                     if (evadeResult.TimeAvailable >= castTime && !evadePos.IsZero && moonWalkEvadeInstance.IsPointSafe(evadePos))
                     {
                         CastEvadeSpell(evadeSpell, evadePos);
@@ -148,14 +148,14 @@ namespace MoonWalkEvade.EvadeSpells
                     }
                 }
 
-                //speed buff (spell or item)
-                if (evadeSpell.evadeType == EvadeType.MovementSpeedBuff)
+                //Speed buff (spell or item)
+                if (evadeSpell.EvadeType == EvadeType.MovementSpeedBuff)
                 {
                     var playerPos = Player.Instance.Position.To2D();
 
                     float speed = Player.Instance.MoveSpeed;
-                    speed += speed * evadeSpell.speedArray[Player.Instance.Spellbook.GetSpell(evadeSpell.spellKey).Level - 1] / 100;
-                    float maxTime = evadeResult.TimeAvailable - evadeSpell.spellDelay;
+                    speed += speed * evadeSpell.speedArray[Player.Instance.Spellbook.GetSpell(evadeSpell.Slot).Level - 1] / 100;
+                    float maxTime = evadeResult.TimeAvailable - evadeSpell.Delay;
                     float maxTravelDist = speed * (maxTime / 1000);
                     var evadePoints = moonWalkEvadeInstance.GetEvadePoints(playerPos, maxTravelDist);
 
@@ -168,9 +168,9 @@ namespace MoonWalkEvade.EvadeSpells
                 }
 
                 //items
-                if (evadeSpell.isItem && evadeSpell.evadeType != EvadeType.MovementSpeedBuff)
+                if (evadeSpell.isItem && evadeSpell.EvadeType != EvadeType.MovementSpeedBuff)
                 {
-                    if (evadeResult.TimeAvailable >= evadeSpell.spellDelay)
+                    if (evadeResult.TimeAvailable >= evadeSpell.Delay)
                         CastEvadeSpell(evadeSpell, Vector2.Zero);
                     return true;
                 }
@@ -190,17 +190,17 @@ namespace MoonWalkEvade.EvadeSpells
             }
 
 
-            switch (evadeSpell.castType)
+            switch (evadeSpell.CastType)
             {
                 case CastType.Position:
                     if (!evadeSpell.isReversed)
-                        Player.Instance.Spellbook.CastSpell(evadeSpell.spellKey, evadePos.To3D());
+                        Player.Instance.Spellbook.CastSpell(evadeSpell.Slot, evadePos.To3D());
                     else
-                        Player.Instance.Spellbook.CastSpell(evadeSpell.spellKey,
-                            evadePos.Extend(Player.Instance, evadePos.Distance(Player.Instance) + evadeSpell.range).To3D());
+                        Player.Instance.Spellbook.CastSpell(evadeSpell.Slot,
+                            evadePos.Extend(Player.Instance, evadePos.Distance(Player.Instance) + evadeSpell.Range).To3D());
                     break;
                 case CastType.Self:
-                    Player.Instance.Spellbook.CastSpell(evadeSpell.spellKey, Player.Instance);
+                    Player.Instance.Spellbook.CastSpell(evadeSpell.Slot, Player.Instance);
                     break;
             }
         }

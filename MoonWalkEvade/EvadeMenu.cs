@@ -61,8 +61,8 @@ namespace MoonWalkEvade
                         s.OwnSpellData.ChampionName == "AllChampions" &&
                         heroes.Any(obj => obj.Spellbook.Spells.Select(c => c.Name).Contains(s.OwnSpellData.SpellName))));
             var evadeSpells =
-                EvadeSpellDatabase.Spells.Where(s => Player.Instance.ChampionName.Contains(s.charName)).ToList();
-            evadeSpells.AddRange(EvadeSpellDatabase.Spells.Where(s => s.charName == "AllChampions"));
+                EvadeSpellDatabase.Spells.Where(s => Player.Instance.ChampionName.Contains(s.ChampionName)).ToList();
+            evadeSpells.AddRange(EvadeSpellDatabase.Spells.Where(s => s.ChampionName == "AllChampions"));
 
 
             SkillshotMenu = MainMenu.AddSubMenu("Skillshots");
@@ -104,21 +104,21 @@ namespace MoonWalkEvade
 
             foreach (var e in evadeSpells)
             {
-                var evadeSpellString = e.spellName;
+                var evadeSpellString = e.SpellName;
 
-                if (MenuEvadeSpells.Any(x => x.spellName == evadeSpellString))
+                if (MenuEvadeSpells.Any(x => x.SpellName == evadeSpellString))
                     continue;
 
                 MenuEvadeSpells.Add(e);
 
                 SpellMenu.AddGroupLabel(evadeSpellString);
-                SpellMenu.Add(evadeSpellString + "/enable", new CheckBox("Use " + e.spellKey));
+                SpellMenu.Add(evadeSpellString + "/enable", new CheckBox("Use " + e.Slot));
 
-                var dangerValueSlider = new Slider("Danger Value", e.dangerlevel, 1, 5);
+                var dangerValueSlider = new Slider("Danger Value", e.DangerValue, 1, 5);
                 dangerValueSlider.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                 {
                     MenuEvadeSpells.First(x => 
-                        x.spellName.Contains(sender.SerializationId.Split('/')[0])).dangerlevel = args.NewValue;
+                        x.SpellName.Contains(sender.SerializationId.Split('/')[0])).DangerValue = args.NewValue;
                 };
                 SpellMenu.Add(evadeSpellString + "/dangervalue", dangerValueSlider);
 

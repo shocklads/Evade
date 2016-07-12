@@ -719,7 +719,7 @@ namespace MoonWalkEvade.Evading
                 TimeAvailable = timeAvailable;
                 EnoughTime = enoughTime;
 
-                // extra _moonWalkEvade range
+                // extra _moonWalkEvade Range
                 if (_moonWalkEvade.ExtraEvadeRange > 0)
                 {
                     ExtraRange = (_moonWalkEvade.RandomizeExtraEvadeRange

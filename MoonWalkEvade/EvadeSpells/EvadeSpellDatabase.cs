@@ -14,16 +14,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Ahri",
-                dangerlevel = 4,
-                name = "AhriTumble",
-                spellName = "AhriTumble",
-                range = 500,
-                spellDelay = 50,
-                speed = 1575,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Ahri",
+                DangerValue = 4,
+
+                SpellName = "AhriTumble",
+                Range = 500,
+                Delay = 50,
+                Speed = 1575,
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -33,15 +33,15 @@ namespace MoonWalkEvade.EvadeSpells
             //Spells.Add(
             //new EvadeSpellData
             //{
-            //    charName = "Akali",
-            //    dangerlevel = 4,
-            //    name = "Twilight Shroud",
-            //    spellName = "AkaliSmokeBomb",
-            //    spellDelay = 850,
-            //    spellKey = SpellSlot.W,
+            //    ChampionName = "Akali",
+            //    DangerValue = 4,
+
+            //    SpellName = "AkaliSmokeBomb",
+            //    Delay = 850,
+            //    Slot = SpellSlot.W,
             //    speedArray = new[] { 20f, 40f, 60f, 80f, 100f },
-            //    evadeType = EvadeType.MovementSpeedBuff,
-            //    castType = CastType.EndPosition
+            //    EvadeType = EvadeType.MovementSpeedBuff,
+            //    CastType = CastType.EndPosition
             //});
 
             #endregion
@@ -51,15 +51,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Blitzcrank",
-                dangerlevel = 3,
-                name = "Overdrive",
-                spellName = "Overdrive",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Blitzcrank",
+                DangerValue = 3,
+
+                SpellName = "Overdrive",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 70f, 75f, 80f, 85f, 90f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -69,18 +69,18 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Caitlyn",
-                dangerlevel = 3,
-                name = "CaitlynEntrapment",
-                spellName = "CaitlynEntrapment",
-                range = 490,
-                spellDelay = 50,
-                speed = 1000,
+                ChampionName = "Caitlyn",
+                DangerValue = 3,
+
+                SpellName = "CaitlynEntrapment",
+                Range = 490,
+                Delay = 50,
+                Speed = 1000,
                 isReversed = true,
                 fixedRange = true,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -90,16 +90,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Corki",
-                dangerlevel = 3,
-                name = "CarpetBomb",
-                spellName = "CarpetBomb",
-                range = 790,
-                spellDelay = 50,
-                speed = 975,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Corki",
+                DangerValue = 3,
+
+                SpellName = "CarpetBomb",
+                Range = 790,
+                Delay = 50,
+                Speed = 975,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -109,15 +109,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Draven",
-                dangerlevel = 3,
-                name = "Blood Rush",
-                spellName = "DravenFury",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Draven",
+                DangerValue = 3,
+
+                SpellName = "DravenFury",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 40f, 45f, 50f, 55f, 60f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -127,32 +127,32 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Ekko",
-                dangerlevel = 3,
-                name = "PhaseDive",
-                spellName = "EkkoE",
-                range = 350,
+                ChampionName = "Ekko",
+                DangerValue = 3,
+
+                SpellName = "EkkoE",
+                Range = 350,
                 fixedRange = true,
-                spellDelay = 50,
-                speed = 1150,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Delay = 50,
+                Speed = 1150,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Ekko",
-                dangerlevel = 3,
-                name = "PhaseDive2",
-                spellName = "EkkoEAttack",
-                range = 490,
-                spellDelay = 250,
+                ChampionName = "Ekko",
+                DangerValue = 3,
+
+                SpellName = "EkkoEAttack",
+                Range = 490,
+                Delay = 250,
                 infrontTarget = true,
-                spellKey = SpellSlot.Recall,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Target,
+                Slot = SpellSlot.Recall,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.EnemyChampions, SpellTargets.EnemyMinions },
                 isSpecial = true
             });
@@ -160,15 +160,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Ekko",
-                dangerlevel = 4,
-                name = "Chronobreak",
-                spellName = "EkkoR",
-                range = 20000,
-                spellDelay = 50,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Self,
+                ChampionName = "Ekko",
+                DangerValue = 4,
+
+                SpellName = "EkkoR",
+                Range = 20000,
+                Delay = 50,
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Self,
                 isSpecial = true
             });
 
@@ -179,15 +179,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Evelynn",
-                dangerlevel = 3,
-                name = "Darl Frenzy",
-                spellName = "EvelynnW",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Evelynn",
+                DangerValue = 3,
+
+                SpellName = "EvelynnW",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 30f, 45f, 50f, 60f, 70f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -197,15 +197,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Ezreal",
-                dangerlevel = 2,
-                name = "ArcaneShift",
-                spellName = "EzrealArcaneShift",
-                range = 450,
-                spellDelay = 250,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Position
+                ChampionName = "Ezreal",
+                DangerValue = 2,
+
+                SpellName = "EzrealArcaneShift",
+                Range = 450,
+                Delay = 250,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -215,31 +215,31 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Fiora",
-                dangerlevel = 3,
-                name = "FioraW",
-                spellName = "FioraW",
-                range = 750,
-                spellDelay = 100,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.WindWall,
-                castType = CastType.Position
+                ChampionName = "Fiora",
+                DangerValue = 3,
+
+                SpellName = "FioraW",
+                Range = 750,
+                Delay = 100,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.WindWall,
+                CastType = CastType.Position
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Fiora",
-                dangerlevel = 3,
-                name = "FioraQ",
-                spellName = "FioraQ",
-                range = 340,
+                ChampionName = "Fiora",
+                DangerValue = 3,
+
+                SpellName = "FioraQ",
+                Range = 340,
                 fixedRange = true,
-                speed = 1100,
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Speed = 1100,
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -249,34 +249,34 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Fizz",
-                dangerlevel = 3,
-                name = "FizzPiercingStrike",
-                spellName = "FizzPiercingStrike",
-                range = 550,
-                speed = 1400,
+                ChampionName = "Fizz",
+                DangerValue = 3,
+
+                SpellName = "FizzPiercingStrike",
+                Range = 550,
+                Speed = 1400,
                 fixedRange = true,
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Target,
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.EnemyMinions, SpellTargets.EnemyChampions }
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Fizz",
-                dangerlevel = 3,
-                name = "FizzJump",
-                spellName = "FizzJump",
-                range = 400,
-                speed = 1400,
+                ChampionName = "Fizz",
+                DangerValue = 3,
+
+                SpellName = "FizzJump",
+                Range = 400,
+                Speed = 1400,
                 fixedRange = true,
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position,
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position,
                 untargetable = true
             });
 
@@ -287,15 +287,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Galio",
-                dangerlevel = 4,
-                name = "Righteous Gust",
-                spellName = "GalioRighteousGust",
-                spellDelay = 250,
-                spellKey = SpellSlot.E,
+                ChampionName = "Galio",
+                DangerValue = 4,
+
+                SpellName = "GalioRighteousGust",
+                Delay = 250,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 30f, 35f, 40f, 45f, 50f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Position
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -305,15 +305,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Garen",
-                dangerlevel = 3,
-                name = "Decisive Strike",
-                spellName = "GarenQ",
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
+                ChampionName = "Garen",
+                DangerValue = 3,
+
+                SpellName = "GarenQ",
+                Delay = 50,
+                Slot = SpellSlot.Q,
                 speedArray = new[] { 35, 35f, 35f, 35f, 35f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -323,16 +323,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Gragas",
-                dangerlevel = 2,
-                name = "BodySlam",
-                spellName = "GragasBodySlam",
-                range = 600,
-                spellDelay = 50,
-                speed = 900,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Gragas",
+                DangerValue = 2,
+
+                SpellName = "GragasBodySlam",
+                Range = 600,
+                Delay = 50,
+                Speed = 900,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -342,33 +342,33 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Gnar",
-                dangerlevel = 3,
-                name = "GnarE",
-                spellName = "GnarE",
-                range = 475,
-                spellDelay = 50,
-                speed = 900,
+                ChampionName = "Gnar",
+                DangerValue = 3,
+
+                SpellName = "GnarE",
+                Range = 475,
+                Delay = 50,
+                Speed = 900,
                 checkSpellName = true,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Gnar",
-                dangerlevel = 4,
-                name = "GnarBigE",
-                spellName = "gnarbige",
-                range = 475,
-                spellDelay = 50,
-                speed = 800,
+                ChampionName = "Gnar",
+                DangerValue = 4,
+
+                SpellName = "gnarbige",
+                Range = 475,
+                Delay = 50,
+                Speed = 800,
                 checkSpellName = true,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -378,16 +378,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Graves",
-                dangerlevel = 2,
-                name = "QuickDraw",
-                spellName = "GravesMove",
-                range = 425,
-                spellDelay = 50,
-                speed = 1250,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Graves",
+                DangerValue = 2,
+
+                SpellName = "GravesMove",
+                Range = 425,
+                Delay = 50,
+                Speed = 1250,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -397,15 +397,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Karma",
-                dangerlevel = 3,
-                name = "Inspire",
-                spellName = "KarmaSolkimShield",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
+                ChampionName = "Karma",
+                DangerValue = 3,
+
+                SpellName = "KarmaSolkimShield",
+                Delay = 50,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 40f, 45f, 50f, 55f, 60f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Target
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Target
             });
 
             #endregion
@@ -415,14 +415,14 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Kassadin",
-                dangerlevel = 1,
-                name = "RiftWalk",
-                range = 450,
-                spellDelay = 250,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Position
+                ChampionName = "Kassadin",
+                DangerValue = 1,
+
+                Range = 450,
+                Delay = 250,
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -432,16 +432,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Katarina",
-                dangerlevel = 3,
-                name = "KatarinaE",
-                spellName = "KatarinaE",
-                range = 700,
-                speed = float.MaxValue,
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Blink, //behind target
-                castType = CastType.Target,
+                ChampionName = "Katarina",
+                DangerValue = 3,
+
+                SpellName = "KatarinaE",
+                Range = 700,
+                Speed = float.MaxValue,
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Blink, //behind target
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.Targetables }
             });
 
@@ -452,28 +452,28 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Kayle",
-                dangerlevel = 3,
-                name = "Divine Blessing",
-                spellName = "JudicatorDivineBlessing",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Kayle",
+                DangerValue = 3,
+
+                SpellName = "JudicatorDivineBlessing",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 18f, 21f, 24f, 27f, 30f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Target
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Target
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Kayle",
-                dangerlevel = 4,
-                name = "Intervention",
-                spellName = "JudicatorIntervention",
-                spellDelay = 250,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.SpellShield, //Invulnerability
-                castType = CastType.Target,
+                ChampionName = "Kayle",
+                DangerValue = 4,
+
+                SpellName = "JudicatorIntervention",
+                Delay = 250,
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.SpellShield, //Invulnerability
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.AllyChampions }
             });
 
@@ -484,15 +484,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Kennen",
-                dangerlevel = 4,
-                name = "Lightning Rush",
-                spellName = "KennenLightningRush",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
+                ChampionName = "Kennen",
+                DangerValue = 4,
+
+                SpellName = "KennenLightningRush",
+                Delay = 50,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 100f, 100f, 100f, 100f, 100f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -502,17 +502,17 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Kindred",
-                dangerlevel = 1,
-                name = "KindredQ",
-                spellName = "KindredQ",
-                range = 300,
+                ChampionName = "Kindred",
+                DangerValue = 1,
+
+                SpellName = "KindredQ",
+                Range = 300,
                 fixedRange = true,
-                speed = 733,
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Speed = 733,
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -522,32 +522,32 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Leblanc",
-                dangerlevel = 2,
-                name = "Distortion",
-                spellName = "LeblancSlide",
-                range = 600,
-                spellDelay = 50,
-                speed = 1600,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Leblanc",
+                DangerValue = 2,
+
+                SpellName = "LeblancSlide",
+                Range = 600,
+                Delay = 50,
+                Speed = 1600,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Leblanc",
-                dangerlevel = 2,
-                name = "DistortionR",
-                spellName = "LeblancSlideM",
+                ChampionName = "Leblanc",
+                DangerValue = 2,
+
+                SpellName = "LeblancSlideM",
                 checkSpellName = true,
-                range = 600,
-                spellDelay = 50,
-                speed = 1600,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Range = 600,
+                Delay = 50,
+                Speed = 1600,
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -557,16 +557,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "LeeSin",
-                dangerlevel = 3,
-                name = "LeeSinW",
-                spellName = "BlindMonkWOne",
-                range = 700,
-                speed = 1400,
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Target,
+                ChampionName = "LeeSin",
+                DangerValue = 3,
+
+                SpellName = "BlindMonkWOne",
+                Range = 700,
+                Speed = 1400,
+                Delay = 50,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.AllyChampions, SpellTargets.AllyMinions }
             });
 
@@ -577,16 +577,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Lucian",
-                dangerlevel = 1,
-                name = "RelentlessPursuit",
-                spellName = "LucianE",
-                range = 425,
-                spellDelay = 50,
-                speed = 1350,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Lucian",
+                DangerValue = 1,
+
+                SpellName = "LucianE",
+                Range = 425,
+                Delay = 50,
+                Speed = 1350,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -596,15 +596,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Lulu",
-                dangerlevel = 3,
-                name = "Whimsy",
-                spellName = "LuluW",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Lulu",
+                DangerValue = 3,
+
+                SpellName = "LuluW",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 30f, 30f, 30f, 35f, 40f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Target
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Target
             });
 
             #endregion
@@ -614,16 +614,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "MasterYi",
-                dangerlevel = 3,
-                name = "AlphaStrike",
-                spellName = "AlphaStrike",
-                range = 600,
-                speed = float.MaxValue,
-                spellDelay = 100,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Target,
+                ChampionName = "MasterYi",
+                DangerValue = 3,
+
+                SpellName = "AlphaStrike",
+                Range = 600,
+                Speed = float.MaxValue,
+                Delay = 100,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.EnemyChampions, SpellTargets.EnemyMinions },
                 untargetable = true
             });
@@ -635,14 +635,14 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Morgana",
-                dangerlevel = 3,
-                name = "BlackShield",
-                spellName = "BlackShield",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.SpellShield,
-                castType = CastType.Target,
+                ChampionName = "Morgana",
+                DangerValue = 3,
+
+                SpellName = "BlackShield",
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.SpellShield,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.AllyChampions }
             });
 
@@ -653,14 +653,14 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Nocturne",
-                dangerlevel = 3,
-                name = "ShroudofDarkness",
-                spellName = "NocturneShroudofDarkness",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.SpellShield,
-                castType = CastType.Self
+                ChampionName = "Nocturne",
+                DangerValue = 3,
+
+                SpellName = "NocturneShroudofDarkness",
+                Delay = 50,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.SpellShield,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -670,15 +670,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Nunu",
-                dangerlevel = 2,
-                name = "BloodBoil",
-                spellName = "BloodBoil",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Nunu",
+                DangerValue = 2,
+
+                SpellName = "BloodBoil",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 8f, 9f, 10f, 11f, 12f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Target
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Target
             });
 
             #endregion
@@ -688,16 +688,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Nidalee",
-                dangerlevel = 4,
-                name = "Pounce",
-                spellName = "Pounce",
-                range = 375,
-                spellDelay = 150,
-                speed = 1750,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position,
+                ChampionName = "Nidalee",
+                DangerValue = 4,
+
+                SpellName = "Pounce",
+                Range = 375,
+                Delay = 150,
+                Speed = 1750,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position,
                 isSpecial = true
             });
 
@@ -708,15 +708,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Poppy",
-                dangerlevel = 3,
-                name = "Steadfast Presence",
-                spellName = "PoppyW",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Poppy",
+                DangerValue = 3,
+
+                SpellName = "PoppyW",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 27f, 29f, 31f, 33f, 35f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -726,34 +726,34 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Riven",
-                dangerlevel = 1,
-                name = "BrokenWings",
-                spellName = "RivenTriCleave",
-                range = 260,
+                ChampionName = "Riven",
+                DangerValue = 1,
+
+                SpellName = "RivenTriCleave",
+                Range = 260,
                 fixedRange = true,
-                spellDelay = 50,
-                speed = 560,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position,
+                Delay = 50,
+                Speed = 560,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position,
                 isSpecial = true
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Riven",
-                dangerlevel = 1,
-                name = "Valor",
-                spellName = "RivenFeint",
-                range = 325,
+                ChampionName = "Riven",
+                DangerValue = 1,
+
+                SpellName = "RivenFeint",
+                Range = 325,
                 fixedRange = true,
-                spellDelay = 50,
-                speed = 1200,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Delay = 50,
+                Speed = 1200,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -763,15 +763,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Rumble",
-                dangerlevel = 3,
-                name = "Scrap Shield",
-                spellName = "RumbleShield",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Rumble",
+                DangerValue = 3,
+
+                SpellName = "RumbleShield",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 10f, 15f, 20f, 25f, 30f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -781,28 +781,28 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Sivir",
-                dangerlevel = 4,
-                name = "On The Hunt",
-                spellName = "SivirR",
-                spellDelay = 250,
-                spellKey = SpellSlot.R,
+                ChampionName = "Sivir",
+                DangerValue = 4,
+
+                SpellName = "SivirR",
+                Delay = 250,
+                Slot = SpellSlot.R,
                 speedArray = new[] { 60f, 60f, 60f, 60f, 60f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Sivir",
-                dangerlevel = 2,
-                name = "SivirE",
-                spellName = "SivirE",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.SpellShield,
-                castType = CastType.Self
+                ChampionName = "Sivir",
+                DangerValue = 2,
+
+                SpellName = "SivirE",
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.SpellShield,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -812,15 +812,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Skarner",
-                dangerlevel = 3,
-                name = "Exoskeleton",
-                spellName = "SkarnerExoskeleton",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Skarner",
+                DangerValue = 3,
+
+                SpellName = "SkarnerExoskeleton",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 16f, 20f, 24f, 28f, 32f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -830,15 +830,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Shyvana",
-                dangerlevel = 3,
-                name = "Burnout",
-                spellName = "ShyvanaImmolationAura",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Shyvana",
+                DangerValue = 3,
+
+                SpellName = "ShyvanaImmolationAura",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 30f, 35f, 40f, 45f, 50f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -848,29 +848,29 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Shaco",
-                dangerlevel = 3,
-                name = "Deceive",
-                spellName = "Deceive",
-                range = 400,
-                spellDelay = 250,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Position
+                ChampionName = "Shaco",
+                DangerValue = 3,
+
+                SpellName = "Deceive",
+                Range = 400,
+                Delay = 250,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Position
             });
 
             /*Spells.Add(
             new EvadeSpellData
             {
-                charName = "Shaco",
-                dangerlevel = 3,
-                name = "JackInTheBox",
-                spellName = "JackInTheBox",
-                range = 425,
-                spellDelay = 250,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.WindWall,
-                castType = CastType.EndPosition,
+                ChampionName = "Shaco",
+                DangerValue = 3,
+
+                SpellName = "JackInTheBox",
+                Range = 425,
+                Delay = 250,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.WindWall,
+                CastType = CastType.EndPosition,
             });*/
 
             #endregion
@@ -880,15 +880,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Sona",
-                dangerlevel = 3,
-                name = "Song of Celerity",
-                spellName = "SonaW",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
+                ChampionName = "Sona",
+                DangerValue = 3,
+
+                SpellName = "SonaW",
+                Delay = 50,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 13f, 14f, 15f, 16f, 25f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -898,16 +898,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Talon",
-                dangerlevel = 3,
-                name = "Cutthroat",
-                spellName = "TalonCutthroat",
-                range = 700,
-                speed = float.MaxValue,
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Blink, //behind target
-                castType = CastType.Target,
+                ChampionName = "Talon",
+                DangerValue = 3,
+
+                SpellName = "TalonCutthroat",
+                Range = 700,
+                Speed = float.MaxValue,
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Blink, //behind target
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.EnemyChampions, SpellTargets.EnemyMinions }
             });
 
@@ -915,15 +915,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Talon",
-                dangerlevel = 4,
-                name = "Shadow Assualt",
-                spellName = "TalonShadowAssault",
-                spellDelay = 50,
-                spellKey = SpellSlot.R,
+                ChampionName = "Talon",
+                DangerValue = 4,
+
+                SpellName = "TalonShadowAssault",
+                Delay = 50,
+                Slot = SpellSlot.R,
                 speedArray = new[] { 40f, 40f, 40f, 40f, 40f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -933,15 +933,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Teemo",
-                dangerlevel = 3,
-                name = "Move Quick",
-                spellName = "MoveQuick",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Teemo",
+                DangerValue = 3,
+
+                SpellName = "MoveQuick",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 10f, 14f, 18f, 22f, 26f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -950,15 +950,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Trundle",
-                dangerlevel = 4,
-                name = "Frozen Domain",
-                spellName = "TrundleW",
-                spellDelay = 50,
-                spellKey = SpellSlot.W,
+                ChampionName = "Trundle",
+                DangerValue = 4,
+
+                SpellName = "TrundleW",
+                Delay = 50,
+                Slot = SpellSlot.W,
                 speedArray = new[] { 20f, 25f, 30f, 35f, 40f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Position
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -968,16 +968,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Tristana",
-                dangerlevel = 3,
-                name = "RocketJump",
-                spellName = "RocketJump",
-                range = 900,
-                spellDelay = 500,
-                speed = 1100,
-                spellKey = SpellSlot.W,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Tristana",
+                DangerValue = 3,
+
+                SpellName = "RocketJump",
+                Range = 900,
+                Delay = 500,
+                Speed = 1100,
+                Slot = SpellSlot.W,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -987,16 +987,16 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Tryndamare",
-                dangerlevel = 3,
-                name = "SpinningSlash",
-                spellName = "Slash",
-                range = 660,
-                spellDelay = 50,
-                speed = 900,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                ChampionName = "Tryndamare",
+                DangerValue = 3,
+
+                SpellName = "Slash",
+                Range = 660,
+                Delay = 50,
+                Speed = 900,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -1006,15 +1006,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Udyr",
-                dangerlevel = 3,
-                name = "Bear Stance",
-                spellName = "UdyrBearStance",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
+                ChampionName = "Udyr",
+                DangerValue = 3,
+
+                SpellName = "UdyrBearStance",
+                Delay = 50,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 15f, 20f, 25f, 30f, 35f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Self
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Self
             });
 
             #endregion
@@ -1024,17 +1024,17 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Vayne",
-                dangerlevel = 1,
-                name = "Tumble",
-                spellName = "VayneTumble",
-                range = 300,
+                ChampionName = "Vayne",
+                DangerValue = 1,
+
+                SpellName = "VayneTumble",
+                Range = 300,
                 fixedRange = true,
-                speed = 900,
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Position
+                Speed = 900,
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Position
             });
 
             #endregion
@@ -1044,32 +1044,32 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Yasuo",
-                dangerlevel = 2,
-                name = "SweepingBlade",
-                spellName = "YasuoDashWrapper",
-                range = 475,
+                ChampionName = "Yasuo",
+                DangerValue = 2,
+
+                SpellName = "YasuoDashWrapper",
+                Range = 475,
                 fixedRange = true,
-                speed = 1000,
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
-                evadeType = EvadeType.Dash,
-                castType = CastType.Target,
+                Speed = 1000,
+                Delay = 50,
+                Slot = SpellSlot.E,
+                EvadeType = EvadeType.Dash,
+                CastType = CastType.Target,
                 spellTargets = new[] { SpellTargets.EnemyChampions, SpellTargets.EnemyMinions }
             });
 
             //Spells.Add(
             //new EvadeSpellData
             //{
-            //    charName = "Yasuo",
-            //    dangerlevel = 3,
-            //    name = "WindWall",
-            //    spellName = "YasuoWMovingWall",
-            //    range = 400,
-            //    spellDelay = 250,
-            //    spellKey = SpellSlot.W,
-            //    evadeType = EvadeType.WindWall,
-            //    castType = CastType.Position
+            //    ChampionName = "Yasuo",
+            //    DangerValue = 3,
+
+            //    SpellName = "YasuoWMovingWall",
+            //    Range = 400,
+            //    Delay = 250,
+            //    Slot = SpellSlot.W,
+            //    EvadeType = EvadeType.WindWall,
+            //    CastType = CastType.Position
             //});
 
             #endregion
@@ -1079,15 +1079,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "Zilean",
-                dangerlevel = 3,
-                name = "Timewarp",
-                spellName = "ZileanE",
-                spellDelay = 50,
-                spellKey = SpellSlot.E,
+                ChampionName = "Zilean",
+                DangerValue = 3,
+
+                SpellName = "ZileanE",
+                Delay = 50,
+                Slot = SpellSlot.E,
                 speedArray = new[] { 40f, 55f, 70f, 85f, 99f },
-                evadeType = EvadeType.MovementSpeedBuff,
-                castType = CastType.Target
+                EvadeType = EvadeType.MovementSpeedBuff,
+                CastType = CastType.Target
             });
 
             #endregion
@@ -1097,15 +1097,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "AllChampions",
-                dangerlevel = 4,
-                name = "Talisman of Ascension",
-                spellName = "TalismanOfAscension",
-                spellDelay = 250,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.MovementSpeedBuff,
+                ChampionName = "AllChampions",
+                DangerValue = 4,
+
+                SpellName = "TalismanOfAscension",
+                Delay = 250,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.MovementSpeedBuff,
                 speedArray = new[] { 40f, 40f, 40f, 40f, 40f },
-                castType = CastType.Self,
+                CastType = CastType.Self,
                 isItem = true,
                 itemID = ItemId.Talisman_of_Ascension
             });
@@ -1113,15 +1113,15 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "AllChampions",
-                dangerlevel = 4,
-                name = "Youmuu's Ghostblade",
-                spellName = "YoumuusGhostblade",
-                spellDelay = 250,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.MovementSpeedBuff,
+                ChampionName = "AllChampions",
+                DangerValue = 4,
+
+                SpellName = "YoumuusGhostblade",
+                Delay = 250,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.MovementSpeedBuff,
                 speedArray = new[] { 20f, 20f, 20f, 20f, 20f },
-                castType = CastType.Self,
+                CastType = CastType.Self,
                 isItem = true,
                 itemID = ItemId.Youmuus_Ghostblade
             });
@@ -1129,30 +1129,30 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "AllChampions",
-                dangerlevel = 4,
-                name = "Flash",
-                spellName = "SummonerFlash",
-                range = 400,
+                ChampionName = "AllChampions",
+                DangerValue = 4,
+
+                SpellName = "SummonerFlash",
+                Range = 400,
                 fixedRange = true, //test
-                spellDelay = 50,
+                Delay = 50,
                 isSummonerSpell = true,
-                spellKey = SpellSlot.R,
-                evadeType = EvadeType.Blink,
-                castType = CastType.Position
+                Slot = SpellSlot.R,
+                EvadeType = EvadeType.Blink,
+                CastType = CastType.Position
             });
 
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "AllChampions",
-                dangerlevel = 4,
-                name = "Hourglass",
-                spellName = "ZhonyasHourglass",
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.SpellShield, //Invulnerability
-                castType = CastType.Self,
+                ChampionName = "AllChampions",
+                DangerValue = 4,
+
+                SpellName = "ZhonyasHourglass",
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.SpellShield, //Invulnerability
+                CastType = CastType.Self,
                 isItem = true,
                 itemID = ItemId.Zhonyas_Hourglass
             });
@@ -1160,14 +1160,14 @@ namespace MoonWalkEvade.EvadeSpells
             Spells.Add(
             new EvadeSpellData
             {
-                charName = "AllChampions",
-                dangerlevel = 4,
-                name = "Witchcap",
-                spellName = "Witchcap",
-                spellDelay = 50,
-                spellKey = SpellSlot.Q,
-                evadeType = EvadeType.SpellShield, //Invulnerability
-                castType = CastType.Self,
+                ChampionName = "AllChampions",
+                DangerValue = 4,
+
+                SpellName = "Witchcap",
+                Delay = 50,
+                Slot = SpellSlot.Q,
+                EvadeType = EvadeType.SpellShield, //Invulnerability
+                CastType = CastType.Self,
                 isItem = true,
                 itemID = ItemId.Wooglets_Witchcap
             });
