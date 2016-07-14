@@ -42,11 +42,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (Missile == null)
             {
                 StartPosition = Caster.Position;
-                EndPosition = CastArgsEndPos.Distance(StartPosition) < 700
-                    ? StartPosition.Extend(CastArgsEndPos, 700).To3D()
+                EndPosition = CastArgs.End.Distance(StartPosition) < 700
+                    ? StartPosition.Extend(CastArgs.End, 700).To3D()
                     : EndPosition;
-                distance = CastArgsEndPos.Distance(Caster.Position);
-                Direction = (CastArgsEndPos - Caster.Position.To2D()).Normalized();
+                distance = CastArgs.End.Distance(Caster.Position);
+                Direction = (CastArgs.End.To2D() - Caster.Position.To2D()).Normalized();
 
             }
         }

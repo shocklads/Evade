@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using MoonWalkEvade.Utils;
@@ -64,7 +65,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             if (obj == null)
             {
                 _castStartPos = Caster.Position;
-                _castEndPos = _castStartPos.ExtendVector3(CastArgsEndPos.To3D(), OwnSpellData.Range);
+                _castEndPos = _castStartPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
         }
 
@@ -115,6 +116,26 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             }
 
             Utils.Utils.Draw3DRect(StartPosition, EndPosition, OwnSpellData.Radius*2, Color.White);
+        }
+
+        public override Geometry.Polygon ToRealPolygon()
+        {
+            var halfWidth = OwnSpellData.Radius * 2 / 2;
+            var d1 = StartPosition.To2D();
+            var d2 = EndPosition.To2D();
+            var direction = (d1 - d2).Perpendicular().Normalized();
+
+            Vector3[] points =
+            {
+                (d1 + direction*halfWidth).To3DPlayer(),
+                (d1 - direction*halfWidth).To3DPlayer(),
+                (d2 - direction*halfWidth).To3DPlayer(),
+                (d2 + direction*halfWidth).To3DPlayer()
+            };
+            var p = new Geometry.Polygon();
+            p.Points.AddRange(points.Select(x => x.To2D()).ToList());
+
+            return p;
         }
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)

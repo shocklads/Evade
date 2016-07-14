@@ -118,16 +118,16 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (!OwnSpellData.IsPerpendicular)
             {
                 _startPos = Caster.ServerPosition;
-                _endPos = _startPos.ExtendVector3(CastArgsEndPos.To3D(), OwnSpellData.Range);
+                _endPos = _startPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
             }
             else
             {
-                OwnSpellData.Direction = (CastArgsEndPos - _startPos.To2D()).Normalized();
+                OwnSpellData.Direction = (CastArgs.End - CastArgs.Start).To2D().Normalized();
 
                 var direction = OwnSpellData.Direction;
-                _startPos = (CastArgsEndPos - direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
+                _startPos = (CastArgs.End.To2D() - direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
 
-                _endPos =(CastArgsEndPos + direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
+                _endPos = (CastArgs.End.To2D() + direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
             }
         }
 
@@ -201,6 +201,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             return p;
         }
+
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             if (OwnSpellData.AddHitbox)

@@ -15,7 +15,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
         public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             _startPos = Caster.ServerPosition;
-            _endPos = _startPos.ExtendVector3(CastArgsEndPos.To3D(), -OwnSpellData.Range);
+            _endPos = _startPos.ExtendVector3(CastArgs.End, -OwnSpellData.Range);
         }
     }
 }

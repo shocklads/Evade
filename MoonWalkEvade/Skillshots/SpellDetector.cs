@@ -165,7 +165,7 @@ namespace MoonWalkEvade.Skillshots
             {
                 var nSkillshot = skillshot.NewInstance();
                 nSkillshot.Caster = sender;
-                nSkillshot.CastArgsEndPos = args.End.To2D();
+                nSkillshot.CastArgs = args;
                 nSkillshot.SData = args.SData;
                 nSkillshot.Team = sender.Team;
 
