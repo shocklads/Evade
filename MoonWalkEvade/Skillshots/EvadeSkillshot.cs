@@ -9,7 +9,7 @@ namespace MoonWalkEvade.Skillshots
         public SpellDetector SpellDetector { get; set; }
         public GameObject SpawnObject { get; set; }
         public Obj_AI_Base Caster { get; set; }
-        public Vector2 EndPos { get; set; }
+        public Vector2 CastArgsEndPos { get; set; }
         public EloBuddy.SpellData SData { get; set; }
         public SpellData OwnSpellData { get; set; }
         public GameObjectTeam Team { get; set; }
@@ -60,6 +60,10 @@ namespace MoonWalkEvade.Skillshots
         {
         }
 
+        public virtual Geometry.Polygon ToRealPolygon()
+        {
+            return null;
+        }
         public virtual Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             return null;

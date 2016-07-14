@@ -34,18 +34,30 @@ namespace MoonWalkEvade.Skillshots
 
         public readonly List<EvadeSkillshot> DetectedSkillshots = new List<EvadeSkillshot>();
 
-        public List<EvadeSkillshot> ActiveSkillshots
+        public IEnumerable<EvadeSkillshot> ActiveSkillshots
         {
-            get { return DetectedSkillshots.Where(c => EvadeMenu.IsSkillshotEnabled(c) && c.IsValid && c.IsActive).ToList(); }
+            get { return DetectedSkillshots.Where(c => EvadeMenu.IsSkillshotEnabled(c) && c.IsValid && c.IsActive); }
         }
 
-        public bool EnableFoWDetection => EvadeMenu.MainMenu["fowDetection"].Cast<CheckBox>().CurrentValue;
+        public bool EnableFoWDetection
+        {
+            get { return EvadeMenu.MainMenu["fowDetection"].Cast<CheckBox>().CurrentValue; }
+        }
 
-        public bool LimitDetectionRange => EvadeMenu.MainMenu["limitDetectionRange"].Cast<CheckBox>().CurrentValue;
+        public bool LimitDetectionRange
+        {
+            get { return EvadeMenu.MainMenu["limitDetectionRange"].Cast<CheckBox>().CurrentValue; }
+        }
 
-        public int SkillshotActivationDelay => EvadeMenu.MainMenu["skillshotActivationDelay"].Cast<Slider>().CurrentValue;
+        public int SkillshotActivationDelay
+        {
+            get { return EvadeMenu.MainMenu["skillshotActivationDelay"].Cast<Slider>().CurrentValue; }
+        }
 
-        public bool EnableSpellDetection => EvadeMenu.MainMenu["processSpellDetection"].Cast<CheckBox>().CurrentValue;
+        public bool EnableSpellDetection
+        {
+            get { return EvadeMenu.MainMenu["processSpellDetection"].Cast<CheckBox>().CurrentValue; }
+        }
 
         public SpellDetector(DetectionTeam detection = DetectionTeam.EnemyTeam)
         {
@@ -74,9 +86,11 @@ namespace MoonWalkEvade.Skillshots
 
             if (triggerEvent && EvadeMenu.IsSkillshotEnabled(skillshot))
             {
-                OnSkillshotDetected?.Invoke(skillshot, isProcessSpell);
+                if (OnSkillshotDetected != null)
+                    OnSkillshotDetected(skillshot, isProcessSpell);
 
-                OnUpdateSkillshots?.Invoke(skillshot, false, isProcessSpell);
+                if (OnUpdateSkillshots != null)
+                    OnUpdateSkillshots(skillshot, false, isProcessSpell);
             }
         }
 
@@ -102,30 +116,32 @@ namespace MoonWalkEvade.Skillshots
 
         private void OnTick(EventArgs args)
         {
-            if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
             foreach (var skillshot in DetectedSkillshots.Where(v => !v.IsValid))
             {
                 if (!skillshot.CastComplete)
                 {
-                    OnSkillshotDeleted?.Invoke(skillshot);
+                    if (OnSkillshotDeleted != null)
+                        OnSkillshotDeleted(skillshot);
 
-                    OnUpdateSkillshots?.Invoke(skillshot, true, false);
+                    if (OnUpdateSkillshots != null)
+                        OnUpdateSkillshots(skillshot, true, false);
                 }
 
                 skillshot.OnDispose();
             }
 
-            if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
-                DetectedSkillshots.RemoveAll(v => !v.IsValid);
+            DetectedSkillshots.RemoveAll(v => !v.IsValid);
 
             foreach (var c in DetectedSkillshots)
             {
-                bool canBeActivated = !c.IsActive && Environment.TickCount >= c.TimeDetected + SkillshotActivationDelay;
-                if (canBeActivated)
+                if (!c.IsActive && Environment.TickCount >= c.TimeDetected + SkillshotActivationDelay)
                 {
                     c.IsActive = true;
 
-                    OnSkillshotActivation?.Invoke(c);
+                    if (OnSkillshotActivation != null)
+                    {
+                        OnSkillshotActivation(c);
+                    }
                 }
             }
 
@@ -154,9 +170,8 @@ namespace MoonWalkEvade.Skillshots
             if (skillshot != null && IsValidTeam(sender.Team))
             {
                 var nSkillshot = skillshot.NewInstance();
-                nSkillshot.SpellDetector = this;
                 nSkillshot.Caster = sender;
-                nSkillshot.EndPos = args.End.To2D();
+                nSkillshot.CastArgsEndPos = args.End.To2D();
                 nSkillshot.SData = args.SData;
                 nSkillshot.Team = sender.Team;
 
@@ -180,7 +195,6 @@ namespace MoonWalkEvade.Skillshots
                 if (skillshot != null)
                 {
                     var nSkillshot = skillshot.NewInstance();
-                    nSkillshot.SpellDetector = this;
                     nSkillshot.SpawnObject = sender;
                     nSkillshot.Team = Utils.Utils.GetGameObjectTeam(sender);
                     nSkillshot.OnCreate(sender);
@@ -267,6 +281,6 @@ namespace MoonWalkEvade.Skillshots
     {
         AllyTeam,
         EnemyTeam,
-        AnyTeam
+        AnyTeam,
     }
 }

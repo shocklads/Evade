@@ -145,6 +145,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             ToPolygon().DrawPolygon(Color.White);
         }
 
+        public override Geometry.Polygon ToRealPolygon()
+        {
+            return ToPolygon();
+        }
+
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             if (OwnSpellData.AddHitbox)

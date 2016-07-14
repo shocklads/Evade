@@ -99,6 +99,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 ToPolygon().Draw(Color.White);
         }
 
+        public override Geometry.Polygon ToRealPolygon()
+        {
+            return ToPolygon();
+        }
+
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             var endPolygon = new Geometry.Polygon();

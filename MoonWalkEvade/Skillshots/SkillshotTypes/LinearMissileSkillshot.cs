@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
@@ -116,7 +117,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (!OwnSpellData.IsPerpendicular)
             {
                 _startPos = Caster.ServerPosition;
-                _endPos = _startPos.ExtendVector3(EndPosition, OwnSpellData.Range);
+                _endPos = _startPos.ExtendVector3(CastArgsEndPos.To3D(), OwnSpellData.Range);
             }
         }
 
@@ -139,7 +140,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 }
             }
 
-            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue || Missile != null)
+            if (EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
             {
                 float speed = OwnSpellData.MissileSpeed;
                 float timeElapsed = Environment.TickCount - TimeDetected - OwnSpellData.Delay;
@@ -171,6 +172,25 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             Utils.Utils.Draw3DRect(StartPosition, EndPosition, OwnSpellData.Radius * 2, Color.White);
         }
 
+        public override Geometry.Polygon ToRealPolygon()
+        {
+            var halfWidth = OwnSpellData.Radius * 2 / 2;
+            var d1 = StartPosition.To2D();
+            var d2 = EndPosition.To2D();
+            var direction = (d1 - d2).Perpendicular().Normalized();
+
+            Vector3[] points =
+            {
+                (d1 + direction*halfWidth).To3DPlayer(),
+                (d1 - direction*halfWidth).To3DPlayer(),
+                (d2 - direction*halfWidth).To3DPlayer(),
+                (d2 + direction*halfWidth).To3DPlayer()
+            };
+            var p = new Geometry.Polygon();
+            p.Points.AddRange(points.Select(x => x.To2D()).ToList());
+
+            return p;
+        }
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             if (OwnSpellData.AddHitbox)
@@ -178,7 +198,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 extrawidth += Player.Instance.HitBoxRadius();
             }
 
-            return new Geometry.Polygon.Rectangle(StartPosition, EndPosition, OwnSpellData.Radius + extrawidth);
+            return new Geometry.Polygon.Rectangle(StartPosition, EndPosition.ExtendVector3(StartPosition, -extrawidth), OwnSpellData.Radius + extrawidth);
         }
 
         public override int GetAvailableTime(Vector2 pos)
