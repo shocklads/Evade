@@ -4,6 +4,7 @@ using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
+using MoonWalkEvade.Skillshots.SkillshotTypes;
 using MoonWalkEvade.Utils;
 
 namespace MoonWalkEvade.Skillshots
@@ -86,11 +87,9 @@ namespace MoonWalkEvade.Skillshots
 
             if (triggerEvent && EvadeMenu.IsSkillshotEnabled(skillshot))
             {
-                if (OnSkillshotDetected != null)
-                    OnSkillshotDetected(skillshot, isProcessSpell);
+                OnSkillshotDetected?.Invoke(skillshot, isProcessSpell);
 
-                if (OnUpdateSkillshots != null)
-                    OnUpdateSkillshots(skillshot, false, isProcessSpell);
+                OnUpdateSkillshots?.Invoke(skillshot, false, isProcessSpell);
             }
         }
 
@@ -120,11 +119,9 @@ namespace MoonWalkEvade.Skillshots
             {
                 if (!skillshot.CastComplete)
                 {
-                    if (OnSkillshotDeleted != null)
-                        OnSkillshotDeleted(skillshot);
+                    OnSkillshotDeleted?.Invoke(skillshot);
 
-                    if (OnUpdateSkillshots != null)
-                        OnUpdateSkillshots(skillshot, true, false);
+                    OnUpdateSkillshots?.Invoke(skillshot, true, false);
                 }
 
                 skillshot.OnDispose();
@@ -138,10 +135,7 @@ namespace MoonWalkEvade.Skillshots
                 {
                     c.IsActive = true;
 
-                    if (OnSkillshotActivation != null)
-                    {
-                        OnSkillshotActivation(c);
-                    }
+                    OnSkillshotActivation?.Invoke(c);
                 }
             }
 

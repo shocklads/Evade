@@ -228,6 +228,7 @@ namespace MoonWalkEvade.Evading
             if (DrawEvadeStatus)
             {
                 StatusText.Color = EvadeEnabled ? Color.White : Color.Red;
+                if (DodgeDangerousOnly) StatusText.Color = Color.DarkOrange;
                 StatusText.TextValue = "MoonWalkEvade ";
                 StatusText.Position = Player.Instance.Position.WorldToScreen() - new Vector2(StatusText.Bounding.Width / 2f, -25);
                 StatusText.Draw();

@@ -107,7 +107,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    IsValid = false;
+                    if (!OwnSpellData.DontRemoveStrange)
+                        IsValid = false;
                 }
             }
         }
@@ -118,6 +119,15 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 _startPos = Caster.ServerPosition;
                 _endPos = _startPos.ExtendVector3(CastArgsEndPos.To3D(), OwnSpellData.Range);
+            }
+            else
+            {
+                OwnSpellData.Direction = (CastArgsEndPos - _startPos.To2D()).Normalized();
+
+                var direction = OwnSpellData.Direction;
+                _startPos = (CastArgsEndPos - direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
+
+                _endPos =(CastArgsEndPos + direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
             }
         }
 

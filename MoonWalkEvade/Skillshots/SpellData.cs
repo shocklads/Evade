@@ -26,6 +26,8 @@ namespace MoonWalkEvade.Skillshots
 
         public bool IsGlobal => Range > 10000;
 
+        public bool DontRemoveStrange { get; set; } = false;
+
 
 
         public bool IsPerpendicular { get; set; }

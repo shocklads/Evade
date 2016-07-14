@@ -435,21 +435,23 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "CassiopeiaQ"
                     }
                 },
-                //new CircularMissileSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Cassiopeia",
-                //        SpellName = "CassiopeiaMiasma",
-                //        Slot = SpellSlot.W,
-                //        Delay = 250,
-                //        Range = 850,
-                //        Radius = 220,
-                //        MissileSpeed = 2500,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "CassiopeiaMiasma"
-                //    }
-                //},
+                new MultiCircleSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Miasma",
+                        ChampionName = "Cassiopeia",
+                        SpellName = "CassiopeiaW",
+                        Slot = SpellSlot.W,
+                        Delay = 350,
+                        Range = 800,
+                        Radius = 170,
+                        MissileSpeed = 0,
+                        DangerValue = 3,
+                        ObjectCreationName = "CassiopeiaWMissile",
+                        DontRemoveStrange = true
+                    }
+                },
                 //new CircularMissileSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
@@ -2984,46 +2986,31 @@ namespace MoonWalkEvade.Skillshots
                         Slot = SpellSlot.E,
                         Delay = 250,
                         Range = 1150,
-                        Radius = 70,
+                        Radius = 90,
                         MissileSpeed = 1150,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "ZyraEMissile"
+                        ObjectCreationName = "ZyraEMissile",
+                        DontRemoveStrange = true
                     }
                 },
                 new LinearMissileSkillshot
                 {
-                    OwnSpellData = new SpellData
-                    {
-                        DisplayName = "Deadly Bloom (passive)",
-                        ChampionName = "Zyra",
-                        SpellName = "zyrapassivedeathmanager",
-                        Slot = SpellSlot.Internal,
-                        Delay = 500,
-                        Range = 1474,
-                        Radius = 80,
-                        MissileSpeed = 2000,
-                        DangerValue = 3,
-                        IsDangerous = true,
-                        ObjectCreationName = "zyrapassivedeathmanager"
-                    }
-                },
-                new CircularMissileSkillshot
-                {
-                    OwnSpellData = new SpellData
-                    {
-                        DisplayName = "Rampant Growth",
-                        ChampionName = "Zyra",
-                        SpellName = "ZyraQFissure",
-                        Slot = SpellSlot.Q,
-                        Delay = 800,
-                        Range = 825,
-                        Radius = 260,
-                        MissileSpeed = 0,
-                        DangerValue = 2,
-                        IsDangerous = false,
-                        ObjectCreationName = "ZyraQFissure"
-                    }
+                        OwnSpellData = new SpellData
+                        {
+                            DisplayName = "Deadly Bloom",
+                            ChampionName = "Zyra",
+                            SpellName = "ZyraQ",
+                            Slot = SpellSlot.Q,
+                            Delay = 850,
+                            Range = 800,
+                            Radius = 140,
+                            MissileSpeed = 0,
+                            DangerValue = 2,
+                            IsDangerous = false,
+                            IsPerpendicular = true,
+                            SecondaryRadius = 400,
+                        }
                 },
                 new CircularMissileSkillshot
                 {

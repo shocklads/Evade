@@ -65,11 +65,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                EndPosition = EndPosition;
+                EndPosition = CastArgsEndPos.To3D();
             }
             else
             {
-                EndPosition = Missile.EndPosition;
+                EndPosition = CastArgsEndPos.To3D();
                 StartPosition = Missile.Position;
             }
         }
