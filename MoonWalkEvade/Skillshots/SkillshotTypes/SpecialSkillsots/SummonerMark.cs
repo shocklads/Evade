@@ -64,7 +64,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             if (obj == null)
             {
                 _castStartPos = Caster.Position;
-                _castEndPos = _castStartPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
+                _castEndPos = _castStartPos.ExtendVector3(EndPos.To3D(), OwnSpellData.Range);
             }
         }
 

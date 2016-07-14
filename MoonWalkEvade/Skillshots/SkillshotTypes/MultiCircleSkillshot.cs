@@ -42,11 +42,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             if (Missile == null)
             {
                 StartPosition = Caster.Position;
-                EndPosition = CastArgs.End.Distance(StartPosition) < 700
-                    ? StartPosition.Extend(CastArgs.End, 700).To3D()
-                    : CastArgs.End;
-                distance = CastArgs.End.Distance(Caster.Position);
-                Direction = (CastArgs.End.To2D() - Caster.Position.To2D()).Normalized();
+                EndPosition = EndPosition.Distance(StartPosition) < 700
+                    ? StartPosition.Extend(EndPosition, 700).To3D()
+                    : EndPosition;
+                distance = EndPosition.Distance(Caster.Position);
+                Direction = (EndPosition.To2D() - Caster.Position.To2D()).Normalized();
 
 
             }
@@ -69,7 +69,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override bool OnDelete(GameObject obj)
         {
-            return true;
+            return false;
         }
 
         public override void OnDeleteObject(GameObject obj)

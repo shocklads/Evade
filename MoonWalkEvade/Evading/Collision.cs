@@ -38,14 +38,20 @@ namespace MoonWalkEvade.Evading
 
             if (EvadeMenu.CollisionMenu["minion"].Cast<CheckBox>().CurrentValue)
             {
-                // ReSharper disable once LoopCanBeConvertedToQuery
+                bool useProj = EvadeMenu.CollisionMenu["useProj"].Cast<CheckBox>().CurrentValue;
                 foreach (var minion in
                     EntityManager.MinionsAndMonsters.EnemyMinions.Where(x => !x.IsDead && x.IsValid && x.Health >= 200 &&
-                                                                             x.Distance(skillshot.StartPosition) <
-                                                                             skillshot.OwnSpellData.Range))
+                                                        x.Distance(skillshot.StartPosition) < skillshot.OwnSpellData.Range))
                 {
-                    if (rect.IsInside(minion))
+                    if (rect.IsInside(minion) && !useProj)
                         collisions.Add(minion.Position.To2D());
+                    else if (useProj)
+                    {
+                        var proj = minion.Position.To2D()
+                            .ProjectOn(skillshot.StartPosition.To2D(), skillshot.EndPosition.To2D());
+                        if (proj.IsOnSegment && proj.SegmentPoint.Distance(minion) <= skillshot.OwnSpellData.Radius)
+                            collisions.Add(proj.SegmentPoint);
+                    }
                 }
             }
             if (EvadeMenu.CollisionMenu["yasuoWall"].Cast<CheckBox>().CurrentValue && skillshot.Missile != null)

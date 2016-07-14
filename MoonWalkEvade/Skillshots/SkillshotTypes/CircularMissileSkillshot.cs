@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Menu.Values;
 using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
@@ -21,8 +22,9 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             TimeDetected = Environment.TickCount;
         }
 
-        private Vector3 StartPosition { get; set; }
-        public Vector3 EndPosition { get; private set; }
+        public Vector3 StartPosition { get; set; }
+
+        public Vector3 EndPosition { get; set; }
 
         public MissileClient Missile => SpawnObject as MissileClient;
 
@@ -41,6 +43,21 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         public override EvadeSkillshot NewInstance(bool debug = false)
         {
             var newInstance = new CircularMissileSkillshot { OwnSpellData = OwnSpellData };
+            if (debug)
+            {
+                bool isProjectile = EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue;
+                var newDebugInst = new CircularMissileSkillshot
+                {
+                    OwnSpellData = OwnSpellData,
+                    StartPosition = Debug.GlobalStartPos,
+                    EndPosition = Debug.GlobalEndPos,
+                    IsValid = true,
+                    IsActive = true,
+                    TimeDetected = Environment.TickCount,
+                    SpawnObject = isProjectile ? new MissileClient() : null
+                };
+                return newDebugInst;
+            }
             return newInstance;
         }
 
@@ -48,7 +65,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                EndPosition = CastArgs.End;
+                EndPosition = EndPosition;
             }
             else
             {
@@ -66,7 +83,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
                     // Force skillshot to be removed
-                    IsValid = false;
+                        IsValid = false;
                 }
             }
         }
@@ -104,7 +121,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
                     IsValid = false;
             }
-            else
+            else if (Missile != null)
             {
                 if (Environment.TickCount > TimeDetected + 6000)
                     IsValid = false;

@@ -9,6 +9,18 @@ using MoonWalkEvade.Skillshots;
 
 namespace MoonWalkEvade
 {
+    internal static class MenuExtension
+    {
+        public static void AddStringList(this Menu m, string uniqueId, string displayName, string[] values, int defaultValue)
+        {
+            var mode = m.Add(uniqueId, new Slider(displayName, defaultValue, 0, values.Length - 1));
+            mode.DisplayName = displayName + ": " + values[mode.CurrentValue];
+            mode.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
+            {
+                sender.DisplayName = displayName + ": " + values[args.NewValue];
+            };
+        }
+    }
     internal class EvadeMenu
     {
         public static Menu MainMenu { get; private set; }
@@ -39,8 +51,11 @@ namespace MoonWalkEvade
             MainMenu.Add("fowDetection", new CheckBox("Enable FOW Detection"));
             MainMenu.Add("processSpellDetection", new CheckBox("Enable Fast Spell Detection"));
             MainMenu.Add("limitDetectionRange", new CheckBox("Limit Spell Detection Range"));
-            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade EndPosition", false));
-            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired EndPosition After Evade", false));
+            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade EndPositionGetter", false));
+            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired EndPositionGetter After Evade", false));
+            MainMenu.Add("pathFindinding", new ComboBox("Path Finding Method", 1, "Alternative", "New"));
+            //MainMenu.Add("minComfortDist", new Slider("Minimum Comfort Distance To Enemies", 550, 0, 1000));
+            //MainMenu.Add("ignoreComfort", new Slider("Ignore Comfort Distance For X Enemies", 1, 1, 5));
             MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 80, 0, 200));
             MainMenu.AddSeparator();
 
@@ -128,7 +143,7 @@ namespace MoonWalkEvade
 
             DrawMenu = MainMenu.AddSubMenu("Drawings");
             DrawMenu.Add("disableAllDrawings", new CheckBox("Disable All Drawings", false));
-            DrawMenu.Add("drawEvadePoint", new CheckBox("Draw Evade Point"));
+            DrawMenu.Add("drawEvadePoint", new CheckBox("Draw Evade Point", false));
             DrawMenu.Add("drawEvadeStatus", new CheckBox("Draw Evade Status"));
             DrawMenu.Add("drawDangerPolygon", new CheckBox("Draw Danger Polygon"));
 
@@ -136,12 +151,16 @@ namespace MoonWalkEvade
             HotkeysMenu = MainMenu.AddSubMenu("KeyBinds");
             HotkeysMenu.Add("enableEvade", new KeyBind("Enable Evade", true, KeyBind.BindTypes.PressToggle, 'M'));
             HotkeysMenu.Add("dodgeOnlyDangerous", new KeyBind("Dodge Only Dangerous", false, KeyBind.BindTypes.HoldActive));
+            HotkeysMenu.AddSeparator();
             HotkeysMenu.Add("debugMode", new KeyBind("Debug Mode", false, KeyBind.BindTypes.PressToggle));
-            HotkeysMenu.Add("debugModeIntervall", new Slider("Debug Missile Creation Intervall", 1000, 0, 5000));
+            HotkeysMenu.Add("debugModeIntervall", new Slider("Debug Skillshot Creation Intervall", 1000, 0, 5000));
+            HotkeysMenu.AddStringList("debugMissile", "Selected Skillshot", SkillshotDatabase.Database.Select(x => x.OwnSpellData.SpellName).ToArray(), 0);
+            HotkeysMenu.Add("isProjectile", new CheckBox("Is Projectile?"));
 
             CollisionMenu = MainMenu.AddSubMenu("Collision");
             CollisionMenu.Add("minion", new CheckBox("Attend Minion Collision"));
             CollisionMenu.Add("yasuoWall", new CheckBox("Attend Yasuo Wall"));
+            CollisionMenu.Add("useProj", new CheckBox("Use Spell Projection", false));
         }
 
         private static EvadeSkillshot GetSkillshot(string s)
@@ -152,13 +171,15 @@ namespace MoonWalkEvade
         public static bool IsSkillshotEnabled(EvadeSkillshot skillshot)
         {
             var valueBase = SkillshotMenu[skillshot + "/enable"];
-            return valueBase != null && valueBase.Cast<CheckBox>().CurrentValue;
+            return (valueBase != null && valueBase.Cast<CheckBox>().CurrentValue) ||
+                HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue;
         }
 
         public static bool IsSkillshotDrawingEnabled(EvadeSkillshot skillshot)
         {
             var valueBase = SkillshotMenu[skillshot + "/draw"];
-            return valueBase != null && valueBase.Cast<CheckBox>().CurrentValue;
+            return (valueBase != null && valueBase.Cast<CheckBox>().CurrentValue) ||
+                HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue;
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Menu.Values;
 using SharpDX;
+using Color = System.Drawing.Color;
 
 namespace MoonWalkEvade.Evading
 {
@@ -32,8 +35,21 @@ namespace MoonWalkEvade.Evading
         static AutoPathing()
         {
             Game.OnTick += OnTick;
+            Drawing.OnDraw += OnDraw;
         }
 
+        private static void OnDraw(EventArgs args)
+        {
+            if (Path == null || !IsPathing || EvadeMenu.DrawMenu["disableAllDrawings"].Cast<CheckBox>().CurrentValue)
+            {
+                return;
+            }
+
+            if (EvadeMenu.DrawMenu["drawPath"].Cast<CheckBox>().CurrentValue)
+            {
+                Utils.Utils.DrawPath(Path, Color.Aqua, 2);
+            }
+        }
 
         private static void OnTick(EventArgs args)
         {
@@ -66,9 +82,54 @@ namespace MoonWalkEvade.Evading
             if (path == null || path.Length == 0)
                 return;
 
+            //path = CleanPath(path);
+
             Path = path;
             IsPathing = true;
             Index = 0;
+        }
+
+        public static Vector2[] CleanPath(Vector2[] path, float tolerance = 100)
+        {
+            var cleanPath = new List<Vector2> {path.First()};
+            for (var i = 1; i < path.Length - 1; i++)
+            {
+                if (path[i].Distance(cleanPath.Last(), true) > tolerance.Pow())
+                    cleanPath.Add(path[i]);
+            }
+            cleanPath.Add(path.Last());
+
+            //cleanPath.RemoveAt(0);
+            return cleanPath.ToArray();
+        }
+
+        public static void DoPath(Vector2 end)
+        {
+            DoPath(new[] {end});
+        }
+
+        public static bool ReachedPoint(Vector2 point)
+        {
+            const int compareDistance = 80*80;
+
+            for (var i = 0; i < Index; i++)
+            {
+                if (Path[i].Distance(point, true) <= compareDistance)
+                    return true;
+            }
+
+            return CurrentPoint.Distance(point, true) < compareDistance;
+        }
+
+        public static bool IsMovingTowards(Vector2 point)
+        {
+            if (!IsPathing)
+                return false;
+
+            if (Index > Path.Length - 1)
+                return false;
+
+            return CurrentPoint.Distance(point, true) <= SwitchDistance;
         }
     }
 }

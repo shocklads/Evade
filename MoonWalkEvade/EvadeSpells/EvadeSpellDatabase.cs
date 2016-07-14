@@ -41,7 +41,7 @@ namespace MoonWalkEvade.EvadeSpells
             //    Slot = SpellSlot.W,
             //    speedArray = new[] { 20f, 40f, 60f, 80f, 100f },
             //    EvadeType = EvadeType.MovementSpeedBuff,
-            //    CastType = CastType.EndPosition
+            //    CastType = CastType.EndPositionGetter
             //});
 
             #endregion
@@ -870,7 +870,7 @@ namespace MoonWalkEvade.EvadeSpells
                 Delay = 250,
                 Slot = SpellSlot.W,
                 EvadeType = EvadeType.WindWall,
-                CastType = CastType.EndPosition,
+                CastType = CastType.EndPositionGetter,
             });*/
 
             #endregion

@@ -5,6 +5,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 using EloBuddy.SDK.Rendering;
 using MoonWalkEvade.Skillshots;
+using MoonWalkEvade.Skillshots.SkillshotTypes;
 using SharpDX;
 
 namespace MoonWalkEvade.Utils
@@ -30,8 +31,28 @@ namespace MoonWalkEvade.Utils
             Game.OnUpdate += GameOnOnUpdate;
         }
 
+        private static EvadeSkillshot lastKSkillshot;
         private static void GameOnOnUpdate(EventArgs args)
         {
+            if (lastKSkillshot != null)
+            {
+                if (!lastKSkillshot.IsValid || !lastKSkillshot.IsActive)
+                {
+                    lastKSkillshot = null;
+                    return;
+                }
+
+                if (lastKSkillshot.GetType() == typeof(LinearMissileSkillshot))
+                {
+                    var skill = (LinearMissileSkillshot)lastKSkillshot;
+                    if (skill.StartPosition.Distance(Player.Instance) <= Player.Instance.BoundingRadius && skill.Missile != null)
+                    {
+                        Chat.Print("Hit");
+                        lastKSkillshot = null;
+                    }
+                }
+            }
+
             if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
                 return;
 
@@ -43,24 +64,34 @@ namespace MoonWalkEvade.Utils
 
             LastCreationTick = Environment.TickCount;
             var skillshot =
-                SkillshotDatabase.Database.First(
-                    evadeSkillshot => evadeSkillshot.OwnSpellData.SpellName == "FlashFrostSpell");
+                SkillshotDatabase.Database[EvadeMenu.HotkeysMenu["debugMissile"].Cast<Slider>().CurrentValue];
+            if (skillshot.GetType() == typeof(CircularMissileSkillshot) ||
+                skillshot.GetType() == typeof(MultiCircleSkillshot))
+                EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue = false;
+
 
             var nSkillshot = skillshot.NewInstance(true);
             spellDetector.AddSkillshot(nSkillshot);
+            lastKSkillshot = nSkillshot;
+
+
         }
 
         private static void GameOnOnWndProc(WndEventArgs args)
         {
-            if (args.Msg == (uint)WindowMessages.LeftButtonDown && EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+            if (!EvadeMenu.HotkeysMenu["debugMode"].Cast<KeyBind>().CurrentValue)
+                return;
+
+            if (args.Msg == 0x0201)//mouse down
             {
-                if (GlobalEndPos.IsZero)
-                    GlobalEndPos = Game.CursorPos;
-                else if (GlobalStartPos.IsZero)
-                    GlobalStartPos = Game.CursorPos;
+                GlobalEndPos = Game.CursorPos;
+            }
+
+            if (args.Msg == 0x0202)
+            {
+                GlobalStartPos = Game.CursorPos;
             }
         }
-
         
     }
 }
