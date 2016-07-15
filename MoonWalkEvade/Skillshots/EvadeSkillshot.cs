@@ -30,7 +30,7 @@ namespace MoonWalkEvade.Skillshots
 
         public virtual void OnCreate(GameObject obj) { }
 
-        public virtual bool OnDelete(GameObject obj)
+        public virtual bool OnDeleteMissile(GameObject obj)
         {
             return true;
         }

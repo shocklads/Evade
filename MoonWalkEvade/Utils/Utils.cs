@@ -251,7 +251,7 @@ namespace MoonWalkEvade.Utils
         public static GameObjectTeam GetGameObjectTeam(GameObject obj)
         {
             var missile = obj as MissileClient;
-            return missile == null ? obj.Team : missile.SpellCaster.Team;
+            return missile?.Team ?? obj.Team;
         }
 
         public static void Draw3DRect(Vector3 start, Vector3 end, float width, Color color, int lineWidth = 2, bool drawStartLine = true)

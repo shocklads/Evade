@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Constants;
 using EloBuddy.SDK.Menu.Values;
 using MoonWalkEvade.Skillshots.SkillshotTypes;
 using MoonWalkEvade.Utils;
@@ -145,7 +146,8 @@ namespace MoonWalkEvade.Skillshots
 
         private void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
-            //Chat.Print(args.SData.Name);
+            //if (sender is AIHeroClient && ((AIHeroClient)sender).ChampionName.Contains("Cait") && !args.IsAutoAttack())
+            //    Chat.Print(args.SData.Name);
 
             if (!EnableSpellDetection)
             {
@@ -177,8 +179,8 @@ namespace MoonWalkEvade.Skillshots
 
         private void GameObjectOnCreate(GameObject sender, EventArgs args)
         {
-            //if (Utils.GetTeam(sender) == Utils.PlayerTeam())
-            //    Chat.Print("create {0} {1} {2} {3}", sender.Team, sender.GetType().ToString(), Utils.GetGameObjectName(sender), sender.Index);
+            //if (Utils.Utils.GetGameObjectTeam(sender).IsEnemy() && Utils.Utils.GetGameObjectName(sender).Contains("Cait"))
+            //    Chat.Print("creating " + Utils.Utils.GetGameObjectName(sender));
 
             if (!(sender is Obj_GeneralParticleEmitter))
             {
@@ -231,7 +233,7 @@ namespace MoonWalkEvade.Skillshots
             foreach (
                 var c in DetectedSkillshots.Where(v => v.SpawnObject != null && v.SpawnObject.IndexEquals(sender)))
             {
-                if (c.OnDelete(sender))
+                if (c.OnDeleteMissile(sender))
                     c.IsValid = false;
             }
 

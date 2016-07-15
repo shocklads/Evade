@@ -28,8 +28,6 @@ namespace MoonWalkEvade.Skillshots
 
         public bool DontRemoveStrange { get; set; } = false;
 
-
-
         public bool IsPerpendicular { get; set; }
         public int SecondaryRadius { get; set; }
         public Vector2 Direction { get; set; }

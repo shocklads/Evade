@@ -10,27 +10,6 @@ namespace MoonWalkEvade.EvadeSpells
 {
     public static class EvadeSpellManager
     {
-        public static bool ProcessFlash(Evading.MoonWalkEvade moonWalkEvade)
-        {
-            var dangerValue = moonWalkEvade.GetDangerValue();
-            var flashDangerValue = EvadeMenu.SpellMenu["flash"].Cast<Slider>().CurrentValue;
-
-            if (flashDangerValue > 0 && flashDangerValue <= dangerValue)
-            {
-                var castPos = GetBlinkCastPos(moonWalkEvade, Player.Instance.ServerPosition.To2D(), 425);
-                var slot = GetFlashSpellSlot();
-
-                if (!castPos.IsZero && slot != SpellSlot.Unknown && Player.CanUseSpell(slot) == SpellState.Ready)
-                {
-                    //Player.IssueOrder(GameObjectOrder.Stop, Player.Instance.Position, true);
-                    Player.CastSpell(slot, castPos.To3DWorld());
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         public static SpellSlot GetFlashSpellSlot()
         {
             if (Player.GetSpell(SpellSlot.Summoner1).Name == "summonerflash")

@@ -41,6 +41,10 @@ namespace MoonWalkEvade.Evading
 
         public bool DrawDangerPolygon => EvadeMenu.DrawMenu["drawDangerPolygon"].Cast<CheckBox>().CurrentValue;
 
+        public int IgnoreAt => EvadeMenu.MainMenu["ignoreComfort"].Cast<Slider>().CurrentValue;
+
+        public int MinComfortDistance => EvadeMenu.MainMenu["minComfortDist"].Cast<Slider>().CurrentValue;
+
         public int IssueOrderTickLimit => 0;
 
         #endregion
@@ -756,6 +760,11 @@ namespace MoonWalkEvade.Evading
             return !polPoints.Any() ? Vector2.Zero : polPoints.Last();
         }
 
+        int GetHeroesNearby(Vector2 p)
+        {
+            return EntityManager.Heroes.Enemies.Count(x => x.Distance(p) < MinComfortDistance && !x.IsDead && x.IsEnemy);
+        }
+
         public EvadeResult CalculateEvade(Vector2 anchor)
         {
             var playerPos = Player.Instance.ServerPosition.To2D();
@@ -770,19 +779,18 @@ namespace MoonWalkEvade.Evading
                 return new EvadeResult(this, GetClosestEvadePoint(playerPos), anchor, maxTime, time, true);
             }
 
-            //var evadePoint = points.OrderBy(x => 
-            //    (Game.CursorPos.To2D() - playerPos).AngleBetween(Game.CursorPos.To2D() - x) <= 10).
-            //    ThenByDescending(x => x.Distance(Player.Instance)).FirstOrDefault();
-            //if (evadePoint.Equals(default(Vector2)) && EvadeMenu.MainMenu["evadeMode"].Cast<ComboBox>().CurrentValue == 1)
-            //    evadePoint = points.OrderBy(p => p.Distance(playerPos)).FirstOrDefault();
+            //var evadePoint = points.
+            //    OrderBy(x => !x.IsUnderTurret()).ThenBy(p => p.Distance(playerPos)).First();
 
-
-            //points.OrderByDescending(p => p.Distance(playerPos)).Last();
-            //points.OrderByDescending(p => p.Distance(anchor) + p.Distance(playerPos)).Last();
-            //points.OrderBy(p => p.Distance(playerPos)).ThenBy(p => 1 / p.Distance(anchor)).Last();
-
-            var evadePoint = points.
-                OrderBy(x => !x.IsUnderTurret()).ThenBy(p => p.Distance(playerPos)).First();
+            bool any = points.Any(x => GetHeroesNearby(x) <= IgnoreAt);
+            var evadePoint =
+                any ?
+                points.Where(x => GetHeroesNearby(x) <= IgnoreAt).
+                OrderBy(p => !p.IsUnderTurret()).ThenBy(
+                p => p.Distance(Game.CursorPos)).FirstOrDefault()
+                :
+                points.OrderBy(p => !p.IsUnderTurret()).ThenBy(
+                p => p.Distance(Game.CursorPos)).FirstOrDefault();
 
             return new EvadeResult(this, evadePoint, anchor, maxTime, time,
                 !IsHeroInDanger() || GetTimeUnitlOutOfDangerArea(evadePoint) < time);

@@ -69,8 +69,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             }
             else
             {
-                EndPosition = CastArgs.End;
-                StartPosition = Missile.Position;
+                EndPosition = CastArgs?.End ?? Missile.EndPosition;
             }
         }
 
@@ -88,7 +87,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             }
         }
 
-        public override bool OnDelete(GameObject obj)
+        public override bool OnDeleteMissile(GameObject obj)
         {
             if (Missile != null && obj.Index == Missile.Index && !string.IsNullOrEmpty(OwnSpellData.ToggleParticleName))
             {

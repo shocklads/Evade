@@ -51,11 +51,17 @@ namespace MoonWalkEvade
             MainMenu.Add("fowDetection", new CheckBox("Enable FOW Detection"));
             MainMenu.Add("processSpellDetection", new CheckBox("Enable Fast Spell Detection"));
             MainMenu.Add("limitDetectionRange", new CheckBox("Limit Spell Detection Range"));
-            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade EndPositionGetter", false));
-            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired EndPositionGetter After Evade", false));
+            MainMenu.Add("recalculatePosition", new CheckBox("Allow Recalculation Of Evade Position", false));
+            MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired Position After Evade", false));
+            MainMenu.AddSeparator();
+
             MainMenu.Add("pathFindinding", new ComboBox("Path Finding Method", 1, "Alternative", "New"));
-            //MainMenu.Add("minComfortDist", new Slider("Minimum Comfort Distance To Enemies", 550, 0, 1000));
-            //MainMenu.Add("ignoreComfort", new Slider("Ignore Comfort Distance For X Enemies", 1, 1, 5));
+            MainMenu.AddSeparator();
+
+            MainMenu.Add("minComfortDist", new Slider("Minimum Comfort Distance To Enemies", 550, 0, 1000));
+            MainMenu.AddLabel("If possible");
+            MainMenu.AddSeparator(10);
+            MainMenu.Add("ignoreComfort", new Slider("Ignore Comfort Distance For X Enemies", 1, 1, 5));
             MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 80, 0, 200));
             MainMenu.AddSeparator();
 

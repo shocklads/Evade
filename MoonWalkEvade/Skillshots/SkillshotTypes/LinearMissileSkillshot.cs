@@ -204,6 +204,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
+            extrawidth = 20;
             if (OwnSpellData.AddHitbox)
             {
                 extrawidth += Player.Instance.HitBoxRadius();

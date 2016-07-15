@@ -66,7 +66,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             }
         }
 
-        public override bool OnDelete(GameObject obj)
+        public override bool OnDeleteMissile(GameObject obj)
         {
             return false;
         }
