@@ -23,7 +23,8 @@ namespace MoonWalkEvade.Evading
 
         public bool EvadeEnabled => EvadeMenu.HotkeysMenu["enableEvade"].Cast<KeyBind>().CurrentValue;
 
-        public bool DodgeDangerousOnly => EvadeMenu.HotkeysMenu["dodgeOnlyDangerous"].Cast<KeyBind>().CurrentValue;
+        public bool DodgeDangerousOnly => EvadeMenu.HotkeysMenu["dodgeOnlyDangerousH"].Cast<KeyBind>().CurrentValue ||
+            EvadeMenu.HotkeysMenu["dodgeOnlyDangerousT"].Cast<KeyBind>().CurrentValue;
 
         public int ExtraEvadeRange => EvadeMenu.MainMenu["extraEvadeRange"].Cast<Slider>().CurrentValue;
 

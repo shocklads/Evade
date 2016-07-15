@@ -198,7 +198,7 @@ namespace MoonWalkEvade.Skillshots
                     if (IsValidTeam(nSkillshot.Team) && (EnableFoWDetection || !nSkillshot.IsFromFow()))
                     {
                         var triggerEvent = true;
-                        var missile = (sender as MissileClient);
+                        var missile = sender as MissileClient;
 
                         if (missile != null)
                         {

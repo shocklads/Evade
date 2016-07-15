@@ -411,7 +411,7 @@ namespace MoonWalkEvade.Skillshots
                         ChampionName = "Caitlyn",
                         SpellName = "CaitlynYordleTrap",
                         Slot = SpellSlot.W,
-                        Delay = 500,
+                        Delay = 1500,
                         Range = 800,
                         Radius = 70,
                         MissileSpeed = 0,
