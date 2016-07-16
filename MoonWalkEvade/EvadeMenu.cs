@@ -120,8 +120,6 @@ namespace MoonWalkEvade
 
             // Set up spell menu
             SpellMenu = MainMenu.AddSubMenu("Evading Spells");
-            SpellMenu.AddGroupLabel("Flash");
-            SpellMenu.Add("flash", new Slider("Danger Value", 5, 0, 5));
 
             foreach (var e in evadeSpells)
             {

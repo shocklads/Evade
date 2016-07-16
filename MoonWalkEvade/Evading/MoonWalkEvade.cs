@@ -273,25 +273,19 @@ namespace MoonWalkEvade.Evading
 
         public bool IsPointSafe(Vector2 point)
         {
-            return !ClippedPolygons.Any(p => p.IsInside(point));
+            return !_skillshotPolygonCache.Any(c =>
+            {
+                if (c.Key.OwnSpellData.IsVeigarE)
+                {
+                    return c.Key.ToInnerPolygon().IsOutside(point) && c.Key.ToOuterPolygon().IsInside(point);
+                }
+                return c.Value.IsInside(point);
+            });
         }
 
         public bool IsPathSafe(Vector2[] path)
         {
             return IsPathSafeEx(path);
-
-            //for (var i = 0; i < path.Length - 1; i++)
-            //{
-            //    var start = path[i];
-            //    var end = path[i + 1];
-
-            //    if (ClippedPolygons.Any(p => p.IsInside(end) || p.IsInside(start) || p.IsIntersectingWithLineSegment(start, end)))
-            //    {
-            //        return false;
-            //    }
-            //}
-
-            //return true;
         }
 
         public bool IsPathSafe(Vector3[] path)
@@ -302,7 +296,8 @@ namespace MoonWalkEvade.Evading
         public bool IsHeroInDanger(AIHeroClient hero = null)
         {
             hero = hero ?? Player.Instance;
-            return !IsPointSafe(hero.ServerPosition.To2D());
+            bool indanger = !IsPointSafe(hero.ServerPosition.To2D());
+            return indanger;
         }
 
         public int GetTimeAvailable(AIHeroClient hero = null)
@@ -378,6 +373,7 @@ namespace MoonWalkEvade.Evading
                 {
                     EvadeSkillshot skillshot = pair.Key;
                     var polygon = pair.Value;
+
 
                     if (polygon.IsInside(pathStart) && polygon.IsInside(pathEnd))
                     {
@@ -489,8 +485,18 @@ namespace MoonWalkEvade.Evading
                     {
                         var skillshot = pair.Key;
                         var polygon = pair.Value;
+                        Func<Vector2, bool> isInside = point =>
+                        {
+                            if (skillshot.OwnSpellData.IsVeigarE)
+                            {
+                                return skillshot.ToInnerPolygon().IsOutside(point) && 
+                                    skillshot.ToOuterPolygon().IsInside(point);
+                            }
 
-                        if (polygon.IsInside(start) && polygon.IsInside(end))
+                            return polygon.IsInside(point);
+                        };
+
+                        if (isInside(start) && isInside(end))
                         {
                             //var time1 = skillshot.GetAvailableTime(start);
                             var time2 = skillshot.GetAvailableTime(end);
@@ -512,10 +518,10 @@ namespace MoonWalkEvade.Evading
                                 var point1 = intersections[i2];
                                 var point2 = intersections[i2 + 1];
 
-                                if (polygon.IsInside(point2) || polygon.IsInside(point1))
+                                if (isInside(point2) || isInside(point1))
                                 {
                                     //var time1 = polygon.IsInside(point1) ? skillshot.GetAvailableTime(point1) : short.MaxValue;
-                                    var time2 = polygon.IsInside(point2)
+                                    var time2 = isInside(point2)
                                         ? skillshot.GetAvailableTime(point2)
                                         : short.MaxValue;
 
@@ -543,11 +549,21 @@ namespace MoonWalkEvade.Evading
             {
                 EvadeSkillshot skillshot = pair.Key;
                 var polygon = pair.Value;
+                Func<Vector2, bool> isInside = point =>
+                {
+                    if (skillshot.OwnSpellData.IsVeigarE)
+                    {
+                        return skillshot.ToInnerPolygon().IsOutside(point) && skillshot.ToOuterPolygon().IsInside(point);
+                    }
+
+                    return polygon.IsInside(point);
+                };
+
 
                 var intersections =
                     polygon.GetIntersectionPointsWithLineSegment(hero.Position.To2D(), pathEnd);
 
-                if (intersections.Length == 0 && polygon.IsInside(hero.Position.To2D()) && polygon.IsInside(pathEnd))
+                if (intersections.Length == 0 && isInside(hero.Position.To2D()) && isInside(pathEnd))
                 {
                     var time2 = skillshot.GetAvailableTime(pathEnd);
 
@@ -556,7 +572,7 @@ namespace MoonWalkEvade.Evading
                         return false;
                     }
                 }
-                else if (intersections.Length == 0 && polygon.IsOutside(pathStart) && polygon.IsOutside(pathEnd))
+                else if (intersections.Length == 0 && !isInside(pathStart) && !isInside(pathEnd))
                     continue; //safe path for now => next skillshot
 
                 if (intersections.Length == 1)
@@ -582,6 +598,9 @@ namespace MoonWalkEvade.Evading
                 }
                 else if (intersections.Length >= 2 && intersections.Length % 2 == 0) //cross
                 {
+                    if (skillshot.OwnSpellData.ForbidCrossing)
+                        return false;
+
                     var firstDangerPoint = intersections.Last();
                     var crossPoint = intersections.First();
 
@@ -665,6 +684,8 @@ namespace MoonWalkEvade.Evading
 
         public Vector2[] GetEvadePoints(Vector2 from, float moveRadius)
         {
+            var playerPos = Player.Instance.Position.To2D();
+
             var mode = EvadeMenu.MainMenu["evadeMode"].Cast<ComboBox>().CurrentValue;
             if (mode == 1)
             {
@@ -738,15 +759,40 @@ namespace MoonWalkEvade.Evading
                     }
                 }
 
-                return points.ToArray();
+                return points.Where(p => DoesntCrossVeigarE(p, playerPos)).ToArray();
             }
 
-            var playerPos = Player.Instance.Position.To2D();
+            return GetBestPositionMovementBlock(playerPos).Where(IsPointSafe).Where(
+                p => DoesntCrossVeigarE(p, playerPos)).ToArray();
+        }
 
-            return GetBestPositionMovementBlock(playerPos).Where(x => IsPointSafe(x) &&
-                IsPathSafeEx(x) && !Utils.Utils.IsWall(x)).OrderBy(x =>
-                    (Game.CursorPos.To2D() - playerPos).AngleBetween(Game.CursorPos.To2D() - x) <= 10)
-                        .ThenByDescending(x => x.Distance(playerPos)).ToArray();
+        private bool DoesntCrossVeigarE(Vector2 p, Vector2 playerPos)
+        {
+            var veigarSkill = _skillshotPolygonCache.Keys.FirstOrDefault(x => x.OwnSpellData.IsVeigarE);
+            if (veigarSkill == null)
+                return true;
+
+            var pol1 = veigarSkill.ToInnerPolygon();
+            var pol2 = veigarSkill.ToOuterPolygon();
+
+            var inters1 = pol1.GetIntersectionPointsWithLineSegment(playerPos, p);
+            var inters2 = pol2.GetIntersectionPointsWithLineSegment(playerPos, p);
+
+            if (inters1.Any())
+            {
+                var nearestInter = inters1.OrderBy(x => x.Distance(playerPos)).First();
+                if (pol2.Points.Any(x => x.Distance(playerPos) < nearestInter.Distance(playerPos)))
+                    return false;//not the closest point
+            }
+
+            if (inters2.Any())
+            {
+                var nearestInter = inters2.OrderBy(x => x.Distance(playerPos)).First();
+                if (pol1.Points.Any(x => x.Distance(playerPos) < nearestInter.Distance(playerPos)))
+                    return false;//not the closest point
+            }
+
+            return inters1.Length + inters2.Length < 2;
         }
 
         public Vector2 GetClosestEvadePoint(Vector2 from)
@@ -786,11 +832,11 @@ namespace MoonWalkEvade.Evading
             bool any = points.Any(x => GetHeroesNearby(x) <= IgnoreAt);
             var evadePoint =
                 any ?
-                points.Where(x => GetHeroesNearby(x) <= IgnoreAt).
+                points.Where(x => GetHeroesNearby(x) <= IgnoreAt).OrderBy(x => IsPathSafeEx(x)).
                 OrderBy(p => !p.IsUnderTurret()).ThenBy(
                 p => p.Distance(Game.CursorPos)).FirstOrDefault()
                 :
-                points.OrderBy(p => !p.IsUnderTurret()).ThenBy(
+                points.OrderBy(x => IsPathSafeEx(x)).OrderBy(p => !p.IsUnderTurret()).ThenBy(
                 p => p.Distance(Game.CursorPos)).FirstOrDefault();
 
             return new EvadeResult(this, evadePoint, anchor, maxTime, time,
@@ -952,10 +998,7 @@ namespace MoonWalkEvade.Evading
             public int TotalTimeAvailable { get; set; }
             public bool EnoughTime { get; set; }
 
-            public bool OutsideEvade
-            {
-                get { return Environment.TickCount - OutsideEvadeTime <= 500; }
-            }
+            public bool OutsideEvade => Environment.TickCount - OutsideEvadeTime <= 500;
 
             public int OutsideEvadeTime { get; set; }
 

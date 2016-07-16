@@ -26,11 +26,15 @@ namespace MoonWalkEvade.Skillshots
 
         public bool IsGlobal => Range > 10000;
 
-        public bool DontRemoveStrange { get; set; } = false;
+        public bool DontRemoveStrangely { get; set; } = false;
 
+
+        public int RingRadius { get; set; } = 0;
+        public bool IsVeigarE => RingRadius > 0;
         public bool IsPerpendicular { get; set; }
         public int SecondaryRadius { get; set; }
         public Vector2 Direction { get; set; }
+        public bool ForbidCrossing { get; set; }
 
         public SpellData()
         {

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Constants;
 using EloBuddy.SDK.Menu.Values;
-using MoonWalkEvade.Skillshots.SkillshotTypes;
 using MoonWalkEvade.Utils;
 
 namespace MoonWalkEvade.Skillshots
@@ -41,25 +39,13 @@ namespace MoonWalkEvade.Skillshots
             get { return DetectedSkillshots.Where(c => EvadeMenu.IsSkillshotEnabled(c) && c.IsValid && c.IsActive); }
         }
 
-        public bool EnableFoWDetection
-        {
-            get { return EvadeMenu.MainMenu["fowDetection"].Cast<CheckBox>().CurrentValue; }
-        }
+        public bool EnableFoWDetection => EvadeMenu.MainMenu["fowDetection"].Cast<CheckBox>().CurrentValue;
 
-        public bool LimitDetectionRange
-        {
-            get { return EvadeMenu.MainMenu["limitDetectionRange"].Cast<CheckBox>().CurrentValue; }
-        }
+        public bool LimitDetectionRange => EvadeMenu.MainMenu["limitDetectionRange"].Cast<CheckBox>().CurrentValue;
 
-        public int SkillshotActivationDelay
-        {
-            get { return EvadeMenu.MainMenu["skillshotActivationDelay"].Cast<Slider>().CurrentValue; }
-        }
+        public int SkillshotActivationDelay => EvadeMenu.MainMenu["skillshotActivationDelay"].Cast<Slider>().CurrentValue;
 
-        public bool EnableSpellDetection
-        {
-            get { return EvadeMenu.MainMenu["processSpellDetection"].Cast<CheckBox>().CurrentValue; }
-        }
+        public bool EnableSpellDetection => EvadeMenu.MainMenu["processSpellDetection"].Cast<CheckBox>().CurrentValue;
 
         public SpellDetector(DetectionTeam detection = DetectionTeam.EnemyTeam)
         {
@@ -172,15 +158,15 @@ namespace MoonWalkEvade.Skillshots
                 nSkillshot.Team = sender.Team;
 
                 nSkillshot.OnCreate(null);
-                nSkillshot.OnSpellDetection(sender, args);
+                nSkillshot.OnSpellDetection(sender);
                 AddSkillshot(nSkillshot, true);
             }
         }
 
         private void GameObjectOnCreate(GameObject sender, EventArgs args)
         {
-            //if (Utils.Utils.GetGameObjectTeam(sender).IsEnemy() && Utils.Utils.GetGameObjectName(sender).Contains("Cait"))
-            //    Chat.Print("creating " + Utils.Utils.GetGameObjectName(sender));
+            if (Utils.Utils.GetGameObjectName(sender).ToLower().Contains("horizon"))
+                Chat.Print("creating " + Utils.Utils.GetGameObjectName(sender));
 
             if (!(sender is Obj_GeneralParticleEmitter))
             {

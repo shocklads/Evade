@@ -107,13 +107,13 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    if (!OwnSpellData.DontRemoveStrange)
+                    if (!OwnSpellData.DontRemoveStrangely)
                         IsValid = false;
                 }
             }
         }
 
-        public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        public override void OnSpellDetection(Obj_AI_Base sender)
         {
             if (!OwnSpellData.IsPerpendicular)
             {
@@ -184,7 +184,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override Geometry.Polygon ToRealPolygon()
         {
-            var halfWidth = OwnSpellData.Radius * 2 / 2;
+            var halfWidth = OwnSpellData.Radius;
             var d1 = StartPosition.To2D();
             var d2 = EndPosition.To2D();
             var direction = (d1 - d2).Perpendicular().Normalized();

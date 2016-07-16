@@ -1,8 +1,7 @@
 ﻿using EloBuddy;
-using EloBuddy.SDK;
 using MoonWalkEvade.Utils;
 
-namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
+namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
     public class YasuoQ : LinearMissileSkillshot
     {
@@ -12,7 +11,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
             return newInstance;
         }
 
-        public override void OnSpellDetection(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        public override void OnSpellDetection(Obj_AI_Base sender)
         {
             _startPos = Caster.ServerPosition;
             _endPos = _startPos.ExtendVector3(CastArgs.End, -OwnSpellData.Range);

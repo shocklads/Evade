@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using EloBuddy;
 using EloBuddy.SDK;
@@ -9,9 +10,9 @@ using Color = System.Drawing.Color;
 
 namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
-    public class CircularMissileSkillshot : EvadeSkillshot
+    class VeigarE : EvadeSkillshot
     {
-        public CircularMissileSkillshot()
+        public VeigarE()
         {
             Caster = null;
             SpawnObject = null;
@@ -29,7 +30,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         public MissileClient Missile => SpawnObject as MissileClient;
 
         private bool _missileDeleted;
-        
+
 
         public override Vector3 GetPosition()
         {
@@ -42,11 +43,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         /// <returns></returns>
         public override EvadeSkillshot NewInstance(bool debug = false)
         {
-            var newInstance = new CircularMissileSkillshot { OwnSpellData = OwnSpellData };
+            var newInstance = new VeigarE { OwnSpellData = OwnSpellData };
             if (debug)
             {
                 bool isProjectile = EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue;
-                var newDebugInst = new CircularMissileSkillshot
+                var newDebugInst = new VeigarE
                 {
                     OwnSpellData = OwnSpellData,
                     StartPosition = Debug.GlobalStartPos,
@@ -63,14 +64,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnCreate(GameObject obj)
         {
-            if (Missile == null)
-            {
-                EndPosition = CastArgs.End;
-            }
-            else
-            {
-                EndPosition = Missile.EndPosition;
-            }
+            EndPosition = Missile?.EndPosition ?? CastArgs.End;
         }
 
         public override void OnCreateObject(GameObject obj)
@@ -82,7 +76,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                 if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
                     // Force skillshot to be removed
-                        IsValid = false;
+                    IsValid = false;
                 }
             }
         }
@@ -117,7 +111,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (Missile == null)
             {
-                if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 250)
+                if (Environment.TickCount > TimeDetected + OwnSpellData.Delay + 3000)
                     IsValid = false;
             }
             else if (Missile != null)
@@ -141,7 +135,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                         Color.DodgerBlue);
             }
 
-            ToPolygon().DrawPolygon(Color.White);
+            ToPolygon().Draw(Color.White);
         }
 
         public override Geometry.Polygon ToRealPolygon()
@@ -149,30 +143,50 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             return ToPolygon();
         }
 
+        public override Geometry.Polygon ToInnerPolygon(float extrawidth = 0)
+        {
+            extrawidth = -20;
+            return new Geometry.Polygon.Circle(EndPosition, OwnSpellData.RingRadius + extrawidth);
+        }
+
+        public override Geometry.Polygon ToOuterPolygon(float extrawidth = 0)
+        {
+            extrawidth = 20;
+            return new Geometry.Polygon.Circle(EndPosition, OwnSpellData.RingRadius + OwnSpellData.Radius + extrawidth);
+        }
+
+        Vector2 PointOnCircle(float radius, float angleInDegrees, Vector2 origin)
+        {
+            float x = origin.X + (float)(radius * Math.Cos(angleInDegrees * Math.PI / 180));
+            float y = origin.Y + (float)(radius * Math.Sin(angleInDegrees * Math.PI / 180));
+
+            return new Vector2(x, y);
+        }
+
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
             extrawidth = 20;
-            if (OwnSpellData.AddHitbox)
-            {
-                extrawidth += Player.Instance.HitBoxRadius();
-            }
 
-            return new Geometry.Polygon.Circle(EndPosition, OwnSpellData.Radius + extrawidth);
+            List<Vector2> points = new List<Vector2>();
+            int i = 0;
+            for (; i <= 360; i += 20)
+            {
+                points.Add(PointOnCircle(OwnSpellData.RingRadius + extrawidth, i, EndPosition.To2D()));
+            }
+            i -= 20;
+            for (; i >= 0; i -= 20)
+            {
+                points.Add(PointOnCircle(OwnSpellData.RingRadius + OwnSpellData.Radius + extrawidth, i, EndPosition.To2D()));
+            }
+            var poly = new Geometry.Polygon();
+            poly.Points.AddRange(points);
+
+            return poly;
         }
 
         public override int GetAvailableTime(Vector2 pos)
         {
-            if (Missile == null)
-            {
-                return Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
-            }
-
-            if (!_missileDeleted)
-            {
-                return (int) (Missile.Position.To2D().Distance(EndPosition.To2D()) / OwnSpellData.MissileSpeed * 1000);
-            }
-
-            return -1;
+            return Math.Max(0, OwnSpellData.Delay - (Environment.TickCount - TimeDetected));
         }
 
         public override bool IsFromFow()

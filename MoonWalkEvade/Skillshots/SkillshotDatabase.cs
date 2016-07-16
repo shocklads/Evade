@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using EloBuddy;
 using MoonWalkEvade.Skillshots.SkillshotTypes;
-using MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots;
 
 namespace MoonWalkEvade.Skillshots
 {
@@ -250,23 +249,23 @@ namespace MoonWalkEvade.Skillshots
                 //        ExtraMissiles = 8
                 //    }
                 //},
-                new LinearMissileSkillshot
-                {
-                    OwnSpellData = new SpellData
-                    {
-                        DisplayName = "Conquering Sands",
-                        ChampionName = "Azir",
-                        SpellName = "disabled/AzirQ",
-                        Slot = SpellSlot.Q,
-                        Delay = 250,
-                        Range = 850,
-                        Radius = 80,
-                        MissileSpeed = 1000,
-                        DangerValue = 2,
-                        IsDangerous = false,
-                        ObjectCreationName = "azirsoldiermissile"
-                    }
-                },
+                //new AzirQ
+                //{
+                //    OwnSpellData = new SpellData
+                //    {
+                //        DisplayName = "Conquering Sands",
+                //        ChampionName = "Azir",
+                //        SpellName = "AzirQ",
+                //        Slot = SpellSlot.Q,
+                //        Delay = 250,
+                //        Range = 850,
+                //        Radius = 80,
+                //        MissileSpeed = 1000,
+                //        DangerValue = 2,
+                //        IsDangerous = false,
+                //        ObjectCreationName = "azirsoldiermissile",
+                //    }
+                //},
                 new LinearMissileSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -466,7 +465,7 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 0,
                         DangerValue = 3,
                         ObjectCreationName = "CassiopeiaWMissile",
-                        DontRemoveStrange = true
+                        DontRemoveStrangely = true
                     }
                 },
                 //new CircularMissileSkillshot
@@ -2572,6 +2571,25 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VeigarDarkMatter"
                     }
                 },
+                new VeigarE
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Event Horizon",
+                        ChampionName = "Veigar",
+                        SpellName = "VeigarEventHorizon",
+                        Slot = SpellSlot.E,
+                        Delay = 250,
+                        Range = 700,
+                        Radius = 320,
+                        RingRadius = 150,
+                        MissileSpeed = 0,
+                        DangerValue = 4,
+                        IsDangerous = true,
+                        ObjectCreationName = "",
+                        ForbidCrossing = true
+                    }
+                },
                 //new CircularMissileSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
@@ -3008,7 +3026,7 @@ namespace MoonWalkEvade.Skillshots
                         DangerValue = 3,
                         IsDangerous = true,
                         ObjectCreationName = "ZyraEMissile",
-                        DontRemoveStrange = true
+                        DontRemoveStrangely = true
                     }
                 },
                 new LinearMissileSkillshot

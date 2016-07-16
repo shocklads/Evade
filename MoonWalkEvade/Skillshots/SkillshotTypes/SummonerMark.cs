@@ -6,7 +6,7 @@ using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
 
-namespace MoonWalkEvade.Skillshots.SkillshotTypes.SpecialSkillsots
+namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
     public class SummonerMark : EvadeSkillshot
     {

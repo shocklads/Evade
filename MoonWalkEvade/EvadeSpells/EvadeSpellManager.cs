@@ -10,17 +10,28 @@ namespace MoonWalkEvade.EvadeSpells
 {
     public static class EvadeSpellManager
     {
+        public static bool ProcessFlash(Evading.MoonWalkEvade evade)
+        {
+            
+            var castPos = GetBlinkCastPos(evade, Player.Instance.ServerPosition.To2D(), 425);
+            var slot = GetFlashSpellSlot();
+
+            if (!castPos.IsZero && slot != SpellSlot.Unknown && Player.Instance.Spellbook.GetSpell(slot).IsReady)
+            {
+                Player.Instance.Spellbook.CastSpell(slot, castPos.To3D());
+                return true;
+            }
+
+            return false;
+        }
+
         public static SpellSlot GetFlashSpellSlot()
         {
-            if (Player.GetSpell(SpellSlot.Summoner1).Name == "summonerflash")
-                return SpellSlot.Summoner1;
-            if (Player.GetSpell(SpellSlot.Summoner2).Name == "summonerflash")
-                return SpellSlot.Summoner2;
-            return SpellSlot.Unknown;
+            return Player.Instance.GetSpellSlotFromName("summonerflash");
         }
 
 
-        public static Vector2 GetBlinkCastPos(MoonWalkEvade.Evading.MoonWalkEvade moonWalkEvade, Vector2 center, float maxRange)
+        public static Vector2 GetBlinkCastPos(Evading.MoonWalkEvade moonWalkEvade, Vector2 center, float maxRange)
         {
             var polygons = moonWalkEvade.ClippedPolygons.Where(p => p.IsInside(center)).ToArray();
             var segments = new List<Vector2[]>();
@@ -108,12 +119,15 @@ namespace MoonWalkEvade.EvadeSpells
             IEnumerable<EvadeSpellData> evadeSpells = EvadeMenu.MenuEvadeSpells.Where(evadeSpell =>
                 EvadeMenu.SpellMenu[evadeSpell.SpellName + "/enable"].Cast<CheckBox>().CurrentValue);
 
-            foreach (EvadeSpellData evadeSpell in evadeSpells)
+            foreach (EvadeSpellData evadeSpell in evadeSpells.OrderBy(x => x.DangerValue))
             {
                 int dangerValue =
                         EvadeMenu.MenuEvadeSpells.First(x => x.SpellName == evadeSpell.SpellName).DangerValue;
                 if (moonWalkEvadeInstance.GetDangerValue() < dangerValue)
                     continue;
+
+                if (evadeSpell.SpellName.Contains("Flash"))
+                    return ProcessFlash(moonWalkEvadeInstance);
 
                 //dash
                 if (evadeSpell.Range != 0)

@@ -68,12 +68,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skillshots\EvadeSkillshot.cs" />
     <Compile Include="Skillshots\SkillshotDatabase.cs" />
+    <Compile Include="Skillshots\SkillshotTypes\AzirQ.cs" />
     <Compile Include="Skillshots\SkillshotTypes\CaitlynTrap.cs" />
     <Compile Include="Skillshots\SkillshotTypes\CircularMissileSkillshot.cs" />
     <Compile Include="Skillshots\SkillshotTypes\LinearMissileSkillshot.cs" />
     <Compile Include="Skillshots\SkillshotTypes\MultiCircleSkillshot.cs" />
-    <Compile Include="Skillshots\SkillshotTypes\SpecialSkillsots\SummonerMark.cs" />
-    <Compile Include="Skillshots\SkillshotTypes\SpecialSkillsots\YasuoQ.cs" />
+    <Compile Include="Skillshots\SkillshotTypes\SummonerMark.cs" />
+    <Compile Include="Skillshots\SkillshotTypes\VeigarE.cs" />
+    <Compile Include="Skillshots\SkillshotTypes\YasuoQ.cs" />
     <Compile Include="Skillshots\SpellData.cs" />
     <Compile Include="Skillshots\SpellDetector.cs" />
     <Compile Include="Utils\Debug.cs" />
