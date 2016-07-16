@@ -165,7 +165,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override Geometry.Polygon ToPolygon(float extrawidth = 0)
         {
-            extrawidth = 20;
+            extrawidth = -20;
 
             List<Vector2> points = new List<Vector2>();
             int i = 0;
@@ -173,6 +173,8 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 points.Add(PointOnCircle(OwnSpellData.RingRadius + extrawidth, i, EndPosition.To2D()));
             }
+
+            extrawidth = 20;
             i -= 20;
             for (; i >= 0; i -= 20)
             {
