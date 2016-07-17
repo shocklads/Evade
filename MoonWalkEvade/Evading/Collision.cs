@@ -25,7 +25,8 @@ namespace MoonWalkEvade.Evading
                 }
             };
         }
-        public static Vector2 GetCollisionPoint(this LinearMissileSkillshot skillshot)
+
+        public static Vector2 GetCollisionPoint(this LinearSkillshot skillshot)
         {
             if (!skillshot.OwnSpellData.MinionCollision || skillshot.Missile == null)
                 return Vector2.Zero;
@@ -34,7 +35,7 @@ namespace MoonWalkEvade.Evading
 
             var currentSpellPos = skillshot.GetPosition().To2D();
             var spellEndPos = skillshot.EndPosition;
-            var rect = new Geometry.Polygon.Rectangle(currentSpellPos, spellEndPos.To2D(), skillshot.OwnSpellData.Radius * 2);
+            var rect = new Geometry.Polygon.Rectangle(currentSpellPos, spellEndPos.To2D(), skillshot.OwnSpellData.Radius*2);
 
             if (EvadeMenu.CollisionMenu["minion"].Cast<CheckBox>().CurrentValue)
             {
@@ -54,6 +55,7 @@ namespace MoonWalkEvade.Evading
                     }
                 }
             }
+
             if (EvadeMenu.CollisionMenu["yasuoWall"].Cast<CheckBox>().CurrentValue && skillshot.Missile != null)
             {
                 GameObject wall = null;
@@ -63,28 +65,28 @@ namespace MoonWalkEvade.Evading
                 {
                     wall = gameObject;
                 }
-                if (wall == null)
-                    return Vector2.Zero;
-
-                var level = wall.Name.Substring(wall.Name.Length - 6, 1);
-                var wallWidth = 300 + 50 * Convert.ToInt32(level);
-                var wallDirection = (wall.Position.To2D() - WindWallStartPosition).Normalized().Perpendicular();
-
-                var wallStart = wall.Position.To2D() + wallWidth / 2f * wallDirection;
-                var wallEnd = wallStart - wallWidth * wallDirection;
-                var wallPolygon = new Geometry.Polygon.Rectangle(wallStart, wallEnd, 75);
-
-                var intersections = wallPolygon.GetIntersectionPointsWithLineSegment(skillshot.GetPosition().To2D(),
-                    skillshot.EndPosition.To2D());
-
-                
-                if (intersections.Length > 0)
+                if (wall != null)
                 {
-                    float wallDisappearTime = WallCastTick + 250 + 3750 - Environment.TickCount;
+                    var level = wall.Name.Substring(wall.Name.Length - 6, 1);
+                    var wallWidth = 300 + 50*Convert.ToInt32(level);
+                    var wallDirection = (wall.Position.To2D() - WindWallStartPosition).Normalized().Perpendicular();
 
-                    collisions.AddRange(intersections.Where(intersec => 
-                        intersec.Distance(currentSpellPos) / skillshot.OwnSpellData.MissileSpeed*1000 < 
+                    var wallStart = wall.Position.To2D() + wallWidth/2f*wallDirection;
+                    var wallEnd = wallStart - wallWidth*wallDirection;
+                    var wallPolygon = new Geometry.Polygon.Rectangle(wallStart, wallEnd, 75);
+
+                    var intersections = wallPolygon.GetIntersectionPointsWithLineSegment(skillshot.GetPosition().To2D(),
+                        skillshot.EndPosition.To2D());
+
+
+                    if (intersections.Length > 0)
+                    {
+                        float wallDisappearTime = WallCastTick + 250 + 3750 - Environment.TickCount;
+
+                        collisions.AddRange(intersections.Where(intersec =>
+                            intersec.Distance(currentSpellPos)/skillshot.OwnSpellData.MissileSpeed*1000 <
                             wallDisappearTime).ToList());
+                    }
                 }
             }
 

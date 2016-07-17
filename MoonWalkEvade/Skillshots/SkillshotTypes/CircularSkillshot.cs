@@ -9,9 +9,9 @@ using Color = System.Drawing.Color;
 
 namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
-    public class CircularMissileSkillshot : EvadeSkillshot
+    public class CircularSkillshot : EvadeSkillshot
     {
-        public CircularMissileSkillshot()
+        public CircularSkillshot()
         {
             Caster = null;
             SpawnObject = null;
@@ -42,11 +42,11 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         /// <returns></returns>
         public override EvadeSkillshot NewInstance(bool debug = false)
         {
-            var newInstance = new CircularMissileSkillshot { OwnSpellData = OwnSpellData };
+            var newInstance = new CircularSkillshot { OwnSpellData = OwnSpellData };
             if (debug)
             {
                 bool isProjectile = EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue;
-                var newDebugInst = new CircularMissileSkillshot
+                var newDebugInst = new CircularSkillshot
                 {
                     OwnSpellData = OwnSpellData,
                     StartPosition = Debug.GlobalStartPos,

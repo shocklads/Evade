@@ -42,12 +42,12 @@ namespace MoonWalkEvade.Utils
                     return;
                 }
 
-                if (lastKSkillshot.GetType() == typeof(LinearMissileSkillshot))
+                if (lastKSkillshot.GetType() == typeof(LinearSkillshot))
                 {
-                    var skill = (LinearMissileSkillshot)lastKSkillshot;
+                    var skill = (LinearSkillshot)lastKSkillshot;
                     if (skill.StartPosition.Distance(Player.Instance) <= Player.Instance.BoundingRadius && skill.Missile != null)
                     {
-                        Chat.Print("Hit");
+                        Chat.Print(Game.Time + "  Hit");
                         lastKSkillshot = null;
                     }
                 }
@@ -65,7 +65,7 @@ namespace MoonWalkEvade.Utils
             LastCreationTick = Environment.TickCount;
             var skillshot =
                 SkillshotDatabase.Database[EvadeMenu.HotkeysMenu["debugMissile"].Cast<Slider>().CurrentValue];
-            if (skillshot.GetType() == typeof(CircularMissileSkillshot) ||
+            if (skillshot.GetType() == typeof(CircularSkillshot) ||
                 skillshot.GetType() == typeof(MultiCircleSkillshot))
                 EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue = false;
 

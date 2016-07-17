@@ -489,7 +489,7 @@ namespace MoonWalkEvade.Evading
                         {
                             if (skillshot.OwnSpellData.IsVeigarE)
                             {
-                                return skillshot.ToInnerPolygon().IsOutside(point) && 
+                                return skillshot.ToInnerPolygon().IsOutside(point) &&
                                     skillshot.ToOuterPolygon().IsInside(point);
                             }
 
@@ -871,10 +871,12 @@ namespace MoonWalkEvade.Evading
 
         int GetTimeUnitlOutOfDangerArea(Vector2 evadePoint)
         {
-            IEnumerable<Vector2> inters = 
+            IEnumerable<Vector2> inters =
                 (from polygon in SpellDetector.ActiveSkillshots.Select(x => x.ToRealPolygon())
                  let intersections = polygon.GetIntersectionPointsWithLineSegment(Player.Instance.Position.To2D(), evadePoint)
-                 .OrderBy(x => x.Distance(Player.Instance)) where intersections.Any() select intersections.Last()).ToList();
+                 .OrderBy(x => x.Distance(Player.Instance))
+                 where intersections.Any()
+                 select intersections.Last()).ToList();
 
             if (inters.Any())
             {
@@ -981,7 +983,7 @@ namespace MoonWalkEvade.Evading
                 LastEvadeResult = null;
             }
 
-            
+
             return false;
         }
 

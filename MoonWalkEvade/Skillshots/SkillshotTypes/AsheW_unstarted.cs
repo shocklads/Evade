@@ -3,16 +3,15 @@ using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using MoonWalkEvade.Evading;
 using MoonWalkEvade.Utils;
 using SharpDX;
 using Color = System.Drawing.Color;
 
 namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
-    public class LinearMissileSkillshot : EvadeSkillshot
+    public class AsheW : EvadeSkillshot
     {
-        public LinearMissileSkillshot()
+        public AsheW()
         {
             Caster = null;
             SpawnObject = null;
@@ -42,7 +41,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
                     return _startPos;
                 }
 
-                
+
                 if (debugMode)//Simulate Position
                 {
                     float speed = OwnSpellData.MissileSpeed;
@@ -84,14 +83,18 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override EvadeSkillshot NewInstance(bool debug = false)
         {
-            var newInstance = new LinearMissileSkillshot { OwnSpellData = OwnSpellData };
+            var newInstance = new AsheW { OwnSpellData = OwnSpellData };
             if (debug)
             {
-                bool isProjectile = EvadeMenu.HotkeysMenu["isProjectile"].Cast<CheckBox>().CurrentValue;
-                var newDebugInst = new LinearMissileSkillshot
+                bool isProjectile = true;
+                var newDebugInst = new LinearSkillshot
                 {
-                    OwnSpellData = OwnSpellData, _startPos = Debug.GlobalStartPos,
-                    _endPos = Debug.GlobalEndPos, IsValid = true, IsActive = true, TimeDetected = Environment.TickCount,
+                    OwnSpellData = OwnSpellData,
+                    _startPos = Debug.GlobalStartPos,
+                    _endPos = Debug.GlobalEndPos,
+                    IsValid = true,
+                    IsActive = true,
+                    TimeDetected = Environment.TickCount,
                     SpawnObject = isProjectile ? new MissileClient() : null
                 };
                 return newDebugInst;
@@ -115,20 +118,12 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
         public override void OnSpellDetection(Obj_AI_Base sender)
         {
-            if (!OwnSpellData.IsPerpendicular)
-            {
-                _startPos = Caster.ServerPosition;
-                _endPos = _startPos.ExtendVector3(CastArgs.End, OwnSpellData.Range);
-            }
-            else
-            {
-                OwnSpellData.Direction = (CastArgs.End - CastArgs.Start).To2D().Normalized();
+            OwnSpellData.Direction = (CastArgs.End - CastArgs.Start).To2D().Normalized();
 
-                var direction = OwnSpellData.Direction;
-                _startPos = (CastArgs.End.To2D() - direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
+            var direction = OwnSpellData.Direction;
+            _startPos = (CastArgs.End.To2D() - direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
 
-                _endPos = (CastArgs.End.To2D() + direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
-            }
+            _endPos = (CastArgs.End.To2D() + direction.Perpendicular() * OwnSpellData.SecondaryRadius).To3D();
         }
 
         public override void OnTick()
@@ -165,10 +160,10 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             if (!CollisionChecked)
             {
-                Vector2 collision = this.GetCollisionPoint();
-                DoesCollide = !collision.IsZero;
-                LastCollisionPos = collision;
-                CollisionChecked = true;
+                //Vector2 collision = this.GetCollisionPoint();
+                //DoesCollide = !collision.IsZero;
+                //LastCollisionPos = collision;
+                //CollisionChecked = true;
             }
         }
 
@@ -221,7 +216,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
 
             var actualDist = Math.Sqrt(StartPosition.Distance(pos).Pow() - dist1.Pow());
 
-            var time = OwnSpellData.MissileSpeed > 0 ? (int) (actualDist / OwnSpellData.MissileSpeed * 1000) : 0;
+            var time = OwnSpellData.MissileSpeed > 0 ? (int)(actualDist / OwnSpellData.MissileSpeed * 1000) : 0;
 
             if (Missile == null)
             {

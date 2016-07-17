@@ -30,7 +30,7 @@ namespace MoonWalkEvade.Skillshots
                         ToggleParticleName = "Summoner_Snowball_Explosion_Sound.troy"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -47,7 +47,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "AatroxQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -64,7 +64,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "AatroxE"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -81,7 +81,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "AhriOrbMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -98,7 +98,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "AhriSeduceMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -115,7 +115,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "AhriOrbofDeception2"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -132,7 +132,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "Pulverize"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -149,7 +149,7 @@ namespace MoonWalkEvade.Skillshots
                         IsDangerous = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -163,10 +163,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "SadMummyBandageToss"
+                        ObjectCreationName = "SadMummyBandageToss",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -183,7 +184,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "FlashFrostSpell"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -199,7 +200,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "Incinerate"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -216,7 +217,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "InfernalGuardian"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -233,7 +234,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EnchantedCrystalArrow"
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -266,7 +267,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "azirsoldiermissile",
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -283,7 +284,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "BardQMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -297,10 +298,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1800,
                         DangerValue = 4,
                         IsDangerous = true,
-                        ObjectCreationName = "RocketGrabMissile"
+                        ObjectCreationName = "RocketGrabMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -314,10 +316,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "BrandQMissile"
+                        ObjectCreationName = "BrandQMissile",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -334,7 +337,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "BrandFissure"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -351,7 +354,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "braumrmissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -365,10 +368,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1200,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "BraumQMissile"
+                        ObjectCreationName = "BraumQMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -385,7 +389,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "CaitlynPiltoverPeacemaker"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -399,7 +403,8 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 1,
                         IsDangerous = false,
-                        ObjectCreationName = "CaitlynEntrapmentMissile"
+                        ObjectCreationName = "CaitlynEntrapmentMissile",
+                        MinionCollision = true
                     }
                 },
                 new CaitlynTrap
@@ -419,7 +424,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "CaitlynTrap",
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -434,7 +439,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "CassiopeiaPetrifyingGaze"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -468,7 +473,7 @@ namespace MoonWalkEvade.Skillshots
                         DontRemoveStrangely = true
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -483,7 +488,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "FeralScream"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -500,7 +505,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "Rupture"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -514,10 +519,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 3,
                         IsDangerous = false,
-                        ObjectCreationName = "MissileBarrageMissile2"
+                        ObjectCreationName = "MissileBarrageMissile2",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -534,7 +540,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "PhosphorusBombMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -547,10 +553,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "MissileBarrageMissile"
+                        ObjectCreationName = "MissileBarrageMissile",
+                        MinionCollision = true
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -565,7 +572,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "DariusAxeGrabCone"
                 //    }
                 //},
-                //new CircularMissileSkillshot //Unknown:SpellType.Arc
+                //new CircularSkillshot //Unknown:SpellType.Arc
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -580,7 +587,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "DianaArc"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -594,10 +601,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 3,
                         IsDangerous = false,
-                        ObjectCreationName = "InfectedCleaverMissile"
+                        ObjectCreationName = "InfectedCleaverMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -614,7 +622,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "DravenR"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -631,7 +639,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "DravenDoubleShotMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -648,7 +656,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ekkoqmis"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -666,7 +674,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EkkoW"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -683,7 +691,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EkkoR"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -697,10 +705,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 4,
                         IsDangerous = true,
-                        ObjectCreationName = "EliseHumanE"
+                        ObjectCreationName = "EliseHumanE",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -717,7 +726,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EvelynnR"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -731,10 +740,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "EzrealMysticShotMissile"
+                        ObjectCreationName = "EzrealMysticShotMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -751,7 +761,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EzrealTrueshotBarrage"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -771,7 +781,7 @@ namespace MoonWalkEvade.Skillshots
                 /*
                  * TODO: Fiora W
                 */
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -788,7 +798,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "FizzMarinerDoomMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -805,7 +815,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GalioRighteousGust"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -822,7 +832,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GalioResoluteSmite"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -839,7 +849,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = ""
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -856,7 +866,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "gnarbigq"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -874,7 +884,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GnarR"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -891,7 +901,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "gnarbigw"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -908,7 +918,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GnarQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -925,7 +935,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GnarQMissileReturn"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -942,7 +952,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GnarE"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -959,7 +969,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "gnarbige"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -977,7 +987,7 @@ namespace MoonWalkEvade.Skillshots
                         ToggleParticleName = "Gragas_.+_Q_(Enemy|Ally)"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -994,7 +1004,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GragasE"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1011,7 +1021,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GragasR"
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1027,7 +1037,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ExtraMissiles = 2
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1044,7 +1054,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GravesChargeShotShot"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1061,7 +1071,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "HecarimUlt"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1078,7 +1088,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "HeimerdingerWAttack2"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1095,7 +1105,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "HeimerdingerWAttack2Ult"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1112,7 +1122,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "HeimerdingerESpell"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1129,7 +1139,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "heimerdingerespell_ult"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1146,7 +1156,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ireliatranscendentbladesspell"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1163,7 +1173,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "HowlingGaleSpell"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1180,7 +1190,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "JarvanIVDragonStrike"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1197,7 +1207,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "JarvanIVDragonStrike2"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1212,7 +1222,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "JarvanIVCataclysm"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1226,10 +1236,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2350,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "JayceShockBlastWallMis"
+                        ObjectCreationName = "JayceShockBlastWallMis",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1243,10 +1254,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1450,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "JayceShockBlastMis"
+                        ObjectCreationName = "JayceShockBlastMis",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1263,7 +1275,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "JinxR"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1277,10 +1289,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 3300,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "JinxWMissile"
+                        ObjectCreationName = "JinxWMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1297,7 +1310,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "kalistamysticshotmistrue"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1311,10 +1324,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1700,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "KarmaQMissile"
+                        ObjectCreationName = "KarmaQMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1328,10 +1342,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1700,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "KarmaQMissileMantra"
+                        ObjectCreationName = "KarmaQMissileMantra",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1348,7 +1363,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "KarthusLayWasteA1"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1365,7 +1380,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "RiftWalk"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1380,7 +1395,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ForcePulse"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1394,10 +1409,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1700,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "KennenShurikenHurlMissile1"
+                        ObjectCreationName = "KennenShurikenHurlMissile1",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1411,10 +1427,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1700,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "KhazixWMissile"
+                        ObjectCreationName = "KhazixWMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1429,10 +1446,11 @@ namespace MoonWalkEvade.Skillshots
                         DangerValue = 2,
                         IsDangerous = false,
                         ExtraMissiles = 2,
-                        ObjectCreationName = "khazixwlong"
+                        ObjectCreationName = "khazixwlong",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1446,10 +1464,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1650,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "KogMawQMis"
+                        ObjectCreationName = "KogMawQMis",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1466,7 +1485,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "KogMawVoidOozeMissile"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1483,7 +1502,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "KogMawLivingArtillery"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1497,10 +1516,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "LeblancSoulShackleM"
+                        ObjectCreationName = "LeblancSoulShackleM",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1514,10 +1534,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "LeblancSoulShackle"
+                        ObjectCreationName = "LeblancSoulShackle",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1534,7 +1555,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LeblancSlideM"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1551,7 +1572,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LeblancSlide"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1565,10 +1586,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1800,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "BlindMonkQOne"
+                        ObjectCreationName = "BlindMonkQOne",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1585,7 +1607,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LeonaSolarFlare"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1602,7 +1624,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "FlashFrostSpell"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1617,7 +1639,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "LissandraW"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1634,7 +1656,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LissandraQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1648,10 +1670,12 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "LucianW"
+                        ObjectCreationName = "LucianW",
+                        MinionCollision = true,
+                        EnabledByDefault = false
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1669,7 +1693,7 @@ namespace MoonWalkEvade.Skillshots
                         AddHitbox = false
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1686,7 +1710,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LuluQMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1703,7 +1727,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LuluQMissileTwo"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1722,7 +1746,7 @@ namespace MoonWalkEvade.Skillshots
                         EnabledByDefault = false
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1739,7 +1763,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LuxMaliceCannon"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1756,7 +1780,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "LuxLightBindingMis"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1773,7 +1797,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "UFSlash"
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1788,7 +1812,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "AlZaharCalloftheVoidMissile"
                 //    }
                 //},
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1803,7 +1827,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "MonkeyKingSpinToWin"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1817,10 +1841,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1200,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "DarkBindingMissile"
+                        ObjectCreationName = "DarkBindingMissile",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1837,7 +1862,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "NamiQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1854,7 +1879,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "NamiRMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1868,10 +1893,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "NautilusAnchorDragMissile"
+                        ObjectCreationName = "NautilusAnchorDragMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1888,7 +1914,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "JavelinToss"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1905,7 +1931,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "NocturneDuskbringer"
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1920,7 +1946,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "OlafAxeThrowCast"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1937,7 +1963,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "OrianaIzunaCommand"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1954,7 +1980,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "OrianaDetonateCommand"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -1971,7 +1997,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "OrianaDissonanceCommand"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -1986,7 +2012,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "PantheonE"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2000,10 +2026,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1550,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "QuinnQMissile"
+                        ObjectCreationName = "QuinnQMissile",
+                        MinionCollision = true
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2018,7 +2045,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "RekSaiQBurrowedMis"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2032,10 +2059,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1500,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "RengarEFinal"
+                        ObjectCreationName = "RengarEFinal",
+                        MinionCollision = true
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2050,7 +2078,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "rivenizunablade"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2067,7 +2095,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "RivenMartyr"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2081,10 +2109,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "RumbleGrenade"
+                        ObjectCreationName = "RumbleGrenade",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2098,10 +2127,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1700,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "RyzeQ"
+                        ObjectCreationName = "RyzeQ",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2115,10 +2145,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = ""
+                        ObjectCreationName = "",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2135,7 +2166,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SejuaniGlacialPrison"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2152,7 +2183,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ShenShadowDash"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2169,7 +2200,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ShyvanaFireball"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2186,7 +2217,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ShyvanaTransformCast"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2203,7 +2234,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SionEMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2220,7 +2251,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SivirQMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2237,7 +2268,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SivirQMissileReturn"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2251,10 +2282,10 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1400,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "SkarnerFractureMissile"
+                        ObjectCreationName = "SkarnerFractureMissile",
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2271,7 +2302,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SonaR"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2288,7 +2319,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SorakaQ"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2303,7 +2334,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "SorakaE"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2320,7 +2351,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SwainShadowGrasp"
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2335,7 +2366,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "SyndraE"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2352,7 +2383,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "syndrawcast"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2369,7 +2400,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SyndraQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2383,10 +2414,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "tahmkenchqmissile"
+                        ObjectCreationName = "tahmkenchqmissile",
+                        MinionCollision = true
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2401,7 +2433,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "TalonRake"
                 //    }
                 //},
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2415,10 +2447,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1900,
                         DangerValue = 3,
                         IsDangerous = true,
-                        ObjectCreationName = "ThreshQMissile"
+                        ObjectCreationName = "ThreshQMissile",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2435,7 +2468,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ThreshEMissile1"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2452,7 +2485,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "SealFateMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2466,10 +2499,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1600,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "UrgotHeatseekingLineMissile"
+                        ObjectCreationName = "UrgotHeatseekingLineMissile",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2486,7 +2520,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "UrgotPlasmaGrenadeBoom"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2503,13 +2537,13 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VarusE"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
                         DisplayName = "Piercing Arrow",
                         ChampionName = "Varus",
-                        SpellName = "disabled/varusq",
+                        SpellName = "varusq",
                         Slot = SpellSlot.Q,
                         Delay = 0,
                         Range = 1600,
@@ -2520,7 +2554,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VarusQMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2537,7 +2571,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VarusRMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2551,10 +2585,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2000,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "VeigarBalefulStrikeMis"
+                        ObjectCreationName = "VeigarBalefulStrikeMis",
+                        MinionCollision = true
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2590,7 +2625,7 @@ namespace MoonWalkEvade.Skillshots
                         ForbidCrossing = true
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2605,7 +2640,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "VeigarEventHorizon"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2622,7 +2657,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VelkozEMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2639,7 +2674,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VelkozW"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2653,10 +2688,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 2100,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "VelkozQMissileSplit"
+                        ObjectCreationName = "VelkozQMissileSplit",
+                        MinionCollision = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2670,10 +2706,11 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1300,
                         DangerValue = 2,
                         IsDangerous = false,
-                        ObjectCreationName = "VelkozQMissile"
+                        ObjectCreationName = "VelkozQMissile",
+                        MinionCollision = true
                     }
                 },
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2688,7 +2725,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ViQMissile"
                 //    }
                 //},
-                //new LinearMissileSkillshot //Unknown:
+                //new LinearSkillshot //Unknown:
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2703,7 +2740,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ViktorDeathRayMissile"
                 //    }
                 //},
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2718,7 +2755,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ViktorDeathRay3"
                 //    }
                 //},
-                //new LinearMissileSkillshot
+                //new LinearSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2733,7 +2770,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ViktorDeathRayMissile2"
                 //    }
                 //},
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2748,7 +2785,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ViktorGravitonField"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2765,7 +2802,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "VladimirHemoplague"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2782,7 +2819,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "XerathArcaneBarrage2"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2799,7 +2836,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "xeratharcanopulse2"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2816,7 +2853,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "xerathrmissilewrapper"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2833,7 +2870,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "XerathMageSpearMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2899,7 +2936,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "yasuoq2"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2916,7 +2953,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ZedQMissile"
                     }
                 },
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2931,7 +2968,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ZedPBAOEDummy"
                 //    }
                 //},
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2946,7 +2983,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ZiggsE"
                 //    }
                 //},
-                //new CircularMissileSkillshot
+                //new CircularSkillshot
                 //{
                 //    OwnSpellData = new OwnSpellData
                 //    {
@@ -2961,7 +2998,7 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ZiggsW"
                 //    }
                 //},
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2978,7 +3015,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ZiggsQSpell"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -2994,7 +3031,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ZiggsR"
                     }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3011,7 +3048,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ZileanQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3029,7 +3066,7 @@ namespace MoonWalkEvade.Skillshots
                         DontRemoveStrangely = true
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                         OwnSpellData = new SpellData
                         {
@@ -3047,7 +3084,7 @@ namespace MoonWalkEvade.Skillshots
                             SecondaryRadius = 400,
                         }
                 },
-                new CircularMissileSkillshot
+                new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3064,7 +3101,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "ZyraBrambleZone"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3081,7 +3118,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "illaoiemis"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3098,7 +3135,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "illaoiemis"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3115,7 +3152,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GravesQLineMis"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3132,7 +3169,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "PoppyQ"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {
@@ -3149,7 +3186,7 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "JhinWMissile"
                     }
                 },
-                new LinearMissileSkillshot
+                new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
                     {

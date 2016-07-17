@@ -3,7 +3,7 @@ using MoonWalkEvade.Utils;
 
 namespace MoonWalkEvade.Skillshots.SkillshotTypes
 {
-    public class YasuoQ : LinearMissileSkillshot
+    public class YasuoQ : LinearSkillshot
     {
         public override EvadeSkillshot NewInstance(bool debug = false)
         {
