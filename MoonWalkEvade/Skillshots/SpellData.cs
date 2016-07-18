@@ -28,6 +28,8 @@ namespace MoonWalkEvade.Skillshots
 
         public bool DontRemoveStrangely { get; set; } = false;
 
+        public bool HasPolygonArray { get; set; } = false;
+
 
         public int RingRadius { get; set; } = 0;
         public bool IsVeigarE => RingRadius > 0;

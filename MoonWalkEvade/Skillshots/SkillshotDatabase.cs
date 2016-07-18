@@ -234,22 +234,22 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "EnchantedCrystalArrow"
                     }
                 },
-                //new LinearSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Ashe",
-                //        SpellName = "Volley",
-                //        Slot = SpellSlot.W,
-                //        Delay = 250,
-                //        Range = 1150,
-                //        Radius = 20,
-                //        MissileSpeed = 1500,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "VolleyAttack",
-                //        ExtraMissiles = 8
-                //    }
-                //},
+                new AsheW
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Ashe",
+                        SpellName = "Volley",
+                        Slot = SpellSlot.W,
+                        Delay = 250,
+                        Range = 1400,
+                        Radius = 20,
+                        MissileSpeed = 1500,
+                        DangerValue = 1,
+                        ObjectCreationName = "",
+                        HasPolygonArray = true
+                    }
+                },
                 //new AzirQ
                 //{
                 //    OwnSpellData = new SpellData
