@@ -26,9 +26,7 @@ namespace MoonWalkEvade.Skillshots
 
         public bool IsGlobal => Range > 10000;
 
-        public bool DontRemoveStrangely { get; set; } = false;
-
-        public bool HasPolygonArray { get; set; } = false;
+        public float ConeAngle { get; set; }
 
 
         public int RingRadius { get; set; } = 0;

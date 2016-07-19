@@ -100,8 +100,7 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
             {
                 if (missile.SData.Name == OwnSpellData.ObjectCreationName && missile.SpellCaster.Index == Caster.Index)
                 {
-                    if (!OwnSpellData.DontRemoveStrangely)
-                        IsValid = false;
+                    IsValid = false;
                 }
             }
         }
@@ -149,18 +148,6 @@ namespace MoonWalkEvade.Skillshots.SkillshotTypes
         {
             if (RealStartPosition.Distance(StartPosition) <= 50)
                 return new [] {StartPosition.To2D()};
-
-            //Vector2 direction = (EndPosition - RealStartPosition).To2D();
-            //var endEdges = GetEdgePoints();
-
-            //var leftEdgeDir = endEdges[1] - StartPosition.To2D();//StartPosition
-            //float leftAngle = leftEdgeDir.AngleBetween(direction);
-            //float leftAlpha = 90 - leftAngle;
-            //float leftPerpendicularMagnitude = (float)Math.Cos(leftAlpha*Math.PI/180)*leftEdgeDir.Length();
-
-            //Vector2 leftBegin = StartPosition.To2D() + direction.Perpendicular().Normalized()*leftPerpendicularMagnitude;
-            //Vector2 rightBegin = StartPosition.To2D() + direction.Perpendicular2().Normalized()* leftPerpendicularMagnitude;
-            //return new[] {rightBegin, leftBegin};
 
             var endEdges = edges;
 

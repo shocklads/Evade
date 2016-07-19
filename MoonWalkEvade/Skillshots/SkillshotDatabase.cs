@@ -247,7 +247,6 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 1500,
                         DangerValue = 1,
                         ObjectCreationName = "",
-                        HasPolygonArray = true
                     }
                 },
                 //new AzirQ
@@ -424,21 +423,22 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "CaitlynTrap",
                     }
                 },
-                //new CircularSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Cassiopeia",
-                //        SpellName = "CassiopeiaPetrifyingGaze",
-                //        Slot = SpellSlot.R,
-                //        Delay = 500,
-                //        Range = 825,
-                //        Radius = 20,
-                //        MissileSpeed = 0,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "CassiopeiaPetrifyingGaze"
-                //    }
-                //},
+                new ConeSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Cassiopeia",
+                        SpellName = "CassiopeiaPetrifyingGaze",
+                        Slot = SpellSlot.R,
+                        Delay = 500,
+                        Range = 825,
+                        Radius = 20,
+                        MissileSpeed = 0,
+                        DangerValue = 5,
+                        ObjectCreationName = "CassiopeiaPetrifyingGaze",
+                        ConeAngle = 50
+                    }
+                },
                 new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -470,7 +470,6 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 0,
                         DangerValue = 3,
                         ObjectCreationName = "CassiopeiaWMissile",
-                        DontRemoveStrangely = true
                     }
                 },
                 //new CircularSkillshot
@@ -1931,21 +1930,22 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "NocturneDuskbringer"
                     }
                 },
-                //new LinearSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Olaf",
-                //        SpellName = "OlafAxeThrowCast",
-                //        Slot = SpellSlot.Q,
-                //        Delay = 250,
-                //        Range = 1000,
-                //        Radius = 90,
-                //        MissileSpeed = 1600,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "OlafAxeThrowCast"
-                //    }
-                //},
+                new LinearSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Axe Throw",
+                        ChampionName = "Olaf",
+                        SpellName = "OlafAxeThrowCast",
+                        Slot = SpellSlot.Q,
+                        Delay = 250,
+                        Range = 1000,
+                        Radius = 90,
+                        MissileSpeed = 1600,
+                        DangerValue = 2,
+                        ObjectCreationName = "olafaxethrow"
+                    }
+                },
                 new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -2063,21 +2063,22 @@ namespace MoonWalkEvade.Skillshots
                         MinionCollision = true
                     }
                 },
-                //new LinearSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Riven",
-                //        SpellName = "rivenizunablade",
-                //        Slot = SpellSlot.R,
-                //        Delay = 250,
-                //        Range = 1100,
-                //        Radius = 100,
-                //        MissileSpeed = 1600,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "rivenizunablade"
-                //    }
-                //},
+                new ConeSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Riven",
+                        SpellName = "RivenIzunaBlade",
+                        Slot = SpellSlot.R,
+                        Delay = 250,
+                        Range = 1100,
+                        Radius = 100,
+                        MissileSpeed = 1800,
+                        DangerValue = 3,
+                        ObjectCreationName = "RivenWindslashMissileCenter",
+                        ConeAngle = 40
+                    }
+                },
                 new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -3063,7 +3064,6 @@ namespace MoonWalkEvade.Skillshots
                         DangerValue = 3,
                         IsDangerous = true,
                         ObjectCreationName = "ZyraEMissile",
-                        DontRemoveStrangely = true
                     }
                 },
                 new LinearSkillshot
@@ -3152,6 +3152,24 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "GravesQLineMis"
                     }
                 },
+                //new ConeSkillshot
+                //{
+                //    OwnSpellData = new SpellData
+                //    {
+                //        DisplayName = "Heartseeker",
+                //        ChampionName = "Pantheon",
+                //        SpellName = "PantheonE",
+                //        Slot = SpellSlot.W,
+                //        Delay = 500,
+                //        Range = 430,
+                //        Radius = 100,
+                //        MissileSpeed = 0,
+                //        DangerValue = 2,
+                //        IsDangerous = false,
+                //        ObjectCreationName = "Heartseeker",
+                //        ConeAngle = 35
+                //    }
+                //},
                 new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
