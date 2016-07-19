@@ -249,23 +249,23 @@ namespace MoonWalkEvade.Skillshots
                         ObjectCreationName = "",
                     }
                 },
-                //new AzirQ
-                //{
-                //    OwnSpellData = new SpellData
-                //    {
-                //        DisplayName = "Conquering Sands",
-                //        ChampionName = "Azir",
-                //        SpellName = "AzirQ",
-                //        Slot = SpellSlot.Q,
-                //        Delay = 250,
-                //        Range = 850,
-                //        Radius = 80,
-                //        MissileSpeed = 1000,
-                //        DangerValue = 2,
-                //        IsDangerous = false,
-                //        ObjectCreationName = "azirsoldiermissile",
-                //    }
-                //},
+                new LinearSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Conquering Sands",
+                        ChampionName = "Azir",
+                        SpellName = "AzirQ",
+                        Slot = SpellSlot.Q,
+                        Delay = 250,
+                        Range = 850,
+                        Radius = 80,
+                        MissileSpeed = 1000,
+                        DangerValue = 2,
+                        IsDangerous = false,
+                        ObjectCreationName = "AzirSoldierMissile",
+                    }
+                },
                 new LinearSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -436,7 +436,7 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 0,
                         DangerValue = 5,
                         ObjectCreationName = "CassiopeiaPetrifyingGaze",
-                        ConeAngle = 50
+                        ConeAngle = 60
                     }
                 },
                 new CircularSkillshot
@@ -556,21 +556,20 @@ namespace MoonWalkEvade.Skillshots
                         MinionCollision = true
                     }
                 },
-                //new CircularSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Darius",
-                //        SpellName = "DariusAxeGrabCone",
-                //        Slot = SpellSlot.E,
-                //        Delay = 320,
-                //        Range = 570,
-                //        Radius = 20,
-                //        MissileSpeed = 0,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "DariusAxeGrabCone"
-                //    }
-                //},
+                new ConeSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Darius",
+                        DisplayName = "Axe Cone Grab",
+                        SpellName = "DariusAxeGrabCone",
+                        Range = 570,
+                        Delay = 320,
+                        Slot = SpellSlot.E,
+                        ObjectCreationName = "DariusAxeGrabCone",
+                        ConeAngle = 50
+                    }
+                },
                 //new CircularSkillshot //Unknown:SpellType.Arc
                 //{
                 //    OwnSpellData = new OwnSpellData
