@@ -454,9 +454,10 @@ namespace MoonWalkEvade.Evading
 
 
                 var intersections =
-                    polygon.GetIntersectionPointsWithLineSegment(hero.Position.To2D(), pathEnd);
+                    polygon.GetIntersectionPointsWithLineSegment(pathStart, pathEnd).OrderBy(x => x.Distance(pathStart)).
+                    ToArray();
 
-                if (intersections.Length == 0 && isInside(hero.Position.To2D()) && isInside(pathEnd))
+                if (isInside(pathStart) && isInside(pathEnd))
                 {
                     var time2 = skillshot.GetAvailableTime(pathEnd);
 
@@ -465,31 +466,31 @@ namespace MoonWalkEvade.Evading
                         return false;
                     }
                 }
-                else if (intersections.Length == 0 && !isInside(pathStart) && !isInside(pathEnd))
+                else if (!isInside(pathStart) && !isInside(pathEnd))
                     continue; //safe path for now => next skillshot
 
-                if (intersections.Length == 1)
+                if (intersections.Length % 2 > 0)
                 {
                     bool beingInside = polygon.IsInside(pathStart) && polygon.IsOutside(pathEnd);
                     if (beingInside)
                     {
                         float time = GetShortesTimeAvailiableInInsidePath(path, skillshot);
-                        bool enoughTime = hero.WalkingTime(hero.Position.To2D(), intersections[0]) < time;
+                        bool enoughTime = hero.WalkingTime(pathStart, intersections[0]) + CrossingBuffer < time;
                         if (!enoughTime)
                             return false;
                     }
                     else //being outside
                     {
-                        float walkTimeToEdge = hero.WalkingTime(hero.Position.To2D(), intersections[0]);
+                        float walkTimeToEdge = hero.WalkingTime(pathStart, intersections[0]);
                         float skillshotTime = skillshot.GetAvailableTime(intersections[0]);
                         skillshotTime = Math.Max(0, skillshotTime - (Game.Ping + ServerTimeBuffer));
 
                         float time = skillshotTime - walkTimeToEdge;
-                        if (time > 0)
+                        if (time > -CrossingBuffer)
                             return false;
                     }
                 }
-                else if (intersections.Length >= 2 && intersections.Length % 2 == 0) //cross
+                else if (intersections.Length % 2 == 0) //cross
                 {
                     if (skillshot.OwnSpellData.ForbidCrossing)
                         return false;
@@ -497,11 +498,11 @@ namespace MoonWalkEvade.Evading
                     var firstDangerPoint = intersections.Last();
                     var crossPoint = intersections.First();
 
-                    var walkTimeToDangerStart = hero.WalkingTime(hero.Position.To2D(), firstDangerPoint);
-                    var walkTimeToDangerEnd = hero.WalkingTime(hero.Position.To2D(), crossPoint);
+                    var walkTimeToDangerStart = hero.WalkingTime(pathStart, firstDangerPoint);
+                    var walkTimeToDangerEnd = hero.WalkingTime(pathStart, crossPoint);
 
                     float maxTime1 = skillshot.GetAvailableTime(firstDangerPoint);
-                    float time1 = Math.Max(0, maxTime1 - Game.Ping + ServerTimeBuffer);
+                    float time1 = Math.Max(0, maxTime1 - (Game.Ping + ServerTimeBuffer));
 
                     float time2 = GetShortesTimeAvailiableInInsidePath(new[] { pathStart, crossPoint }, skillshot);
 
@@ -787,11 +788,11 @@ namespace MoonWalkEvade.Evading
             for (float i = minExtension; i <= maxExtension; i++)
             {
                 var newP = Player.Instance.Position.Extend(p, Player.Instance.Distance(p) + i);
-                if (IsPointSafe(newP))
+                if (IsPointSafe(newP) && IsPathSafe(new [] {Player.Instance.Position.To2D(), p}))
                     return newP;
             }
 
-            return Player.Instance.Position.Extend(p, Player.Instance.Distance(p) + maxExtension);
+            return p;
         }
 
         private int LastMovementSpam;
@@ -831,7 +832,7 @@ namespace MoonWalkEvade.Evading
                 {
                     LastMovementSpam = Environment.TickCount;
                     AutoPathing.StopPath();
-                    MoveTo(GetExtendedEvade(LastEvadeResult.WalkPoint.To2D()), true);
+                    MoveTo(GetExtendedEvade(LastEvadeResult.WalkPoint.To2D()), false);
                 }
 
                 return true;
@@ -858,14 +859,16 @@ namespace MoonWalkEvade.Evading
             }
             else if (!IsPathSafe(hero.RealPath()) || (desiredPath != null && !IsPathSafe(desiredPath)))
             {
-                var evade = CalculateEvade(LastIssueOrderPos);
-
-                if (evade.IsValid)
+                if (LastEvadeResult == null || !LastEvadeResult.EnoughTime)
                 {
-                    LastEvadeResult = evade;
-                    return true;
-                }
+                    var evade = CalculateEvade(LastIssueOrderPos);
 
+                    if (evade.IsValid)
+                    {
+                        LastEvadeResult = evade;
+                        return true;
+                    }
+                }
                 //LastEvadeResult = null;
                 return desiredPath != null;
             }

@@ -1,7 +1,7 @@
 ﻿using EloBuddy.SDK.Events;
-using MoonWalkEvade.Evading;
 using MoonWalkEvade.Skillshots;
 using MoonWalkEvade.Utils;
+using Collision = MoonWalkEvade.Evading.Collision;
 
 namespace MoonWalkEvade
 {
