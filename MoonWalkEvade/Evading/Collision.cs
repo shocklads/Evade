@@ -93,7 +93,7 @@ namespace MoonWalkEvade.Evading
             if (EvadeMenu.CollisionMenu["minion"].Cast<CheckBox>().CurrentValue)
             {
                 foreach (var minion in
-                    EntityManager.MinionsAndMonsters.Minions.Where(x => x.Team != skillshot.Team && !x.IsDead && x.IsValid && x.Health >= 200 &&
+                    EntityManager.MinionsAndMonsters.Minions.Where(x => x.IsAlly && !x.IsDead && x.IsValid && x.Health >= 100 &&
                                                         x.Distance(skillshot.RealStartPosition) < skillshot.OwnSpellData.Range))
                 {
                     if (GetHitboxCirclePoints(minion).Any(x => triangle.IsInside(x)))

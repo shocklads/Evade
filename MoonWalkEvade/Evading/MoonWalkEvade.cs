@@ -248,9 +248,6 @@ namespace MoonWalkEvade.Evading
                     pol.DrawPolygon(Color.White, 3);
                 }
             }
-
-            //Utils.DrawPath(PathFinding.GetPath(Player.Instance.Position.To2D(), Game.CursorPos.To2D()), Color.Blue);
-            //Utils.DrawPath(Player.Instance.GetPath(Game.CursorPos, true).ToVector2(), Color.Blue);
         }
 
         public void CacheSkillshots()
@@ -469,7 +466,7 @@ namespace MoonWalkEvade.Evading
                 else if (!isInside(pathStart) && !isInside(pathEnd))
                     continue; //safe path for now => next skillshot
 
-                if (intersections.Length % 2 > 0)
+                if (intersections.Length % 2 > 0 && intersections.Length > 0)
                 {
                     bool beingInside = polygon.IsInside(pathStart) && polygon.IsOutside(pathEnd);
                     if (beingInside)
@@ -490,7 +487,7 @@ namespace MoonWalkEvade.Evading
                             return false;
                     }
                 }
-                else if (intersections.Length % 2 == 0) //cross
+                else if (intersections.Length % 2 == 0 && intersections.Length >= 2) //cross
                 {
                     if (skillshot.OwnSpellData.ForbidCrossing)
                         return false;
@@ -795,7 +792,6 @@ namespace MoonWalkEvade.Evading
             return p;
         }
 
-        private int LastMovementSpam;
         public bool DoEvade(Vector3[] desiredPath = null, PlayerIssueOrderEventArgs args = null)
         {
             #region pre
@@ -830,7 +826,6 @@ namespace MoonWalkEvade.Evading
 
                 if (!hero.IsMovingTowards(LastEvadeResult.WalkPoint) || !isPathSafe)
                 {
-                    LastMovementSpam = Environment.TickCount;
                     AutoPathing.StopPath();
                     MoveTo(GetExtendedEvade(LastEvadeResult.WalkPoint.To2D()), false);
                 }
@@ -859,15 +854,12 @@ namespace MoonWalkEvade.Evading
             }
             else if (!IsPathSafe(hero.RealPath()) || (desiredPath != null && !IsPathSafe(desiredPath)))
             {
-                if (LastEvadeResult == null || !LastEvadeResult.EnoughTime)
-                {
-                    var evade = CalculateEvade(LastIssueOrderPos);
+                var evade = CalculateEvade(LastIssueOrderPos);
 
-                    if (evade.IsValid)
-                    {
-                        LastEvadeResult = evade;
-                        return true;
-                    }
+                if (evade.IsValid)
+                {
+                    LastEvadeResult = evade;
+                    return true;
                 }
                 //LastEvadeResult = null;
                 return desiredPath != null;

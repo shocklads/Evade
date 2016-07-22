@@ -107,7 +107,7 @@ namespace MoonWalkEvade.EvadeSpells
             }
 
             var evadePoint =
-                points.OrderByDescending(p => p.Distance(moonWalkEvade.LastIssueOrderPos) + p.Distance(center)).Last();
+                points.Where(moonWalkEvade.IsPointSafe).OrderBy(x => x.Distance(Game.CursorPos)).First();
             return evadePoint;
         }
 

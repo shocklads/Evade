@@ -1851,7 +1851,7 @@ namespace MoonWalkEvade.Skillshots
                         ChampionName = "Nami",
                         SpellName = "NamiQ",
                         Slot = SpellSlot.Q,
-                        Delay = 950,
+                        Delay = 500,
                         Range = 875,
                         Radius = 200,
                         MissileSpeed = 0,
