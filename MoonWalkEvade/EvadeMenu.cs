@@ -63,11 +63,6 @@ namespace MoonWalkEvade
             MainMenu.AddSeparator(10);
             MainMenu.Add("ignoreComfort", new Slider("Ignore Comfort Distance For X Enemies", 1, 1, 5));
             MainMenu.AddSeparator();
-            MainMenu.Add("serverTimeBuffer", new Slider("Server Time Buffer Delay", 80, 0, 200));
-            MainMenu.AddSeparator();
-            MainMenu.Add("crossingBuffer", new Slider("Crossing Buffer", 50, 0, 200));
-            MainMenu.AddLabel("Increase this to increase the crossing safety");
-            MainMenu.AddSeparator();
 
             MainMenu.AddGroupLabel("Humanizer");
             MainMenu.Add("skillshotActivationDelay", new Slider("Reaction Delay", 0, 0, 400));

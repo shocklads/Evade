@@ -19,7 +19,7 @@ namespace MoonWalkEvade.Evading
     {
         #region Properties
 
-        public int ServerTimeBuffer => EvadeMenu.MainMenu["serverTimeBuffer"].Cast<Slider>().CurrentValue + 45;
+        public int ServerTimeBuffer => 80 + 45;
 
         public bool EvadeEnabled => EvadeMenu.HotkeysMenu["enableEvade"].Cast<KeyBind>().CurrentValue;
 
@@ -45,8 +45,6 @@ namespace MoonWalkEvade.Evading
         public int IgnoreAt => EvadeMenu.MainMenu["ignoreComfort"].Cast<Slider>().CurrentValue;
 
         public int MinComfortDistance => EvadeMenu.MainMenu["minComfortDist"].Cast<Slider>().CurrentValue;
-
-        public int CrossingBuffer => EvadeMenu.MainMenu["crossingBuffer"].Cast<Slider>().CurrentValue;
 
         public int IssueOrderTickLimit => 0;
 
@@ -391,7 +389,7 @@ namespace MoonWalkEvade.Evading
                             //var time1 = skillshot.GetAvailableTime(start);
                             var time2 = skillshot.GetAvailableTime(end);
 
-                            if (hero.WalkingTime(start, end) >= time2 - Game.Ping)
+                            if (hero.WalkingTime(start, end) >= time2 - (Game.Ping + ServerTimeBuffer))
                             {
                                 return false;
                             }
@@ -458,7 +456,7 @@ namespace MoonWalkEvade.Evading
                 {
                     var time2 = skillshot.GetAvailableTime(pathEnd);
 
-                    if (hero.WalkingTime(hero.Position.To2D(), pathEnd) >= time2 - Game.Ping)
+                    if (hero.WalkingTime(pathStart, pathEnd) >= time2 - (Game.Ping + ServerTimeBuffer))
                     {
                         return false;
                     }
@@ -472,7 +470,7 @@ namespace MoonWalkEvade.Evading
                     if (beingInside)
                     {
                         float time = GetShortesTimeAvailiableInInsidePath(path, skillshot);
-                        bool enoughTime = hero.WalkingTime(pathStart, intersections[0]) + CrossingBuffer < time;
+                        bool enoughTime = hero.WalkingTime(pathStart, intersections[0]) < time;
                         if (!enoughTime)
                             return false;
                     }
@@ -483,7 +481,7 @@ namespace MoonWalkEvade.Evading
                         skillshotTime = Math.Max(0, skillshotTime - (Game.Ping + ServerTimeBuffer));
 
                         float time = skillshotTime - walkTimeToEdge;
-                        if (time > -CrossingBuffer)
+                        if (time > 0)
                             return false;
                     }
                 }
@@ -503,8 +501,8 @@ namespace MoonWalkEvade.Evading
 
                     float time2 = GetShortesTimeAvailiableInInsidePath(new[] { pathStart, crossPoint }, skillshot);
 
-                    bool dangerStartUnsafe = time1 - walkTimeToDangerStart > -CrossingBuffer;
-                    bool dangerEndUnsafe = walkTimeToDangerEnd + CrossingBuffer > time2;
+                    bool dangerStartUnsafe = time1 - walkTimeToDangerStart > 0;
+                    bool dangerEndUnsafe = walkTimeToDangerEnd > time2;
 
                     if (dangerStartUnsafe && dangerEndUnsafe)
                     {

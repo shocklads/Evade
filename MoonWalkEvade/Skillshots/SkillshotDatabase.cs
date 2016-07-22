@@ -2968,36 +2968,36 @@ namespace MoonWalkEvade.Skillshots
                 //        ObjectCreationName = "ZedPBAOEDummy"
                 //    }
                 //},
-                //new CircularSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Ziggs",
-                //        SpellName = "ZiggsE",
-                //        Slot = SpellSlot.E,
-                //        Delay = 250,
-                //        Range = 2000,
-                //        Radius = 235,
-                //        MissileSpeed = 3000,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "ZiggsE"
-                //    }
-                //},
-                //new CircularSkillshot
-                //{
-                //    OwnSpellData = new OwnSpellData
-                //    {
-                //        ChampionName = "Ziggs",
-                //        SpellName = "ZiggsW",
-                //        Slot = SpellSlot.W,
-                //        Delay = 250,
-                //        Range = 2000,
-                //        Radius = 275,
-                //        MissileSpeed = 3000,
-                //        DangerValue = 3,
-                //        ObjectCreationName = "ZiggsW"
-                //    }
-                //},
+                new CircularSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Ziggs",
+                        SpellName = "ZiggsE",
+                        Slot = SpellSlot.E,
+                        Delay = 250,
+                        Range = 2000,
+                        Radius = 235,
+                        MissileSpeed = 3000,
+                        DangerValue = 3,
+                        ObjectCreationName = "ZiggsE"
+                    }
+                },
+                new CircularSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        ChampionName = "Ziggs",
+                        SpellName = "ZiggsW",
+                        Slot = SpellSlot.W,
+                        Delay = 250,
+                        Range = 2000,
+                        Radius = 275,
+                        MissileSpeed = 3000,
+                        DangerValue = 3,
+                        ObjectCreationName = "ZiggsW"
+                    }
+                },
                 new CircularSkillshot
                 {
                     OwnSpellData = new SpellData
@@ -3013,6 +3013,40 @@ namespace MoonWalkEvade.Skillshots
                         DangerValue = 2,
                         IsDangerous = false,
                         ObjectCreationName = "ZiggsQSpell"
+                    }
+                },
+                new CircularSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Bouncing Bomb 2",
+                        ChampionName = "Ziggs",
+                        SpellName = "ZiggsQ",
+                        Slot = SpellSlot.Q,
+                        Delay = 250,
+                        Range = 850,
+                        Radius = 150,
+                        MissileSpeed = 1700,
+                        DangerValue = 2,
+                        IsDangerous = false,
+                        ObjectCreationName = "ZiggsQSpell2"
+                    }
+                },
+                new CircularSkillshot
+                {
+                    OwnSpellData = new SpellData
+                    {
+                        DisplayName = "Bouncing Bomb 3",
+                        ChampionName = "Ziggs",
+                        SpellName = "ZiggsQ",
+                        Slot = SpellSlot.Q,
+                        Delay = 250,
+                        Range = 850,
+                        Radius = 150,
+                        MissileSpeed = 1700,
+                        DangerValue = 2,
+                        IsDangerous = false,
+                        ObjectCreationName = "ZiggsQSpell3"
                     }
                 },
                 new CircularSkillshot
