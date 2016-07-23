@@ -6,7 +6,6 @@ C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvad
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\SharpDX.dll
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\bin\Debug\EloBuddy.Sandbox.dll
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.exe
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.pdb
 C:\Users\Daniel\Documents\Visual Studio 2015\Projects\MoonWalkEvade\MoonWalkEvade\obj\Debug\MoonWalkEvade.csprojResolveAssemblyReference.cache
