@@ -357,160 +357,55 @@ namespace MoonWalkEvade.Evading
 
         public bool IsPathSafeEx(Vector2[] path, AIHeroClient hero = null)
         {
-            int mode = EvadeMenu.MainMenu["pathFindinding"].Cast<ComboBox>().CurrentValue;
+            hero = hero ?? Player.Instance;
 
-            if (mode == 0)
-            #region alternative
+            for (var i = 0; i < path.Length - 1; i++)
             {
-                hero = hero ?? Player.Instance;
+                var start = path[i];
+                var end = path[i + 1];
 
-                for (var i = 0; i < path.Length - 1; i++)
+                foreach (var pair in _skillshotPolygonCache)
                 {
-                    var start = path[i];
-                    var end = path[i + 1];
+                    var skillshot = pair.Key;
+                    var polygon = pair.Value;
 
-                    foreach (var pair in _skillshotPolygonCache)
+                    if (polygon.IsInside(start) && polygon.IsInside(end))
                     {
-                        var skillshot = pair.Key;
-                        var polygon = pair.Value;
-                        Func<Vector2, bool> isInside = point =>
+                        //var time1 = skillshot.GetAvailableTime(start);
+                        var time2 = skillshot.GetAvailableTime(end);
+
+                        if (hero.WalkingTime(start, end) >= time2 - Game.Ping)
                         {
-                            if (skillshot.OwnSpellData.IsVeigarE)
-                            {
-                                return skillshot.ToInnerPolygon().IsOutside(point) &&
-                                    skillshot.ToOuterPolygon().IsInside(point);
-                            }
-
-                            return polygon.IsInside(point);
-                        };
-
-                        if (isInside(start) && isInside(end))
-                        {
-                            //var time1 = skillshot.GetAvailableTime(start);
-                            var time2 = skillshot.GetAvailableTime(end);
-
-                            if (hero.WalkingTime(start, end) >= time2 - (Game.Ping + ServerTimeBuffer))
-                            {
-                                return false;
-                            }
+                            return false;
                         }
-                        else
+                    }
+                    else
+                    {
+                        var intersections =
+                            polygon.GetIntersectionPointsWithLineSegment(start, end)
+                                .Concat(new[] { start, end })
+                                .ToList()
+                                .GetSortedPath(start).ToArray();
+
+                        for (var i2 = 0; i2 < intersections.Length - 1; i2++)
                         {
-                            var intersections =
-                                polygon.GetIntersectionPointsWithLineSegment(start, end)
-                                    .Concat(new[] { start, end })
-                                    .ToList().GetSortedPath(start).ToArray();
+                            var point1 = intersections[i2];
+                            var point2 = intersections[i2 + 1];
 
-                            for (var i2 = 0; i2 < intersections.Length - 1; i2++)
+                            if (polygon.IsInside(point2) || polygon.IsInside(point1))
                             {
-                                var point1 = intersections[i2];
-                                var point2 = intersections[i2 + 1];
+                                //var time1 = polygon.IsInside(point1) ? skillshot.GetAvailableTime(point1) : short.MaxValue;
+                                var time2 = polygon.IsInside(point2) ? skillshot.GetAvailableTime(point2) : short.MaxValue;
 
-                                if (isInside(point2) || isInside(point1))
+                                if (hero.WalkingTime(point1, point2) >= time2 - Game.Ping)
                                 {
-                                    //var time1 = polygon.IsInside(point1) ? skillshot.GetAvailableTime(point1) : short.MaxValue;
-                                    var time2 = isInside(point2)
-                                        ? skillshot.GetAvailableTime(point2)
-                                        : short.MaxValue;
-
-                                    if (hero.WalkingTime(point1, point2) >= time2 - Game.Ping)
-                                    {
-                                        return false;
-                                    }
+                                    return false;
                                 }
                             }
                         }
                     }
                 }
-
-                return true;
             }
-            #endregion
-
-            hero = hero ?? Player.Instance;
-            path = new[] { hero.Position.To2D(), LastIssueOrderPos };
-
-            var pathStart = path[0];
-            var pathEnd = path[1];
-
-            foreach (var pair in _skillshotPolygonCache)
-            {
-                EvadeSkillshot skillshot = pair.Key;
-                var polygon = pair.Value;
-                Func<Vector2, bool> isInside = point =>
-                {
-                    if (skillshot.OwnSpellData.IsVeigarE)
-                    {
-                        return skillshot.ToInnerPolygon().IsOutside(point) && skillshot.ToOuterPolygon().IsInside(point);
-                    }
-
-                    return polygon.IsInside(point);
-                };
-
-
-                var intersections =
-                    polygon.GetIntersectionPointsWithLineSegment(pathStart, pathEnd).OrderBy(x => x.Distance(pathStart)).
-                    ToArray();
-
-                if (isInside(pathStart) && isInside(pathEnd))
-                {
-                    var time2 = skillshot.GetAvailableTime(pathEnd);
-
-                    if (hero.WalkingTime(pathStart, pathEnd) >= time2 - (Game.Ping + ServerTimeBuffer))
-                    {
-                        return false;
-                    }
-                }
-                else if (!isInside(pathStart) && !isInside(pathEnd))
-                    continue; //safe path for now => next skillshot
-
-                if (intersections.Length % 2 > 0 && intersections.Length > 0)
-                {
-                    bool beingInside = polygon.IsInside(pathStart) && polygon.IsOutside(pathEnd);
-                    if (beingInside)
-                    {
-                        float time = GetShortesTimeAvailiableInInsidePath(path, skillshot);
-                        bool enoughTime = hero.WalkingTime(pathStart, intersections[0]) < time;
-                        if (!enoughTime)
-                            return false;
-                    }
-                    else //being outside
-                    {
-                        float walkTimeToEdge = hero.WalkingTime(pathStart, intersections[0]);
-                        float skillshotTime = skillshot.GetAvailableTime(intersections[0]);
-                        skillshotTime = Math.Max(0, skillshotTime - (Game.Ping + ServerTimeBuffer));
-
-                        float time = skillshotTime - walkTimeToEdge;
-                        if (time > 0)
-                            return false;
-                    }
-                }
-                else if (intersections.Length % 2 == 0 && intersections.Length >= 2) //cross
-                {
-                    if (skillshot.OwnSpellData.ForbidCrossing)
-                        return false;
-
-                    var firstDangerPoint = intersections.Last();
-                    var crossPoint = intersections.First();
-
-                    var walkTimeToDangerStart = hero.WalkingTime(pathStart, firstDangerPoint);
-                    var walkTimeToDangerEnd = hero.WalkingTime(pathStart, crossPoint);
-
-                    float maxTime1 = skillshot.GetAvailableTime(firstDangerPoint);
-                    float time1 = Math.Max(0, maxTime1 - (Game.Ping + ServerTimeBuffer));
-
-                    float time2 = GetShortesTimeAvailiableInInsidePath(new[] { pathStart, crossPoint }, skillshot);
-
-                    bool dangerStartUnsafe = time1 - walkTimeToDangerStart > 0;
-                    bool dangerEndUnsafe = walkTimeToDangerEnd > time2;
-
-                    if (dangerStartUnsafe && dangerEndUnsafe)
-                    {
-                        return false;
-                    }
-                }
-            }
-
 
             return true;
         }
@@ -538,7 +433,7 @@ namespace MoonWalkEvade.Evading
         }
 
 
-        public Vector2[] GetBestPositionMovementBlock(Vector2 movePos)
+        public Vector2[] GetSmoothEvadePoints(Vector2 movePos)
         {
             int posChecked = 0;
             int maxPosToCheck = 50;
@@ -648,11 +543,16 @@ namespace MoonWalkEvade.Evading
                     }
                 }
 
-                return points.Where(p => DoesntCrossVeigarE(p, playerPos)).ToArray();
+                var orderedPoints = points.Where(IsPointSafe).Where(
+                    p => DoesntCrossVeigarE(p, playerPos)).Where(x => !Utils.Utils.IsWall(x));
+
+                return orderedPoints.ToArray();
             }
 
-            return GetBestPositionMovementBlock(playerPos).Where(IsPointSafe).Where(
-                p => DoesntCrossVeigarE(p, playerPos)).ToArray();
+            var evadePoints = GetSmoothEvadePoints(playerPos).Where(IsPointSafe).Where(
+                p => DoesntCrossVeigarE(p, playerPos)).Where(x => !Utils.Utils.IsWall(x));
+
+            return evadePoints.ToArray();
         }
 
         private bool DoesntCrossVeigarE(Vector2 p, Vector2 playerPos)
@@ -708,7 +608,7 @@ namespace MoonWalkEvade.Evading
             var time = Math.Max(0, maxTime - (Game.Ping + ServerTimeBuffer));
             var moveRadius = time / 1000F * Player.Instance.MoveSpeed;
 
-            var points = GetEvadePoints(playerPos, moveRadius).Where(x => !Utils.Utils.IsWall(x));
+            var points = GetEvadePoints(playerPos, moveRadius);
 
             if (!points.Any())
             {
@@ -718,15 +618,14 @@ namespace MoonWalkEvade.Evading
             //var evadePoint = points.
             //    OrderBy(x => !x.IsUnderTurret()).ThenBy(p => p.Distance(playerPos)).First();
 
-            bool any = points.Any(x => GetHeroesNearby(x) <= IgnoreAt);
+            bool any = points.Any(x => GetHeroesNearby(x) > IgnoreAt);
             var evadePoint =
                 any ?
                 points.Where(x => GetHeroesNearby(x) <= IgnoreAt).OrderBy(x => IsPathSafeEx(x)).
-                OrderBy(p => !p.IsUnderTurret()).ThenBy(
-                p => p.Distance(Game.CursorPos)).FirstOrDefault()
+                ThenBy(p => !p.IsUnderTurret()).ThenBy(p => p.Distance(Game.CursorPos)).FirstOrDefault()
                 :
-                points.OrderBy(x => IsPathSafeEx(x)).OrderBy(p => !p.IsUnderTurret()).ThenBy(
-                p => p.Distance(Game.CursorPos)).FirstOrDefault();
+                points.OrderBy(x => IsPathSafeEx(x)).ThenBy(p => !p.IsUnderTurret()).ThenBy(p => p.Distance(Game.CursorPos))
+                    .FirstOrDefault();
 
             return new EvadeResult(this, evadePoint, anchor, maxTime, time,
                 !IsHeroInDanger() || GetTimeUnitlOutOfDangerArea(evadePoint) < time);

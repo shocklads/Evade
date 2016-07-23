@@ -55,9 +55,6 @@ namespace MoonWalkEvade
             MainMenu.Add("moveToInitialPosition", new CheckBox("Move To Desired Position After Evade", false));
             MainMenu.AddSeparator();
 
-            MainMenu.Add("pathFindinding", new ComboBox("Path Finding Method", 1, "Alternative", "New"));
-            MainMenu.AddSeparator();
-
             MainMenu.Add("minComfortDist", new Slider("Minimum Comfort Distance To Enemies", 550, 0, 1000));
             MainMenu.AddLabel("If possible");
             MainMenu.AddSeparator(10);
