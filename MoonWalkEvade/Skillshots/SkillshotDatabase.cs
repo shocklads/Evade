@@ -1758,7 +1758,7 @@ namespace MoonWalkEvade.Skillshots
                         MissileSpeed = 0,
                         DangerValue = 5,
                         IsDangerous = true,
-                        ObjectCreationName = "LuxMaliceCannon"
+                        ObjectCreationName = "LuxRVfxMis"
                     }
                 },
                 new LinearSkillshot

@@ -32,7 +32,7 @@ namespace MoonWalkEvade
         public static Menu CollisionMenu { get; private set; }
 
         public static readonly Dictionary<string, EvadeSkillshot> MenuSkillshots = new Dictionary<string, EvadeSkillshot>();
-        public static readonly List<EvadeSpellData> MenuEvadeSpells = new List<EvadeSpellData>(); 
+        public static readonly List<EvadeSpellData> MenuEvadeSpells = new List<EvadeSpellData>();
 
         public static void CreateMenu()
         {
@@ -98,14 +98,14 @@ namespace MoonWalkEvade
                 SkillshotMenu.Add(skillshotString + "/draw", new CheckBox("Draw"));
 
                 var dangerous = new CheckBox("Dangerous", c.OwnSpellData.IsDangerous);
-                dangerous.OnValueChange += delegate(ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
+                dangerous.OnValueChange += delegate (ValueBase<bool> sender, ValueBase<bool>.ValueChangeArgs args)
                 {
                     GetSkillshot(sender.SerializationId).OwnSpellData.IsDangerous = args.NewValue;
                 };
                 SkillshotMenu.Add(skillshotString + "/dangerous", dangerous);
 
                 var dangerValue = new Slider("Danger Value", c.OwnSpellData.DangerValue, 1, 5);
-                dangerValue.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
+                dangerValue.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                 {
                     GetSkillshot(sender.SerializationId).OwnSpellData.DangerValue = args.NewValue;
                 };
@@ -132,7 +132,7 @@ namespace MoonWalkEvade
                 var dangerValueSlider = new Slider("Danger Value", e.DangerValue, 1, 5);
                 dangerValueSlider.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                 {
-                    MenuEvadeSpells.First(x => 
+                    MenuEvadeSpells.First(x =>
                         x.SpellName.Contains(sender.SerializationId.Split('/')[0])).DangerValue = args.NewValue;
                 };
                 SpellMenu.Add(evadeSpellString + "/dangervalue", dangerValueSlider);
